@@ -18,5 +18,6 @@ public partial class AppShell : Shell
 
         // Route uses DI so pages can take ViewModels in their constructors.
         Routing.RegisterRoute(nameof(CheckInPage), new ServiceRouteFactory(services, typeof(CheckInPage)));
+        Routing.RegisterRoute(nameof(InAppBrowserPage), new ServiceRouteFactory(services, typeof(InAppBrowserPage)));
     }
 }

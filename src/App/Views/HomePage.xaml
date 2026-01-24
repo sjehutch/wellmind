@@ -3,44 +3,104 @@
     x:Class="WellMind.Views.HomePage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Name="HomePageView"
     Title="Home">
 
     <ScrollView>
         <VerticalStackLayout Padding="24" Spacing="16">
-            <Label Text="WellMind" Style="{StaticResource Headline}" HorizontalOptions="Start" />
-            <Label Text="{Binding SummaryText}" FontSize="16" TextColor="{StaticResource Gray600}" />
+            <Label Text="WellMind" Style="{DynamicResource Headline}" HorizontalOptions="Start" />
+            <Label Text="{Binding SummaryText}" Style="{DynamicResource BodyText}" />
 
             <Border
-                BackgroundColor="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource Gray900}}"
+                BackgroundColor="{AppThemeBinding Light={DynamicResource Secondary}, Dark={DynamicResource Gray900}}"
                 StrokeShape="RoundRectangle 12"
                 Padding="16">
                 <VerticalStackLayout Spacing="8">
-                    <Label Text="Daily check-in" FontAttributes="Bold" FontSize="16" />
-                    <Label Text="A 30-second pulse on how you feel today." FontSize="13" TextColor="{StaticResource Gray600}" />
+                    <Label Text="Daily check-in" Style="{DynamicResource SectionTitle}" />
+                    <Label Text="A 30-second pulse on how you feel today." Style="{DynamicResource CaptionText}" />
                     <Button Text="Start check-in" Command="{Binding StartCheckInCommand}" />
                 </VerticalStackLayout>
             </Border>
 
-            <Label Text="This week" FontAttributes="Bold" FontSize="16" />
+            <Label Text="This week" Style="{DynamicResource SectionTitle}" />
             <CollectionView ItemsSource="{Binding Trends}">
                 <CollectionView.ItemsLayout>
-                    <GridItemsLayout Orientation="Vertical" Span="2" />
+                    <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="12" VerticalItemSpacing="12" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Border
-                            BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray900}}"
+                            BackgroundColor="{AppThemeBinding Light={DynamicResource Gray100}, Dark={DynamicResource Gray900}}"
                             StrokeShape="RoundRectangle 12"
                             Padding="12"
-                            Margin="0,0,0,12">
+                            Margin="0">
                             <VerticalStackLayout Spacing="6">
                                 <Label Text="{Binding Label}" FontAttributes="Bold" FontSize="14" />
-                                <Label Text="Placeholder trend" FontSize="12" TextColor="{StaticResource Gray500}" />
+                                <Label Text="{Binding Summary}" FontSize="12" TextColor="{DynamicResource Gray500}" />
+                                <Label
+                                    FontSize="12"
+                                    TextColor="{DynamicResource Gray500}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Last: " />
+                                            <Span Text="{Binding LastValue}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label
+                                    FontSize="12"
+                                    TextColor="{DynamicResource Gray500}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Range: " />
+                                            <Span Text="{Binding Min}" />
+                                            <Span Text="–" />
+                                            <Span Text="{Binding Max}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
                             </VerticalStackLayout>
                         </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+
+            <VerticalStackLayout Spacing="8" IsVisible="{Binding HasTips}">
+                <Label Text="Gentle tips" Style="{DynamicResource SectionTitle}" />
+                <CollectionView ItemsSource="{Binding Tips}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border
+                                BackgroundColor="{AppThemeBinding Light={DynamicResource SoothingMint}, Dark={DynamicResource Gray900}}"
+                                StrokeShape="RoundRectangle 10"
+                                Padding="12"
+                                Margin="0,0,0,8">
+                                <Label Text="{Binding Message}" Style="{DynamicResource CaptionText}" />
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="8" IsVisible="{Binding HasLinks}">
+                <Label Text="Learn more" Style="{DynamicResource SectionTitle}" />
+                <ScrollView Orientation="Horizontal">
+                    <HorizontalStackLayout
+                        Spacing="8"
+                        BindableLayout.ItemsSource="{Binding Links}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Button
+                                    Text="{Binding Title}"
+                                    Style="{DynamicResource LinkButton}"
+                                    HeightRequest="36"
+                                    Command="{Binding BindingContext.OpenLinkCommand, Source={x:Reference HomePageView}}"
+                                    CommandParameter="{Binding .}" />
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </HorizontalStackLayout>
+                </ScrollView>
+            </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

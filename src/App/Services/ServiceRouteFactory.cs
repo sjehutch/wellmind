@@ -17,4 +17,9 @@ public sealed class ServiceRouteFactory : RouteFactory
     {
         return (Element)_services.GetRequiredService(_pageType);
     }
+
+    public override Element GetOrCreate(IServiceProvider services)
+    {
+        return (Element)_services.GetRequiredService(_pageType);
+    }
 }

@@ -7,22 +7,34 @@
 
     <ScrollView>
         <VerticalStackLayout Padding="24" Spacing="16">
-            <Label Text="{Binding Prompt}" Style="{StaticResource SubHeadline}" HorizontalOptions="Start" />
-            <Label Text="Answer at your own pace. Nothing is graded." FontSize="13" TextColor="{StaticResource Gray600}" />
+            <Label Text="{Binding Prompt}" Style="{DynamicResource SubHeadline}" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+            <Label Text="Answer at your own pace. Nothing is graded." Style="{DynamicResource CaptionText}" />
 
-            <Label Text="Energy" FontAttributes="Bold" />
-            <Slider Minimum="1" Maximum="5" Value="{Binding Energy}" />
+            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                <Label Text="Energy" Style="{DynamicResource SectionTitle}" />
+                <Label x:Name="EnergyEmojiLabel" Text="{Binding EnergyEmoji}" FontSize="20" Grid.Column="1" HorizontalOptions="End" />
+            </Grid>
+            <Slider x:Name="EnergySlider" Minimum="1" Maximum="5" Value="{Binding Energy}" Margin="0,0,0,4" ValueChanged="OnSliderValueChanged" DragStarted="OnSliderDragStarted" DragCompleted="OnSliderDragCompleted" />
 
-            <Label Text="Stress" FontAttributes="Bold" />
-            <Slider Minimum="1" Maximum="5" Value="{Binding Stress}" />
+            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                <Label Text="Stress" Style="{DynamicResource SectionTitle}" />
+                <Label x:Name="StressEmojiLabel" Text="{Binding StressEmoji}" FontSize="20" Grid.Column="1" HorizontalOptions="End" />
+            </Grid>
+            <Slider x:Name="StressSlider" Minimum="1" Maximum="5" Value="{Binding Stress}" Margin="0,0,0,4" ValueChanged="OnSliderValueChanged" DragStarted="OnSliderDragStarted" DragCompleted="OnSliderDragCompleted" />
 
-            <Label Text="Focus" FontAttributes="Bold" />
-            <Slider Minimum="1" Maximum="5" Value="{Binding Focus}" />
+            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                <Label Text="Focus" Style="{DynamicResource SectionTitle}" />
+                <Label x:Name="FocusEmojiLabel" Text="{Binding FocusEmoji}" FontSize="20" Grid.Column="1" HorizontalOptions="End" />
+            </Grid>
+            <Slider x:Name="FocusSlider" Minimum="1" Maximum="5" Value="{Binding Focus}" Margin="0,0,0,4" ValueChanged="OnSliderValueChanged" DragStarted="OnSliderDragStarted" DragCompleted="OnSliderDragCompleted" />
 
-            <Label Text="Sleep quality" FontAttributes="Bold" />
-            <Slider Minimum="1" Maximum="5" Value="{Binding SleepQuality}" />
+            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                <Label Text="Sleep quality" Style="{DynamicResource SectionTitle}" />
+                <Label x:Name="SleepEmojiLabel" Text="{Binding SleepEmoji}" FontSize="20" Grid.Column="1" HorizontalOptions="End" />
+            </Grid>
+            <Slider x:Name="SleepSlider" Minimum="1" Maximum="5" Value="{Binding SleepQuality}" Margin="0,0,0,4" ValueChanged="OnSliderValueChanged" DragStarted="OnSliderDragStarted" DragCompleted="OnSliderDragCompleted" />
 
-            <Label Text="Optional note" FontAttributes="Bold" />
+            <Label Text="Optional note" Style="{DynamicResource SectionTitle}" />
             <Editor
                 Text="{Binding Note}"
                 Placeholder="Anything you want to remember later"
@@ -31,11 +43,7 @@
 
             <HorizontalStackLayout Spacing="12">
                 <Button Text="Save check-in" Command="{Binding SubmitCommand}" />
-                <Button
-                    Text="Not now"
-                    Command="{Binding CancelCommand}"
-                    BackgroundColor="{StaticResource Gray200}"
-                    TextColor="{StaticResource Gray900}" />
+                <Button Text="Not now" Command="{Binding CancelCommand}" Style="{DynamicResource SecondaryButton}" />
             </HorizontalStackLayout>
         </VerticalStackLayout>
     </ScrollView>

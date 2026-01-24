@@ -174,17 +174,45 @@
     </Style>
 
     <Style TargetType="Label" x:Key="Headline">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource MidnightBlue}, Dark={StaticResource White}}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource MidnightBlue}, Dark={DynamicResource White}}" />
         <Setter Property="FontSize" Value="32" />
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="HorizontalTextAlignment" Value="Center" />
     </Style>
 
     <Style TargetType="Label" x:Key="SubHeadline">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource MidnightBlue}, Dark={StaticResource White}}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource MidnightBlue}, Dark={DynamicResource White}}" />
         <Setter Property="FontSize" Value="24" />
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="HorizontalTextAlignment" Value="Center" />
+    </Style>
+
+    <Style TargetType="Label" x:Key="BodyText">
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="TextColor" Value="{DynamicResource Gray600}" />
+    </Style>
+
+    <Style TargetType="Label" x:Key="SectionTitle">
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontAttributes" Value="Bold" />
+    </Style>
+
+    <Style TargetType="Label" x:Key="CaptionText">
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="TextColor" Value="{DynamicResource Gray600}" />
+    </Style>
+
+    <Style TargetType="Button" x:Key="SecondaryButton">
+        <Setter Property="BackgroundColor" Value="{DynamicResource Gray200}" />
+        <Setter Property="TextColor" Value="{DynamicResource Gray900}" />
+    </Style>
+
+    <Style TargetType="Button" x:Key="LinkButton">
+        <Setter Property="BackgroundColor" Value="{DynamicResource SoothingMint}" />
+        <Setter Property="TextColor" Value="{DynamicResource Primary}" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="CornerRadius" Value="16" />
+        <Setter Property="Padding" Value="12,8" />
     </Style>
 
     <Style TargetType="ListView">

@@ -4,15 +4,45 @@ namespace WellMind.Services;
 
 public sealed class InMemoryTrendService : ITrendService
 {
-    public Task<IReadOnlyList<Trend>> GetWeeklyTrendsAsync(CancellationToken cancellationToken = default)
+    private readonly ICheckInService _checkInService;
+
+    public InMemoryTrendService(ICheckInService checkInService)
     {
-        // Placeholder trend data for the home screen tiles.
+        _checkInService = checkInService;
+    }
+
+    public async Task<IReadOnlyList<Trend>> GetWeeklyTrendsAsync(CancellationToken cancellationToken = default)
+    {
+        var checkIns = await _checkInService.GetRecentAsync(7, cancellationToken);
+
+        var energyValues = checkIns.Select(checkIn => checkIn.Energy).ToList();
+        var stressValues = checkIns.Select(checkIn => checkIn.Stress).ToList();
+
         IReadOnlyList<Trend> trends =
         [
-            new Trend { Label = "Energy", Values = [3, 3, 4, 2, 3, 4, 3] },
-            new Trend { Label = "Stress", Values = [2, 3, 2, 3, 3, 2, 2] }
+            BuildTrend("Energy", energyValues),
+            BuildTrend("Stress", stressValues)
         ];
 
-        return Task.FromResult(trends);
+        return trends;
+    }
+
+    private static Trend BuildTrend(string label, IReadOnlyList<int> values)
+    {
+        var hasValues = values.Count > 0;
+        var summary = hasValues
+            ? $"Avg {values.Average():0.0}"
+            : "No check-ins yet";
+
+        return new Trend
+        {
+            Label = label,
+            Values = values,
+            Summary = summary,
+            LastValue = hasValues ? values[^1] : null,
+            Min = hasValues ? values.Min() : null,
+            Max = hasValues ? values.Max() : null,
+            Average = hasValues ? values.Average() : null
+        };
     }
 }
