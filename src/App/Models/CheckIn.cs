@@ -2,7 +2,8 @@ namespace WellMind.Models;
 
 public sealed class CheckIn
 {
-    public DateTime Date { get; init; } = DateTime.UtcNow.Date;
+    public string DateLocal { get; init; } = "";
+    public string TimestampLocal { get; init; } = "";
     public int Energy { get; init; }
     public int Stress { get; init; }
     public int Focus { get; init; }

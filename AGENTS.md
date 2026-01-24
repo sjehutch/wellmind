@@ -62,3 +62,10 @@ If unsure between two approaches:
 - All application code MUST live under `/src`
 - No production code is allowed at the repository root
 - AI agents MUST NOT create files outside `/src` unless explicitly instructed
+
+HomeViewModel should expose:
+- TodayCheckIn: CheckIn?
+- HasTodayCheckIn: bool
+- PrimaryActionText:
+    - "Start today’s check-in" when HasTodayCheckIn == false
+    - "Update today’s check-in" when HasTodayCheckIn == true

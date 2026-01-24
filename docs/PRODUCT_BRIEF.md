@@ -37,6 +37,23 @@ WellMind is a low-drama wellness app that helps busy people notice early burnout
 - In-app browser: opens learn-more links.
 - Settings (planned): reminder toggle, export/delete data.
 
+## To do (near-term)
+- Add a small “Daily wins” section where users can log small wins that gently support their overall score.
+- Explore a lightweight “Daily goals” section for small, optional actions that make the day feel better.
+- Add an “Inspiration” menu page with grounded, real-life quotes (not always cheerful; honest about struggle) and easy sharing.
+- Explore an anonymous, opt-in collective score for company dashboards (aggregate only), e.g., if overall stress trends high, suggest lighter meeting cadence.
+- Explore an anonymous, opt-in chat option with a counselor/therapist or HR representative for companies.
+- Explore anonymous employee recommendations with gentle, privacy-first copy:
+  - Helper text: “Share ideas for making work more sustainable. Your feedback is anonymous and aggregated.”
+  - Helper text: “Offer a suggestion to your company—no names, no individual data.”
+  - Helper text: “What would make this week feel better? We share only trends, never identities.”
+  - Helper text: “Your voice stays anonymous. We only report group themes.”
+  - Button text: “Share a suggestion”
+  - Button text: “Send anonymous idea”
+  - Button text: “Add a workplace note”
+- Explore an anonymous, opt-in wellness recognition feature (e.g., team-level badges or shared milestones) that rewards participation without identifying individuals.
+- Explore anonymous, opt-in points that a company could incentivize while keeping individual identities private.
+
 ## Future (not in MVP)
 - Company mode with anonymized, aggregated signals only.
 

@@ -2,9 +2,9 @@ using WellMind.ViewModels;
 
 namespace WellMind.Views;
 
-public partial class HomePage : ContentPage
+public partial class PastCheckInsPage : ContentPage
 {
-    public HomePage(HomeViewModel viewModel)
+    public PastCheckInsPage(PastCheckInsViewModel viewModel)
     {
         InitializeComponent();
         BindingContext = viewModel;
@@ -14,7 +14,7 @@ public partial class HomePage : ContentPage
     {
         base.OnAppearing();
 
-        if (BindingContext is HomeViewModel viewModel)
+        if (BindingContext is PastCheckInsViewModel viewModel)
         {
             await viewModel.LoadAsync();
         }

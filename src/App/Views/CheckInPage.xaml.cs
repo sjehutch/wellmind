@@ -15,6 +15,16 @@ public partial class CheckInPage : ContentPage
         BindingContext = viewModel;
     }
 
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+
+        if (BindingContext is CheckInViewModel viewModel)
+        {
+            await viewModel.LoadAsync();
+        }
+    }
+
     private async void OnSliderValueChanged(object? sender, ValueChangedEventArgs e)
     {
         if (sender is not Slider slider)

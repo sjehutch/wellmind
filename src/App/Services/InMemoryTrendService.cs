@@ -4,16 +4,16 @@ namespace WellMind.Services;
 
 public sealed class InMemoryTrendService : ITrendService
 {
-    private readonly ICheckInService _checkInService;
+    private readonly ICheckInStore _checkInStore;
 
-    public InMemoryTrendService(ICheckInService checkInService)
+    public InMemoryTrendService(ICheckInStore checkInStore)
     {
-        _checkInService = checkInService;
+        _checkInStore = checkInStore;
     }
 
     public async Task<IReadOnlyList<Trend>> GetWeeklyTrendsAsync(CancellationToken cancellationToken = default)
     {
-        var checkIns = await _checkInService.GetRecentAsync(7, cancellationToken);
+        var checkIns = await _checkInStore.GetLastDaysAsync(7, cancellationToken);
 
         var energyValues = checkIns.Select(checkIn => checkIn.Energy).ToList();
         var stressValues = checkIns.Select(checkIn => checkIn.Stress).ToList();

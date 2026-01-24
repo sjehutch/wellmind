@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="WellMind.Views.PrivacyCommitmentPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Privacy, by design">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="16">
+            <Label Text="Privacy, by design" Style="{DynamicResource Headline}" HorizontalOptions="Start" />
+            <Label
+                Text="WellMind does not require a login or your real name. We believe the safest check-in is one you can make honestly, without feeling watched."
+                Style="{DynamicResource BodyText}" />
+            <Label
+                Text="Your check-ins stay on your device in this MVP. We do not sell or monetize your well-being. If we ever add optional shared insights for teams, they will be aggregated and anonymized."
+                Style="{DynamicResource BodyText}" />
+            <Label
+                Text="You stay in control: export or delete your data at any time."
+                Style="{DynamicResource CaptionText}" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

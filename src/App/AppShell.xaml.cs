@@ -16,6 +16,24 @@ public partial class AppShell : Shell
             Content = services.GetRequiredService<HomePage>()
         });
 
+        Items.Add(new ShellContent
+        {
+            Title = "Past check-ins",
+            Content = services.GetRequiredService<PastCheckInsPage>()
+        });
+
+        Items.Add(new ShellContent
+        {
+            Title = "How we score",
+            Content = services.GetRequiredService<ScoreExplanationPage>()
+        });
+
+        Items.Add(new ShellContent
+        {
+            Title = "Privacy, by design",
+            Content = services.GetRequiredService<PrivacyCommitmentPage>()
+        });
+
         // Route uses DI so pages can take ViewModels in their constructors.
         Routing.RegisterRoute(nameof(CheckInPage), new ServiceRouteFactory(services, typeof(CheckInPage)));
         Routing.RegisterRoute(nameof(InAppBrowserPage), new ServiceRouteFactory(services, typeof(InAppBrowserPage)));

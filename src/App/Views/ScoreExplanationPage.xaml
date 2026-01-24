@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="WellMind.Views.ScoreExplanationPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="How we score">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="16">
+            <Label Text="How we score" Style="{DynamicResource Headline}" HorizontalOptions="Start" />
+            <Label
+                Text="Your daily score is a simple average of energy, focus, sleep, and stress (stress is inverted). It is shown on a 1–5 scale to match your sliders."
+                Style="{DynamicResource BodyText}" />
+            <Label
+                Text="Low means the day felt heavier. Steady means mixed or balanced. Strong means the check-in felt supportive overall."
+                Style="{DynamicResource BodyText}" />
+            <Label
+                Text="This is not a diagnosis or a judgment. It is just a quick reflection tool for you."
+                Style="{DynamicResource CaptionText}" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

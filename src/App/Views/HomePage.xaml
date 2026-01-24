@@ -30,8 +30,37 @@
                 <VerticalStackLayout Spacing="8">
                     <Label Text="Daily check-in" Style="{DynamicResource SectionTitle}" />
                     <Label Text="A 30-second pulse on how you feel today." Style="{DynamicResource CaptionText}" />
-                    <Button Text="Start check-in" Command="{Binding StartCheckInCommand}" />
+                    <Button Text="{Binding PrimaryActionText}" Command="{Binding PrimaryActionCommand}" />
                 </VerticalStackLayout>
+            </Border>
+
+            <!-- Today's check-in -->
+            <Border
+                BackgroundColor="{AppThemeBinding Light={DynamicResource Gray100}, Dark={DynamicResource Gray900}}"
+                StrokeShape="RoundRectangle 12"
+                Padding="12"
+                IsVisible="{Binding HasTodayCheckIn}">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Today's check-in" Style="{DynamicResource SectionTitle}" />
+                    <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto,Auto,Auto" ColumnSpacing="12" RowSpacing="6">
+                        <Label Text="Energy" Style="{DynamicResource CaptionText}" />
+                        <Label Text="{Binding TodayEnergyValue}" Grid.Column="1" FontAttributes="Bold" />
+                        <Label Text="Stress" Style="{DynamicResource CaptionText}" Grid.Row="1" />
+                        <Label Text="{Binding TodayStressValue}" Grid.Row="1" Grid.Column="1" FontAttributes="Bold" />
+                        <Label Text="Focus" Style="{DynamicResource CaptionText}" Grid.Row="2" />
+                        <Label Text="{Binding TodayFocusValue}" Grid.Row="2" Grid.Column="1" FontAttributes="Bold" />
+                        <Label Text="Sleep" Style="{DynamicResource CaptionText}" Grid.Row="3" />
+                        <Label Text="{Binding TodaySleepValue}" Grid.Row="3" Grid.Column="1" FontAttributes="Bold" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border
+                BackgroundColor="{AppThemeBinding Light={DynamicResource Gray100}, Dark={DynamicResource Gray900}}"
+                StrokeShape="RoundRectangle 12"
+                Padding="12"
+                IsVisible="{Binding HasNoTodayCheckIn}">
+                <Label Text="No check-in yet today." Style="{DynamicResource CaptionText}" />
             </Border>
 
             <!-- Weekly trends -->

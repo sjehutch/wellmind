@@ -4,16 +4,16 @@ namespace WellMind.Services;
 
 public sealed class InMemoryTipService : ITipService
 {
-    private readonly ICheckInService _checkInService;
+    private readonly ICheckInStore _checkInStore;
 
-    public InMemoryTipService(ICheckInService checkInService)
+    public InMemoryTipService(ICheckInStore checkInStore)
     {
-        _checkInService = checkInService;
+        _checkInStore = checkInStore;
     }
 
     public async Task<IReadOnlyList<Tip>> GetGentleTipsAsync(CancellationToken cancellationToken = default)
     {
-        var checkIns = await _checkInService.GetRecentAsync(7, cancellationToken);
+        var checkIns = await _checkInStore.GetLastDaysAsync(7, cancellationToken);
         if (checkIns.Count == 0)
         {
             return Array.Empty<Tip>();

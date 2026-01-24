@@ -6,7 +6,7 @@ namespace WellMind.ViewModels;
 
 public sealed class CheckInViewModel : BaseViewModel
 {
-    private readonly ICheckInService _checkInService;
+    private readonly ICheckInStore _checkInStore;
     private readonly INavigationService _navigationService;
 
     private int _energy = 3;
@@ -18,13 +18,14 @@ public sealed class CheckInViewModel : BaseViewModel
     private string _stressEmoji = "😐";
     private string _focusEmoji = "🙂";
     private string _sleepEmoji = "😴";
+    private bool _hasLoaded;
 
-    public CheckInViewModel(ICheckInService checkInService, INavigationService navigationService)
+    public CheckInViewModel(ICheckInStore checkInStore, INavigationService navigationService)
     {
-        _checkInService = checkInService;
+        _checkInStore = checkInStore;
         _navigationService = navigationService;
 
-        SubmitCommand = new Command(async () => await SubmitAsync());
+        SaveCommand = new Command(async () => await SaveAsync());
         CancelCommand = new Command(async () => await _navigationService.GoBackAsync());
 
         Prompt = "How are you feeling right now?";
@@ -104,10 +105,51 @@ public sealed class CheckInViewModel : BaseViewModel
         set => SetProperty(ref _note, value);
     }
 
-    public ICommand SubmitCommand { get; }
+    public ICommand SaveCommand { get; }
     public ICommand CancelCommand { get; }
 
-    private async Task SubmitAsync()
+    public async Task LoadAsync()
+    {
+        if (_hasLoaded)
+        {
+            return;
+        }
+
+        // Load today's entry (if any) so the user can update rather than duplicate.
+        var today = await _checkInStore.GetTodayAsync();
+        if (today is null)
+        {
+            InitializeNewToday();
+        }
+        else
+        {
+            InitializeFromExistingToday(today);
+        }
+
+        _hasLoaded = true;
+    }
+
+    public void InitializeNewToday()
+    {
+        Energy = 3;
+        Stress = 3;
+        Focus = 3;
+        SleepQuality = 3;
+        Note = string.Empty;
+        UpdateEmojis();
+    }
+
+    public void InitializeFromExistingToday(CheckIn today)
+    {
+        Energy = today.Energy;
+        Stress = today.Stress;
+        Focus = today.Focus;
+        SleepQuality = today.SleepQuality;
+        Note = today.Note ?? string.Empty;
+        UpdateEmojis();
+    }
+
+    public async Task SaveAsync()
     {
         // Create a simple snapshot without any scoring or judgment.
         var checkIn = new CheckIn
@@ -119,7 +161,7 @@ public sealed class CheckInViewModel : BaseViewModel
             Note = string.IsNullOrWhiteSpace(Note) ? null : Note
         };
 
-        await _checkInService.SaveAsync(checkIn);
+        await _checkInStore.UpsertTodayAsync(checkIn);
         await _navigationService.GoBackAsync();
     }
 

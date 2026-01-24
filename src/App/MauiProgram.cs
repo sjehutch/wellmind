@@ -24,14 +24,20 @@ public static class MauiProgram
 		builder.Services.AddTransient<HomePage>();
 		builder.Services.AddTransient<CheckInPage>();
 		builder.Services.AddTransient<InAppBrowserPage>();
+		builder.Services.AddTransient<PastCheckInsPage>();
+		builder.Services.AddTransient<ScoreExplanationPage>();
+		builder.Services.AddTransient<PrivacyCommitmentPage>();
 
 		builder.Services.AddTransient<HomeViewModel>();
 		builder.Services.AddTransient<CheckInViewModel>();
 		builder.Services.AddTransient<WeeklyTrendsViewModel>();
 		builder.Services.AddTransient<InAppBrowserViewModel>();
+		builder.Services.AddTransient<PastCheckInsViewModel>();
+		builder.Services.AddTransient<ScoreExplanationViewModel>();
+		builder.Services.AddTransient<PrivacyCommitmentViewModel>();
 
 		builder.Services.AddSingleton<INavigationService, ShellNavigationService>();
-		builder.Services.AddSingleton<ICheckInService, InMemoryCheckInService>();
+		builder.Services.AddSingleton<ICheckInStore, JsonFileCheckInStore>();
 		builder.Services.AddSingleton<ITrendService, InMemoryTrendService>();
 		builder.Services.AddSingleton<ITipService, InMemoryTipService>();
 		builder.Services.AddSingleton<IResourceLinkService, InMemoryResourceLinkService>();

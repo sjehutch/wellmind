@@ -1,4 +1,3 @@
-using System.Linq;
 using System.Windows.Input;
 using Microsoft.Maui.Graphics;
 using WellMind.Models;
@@ -10,7 +9,7 @@ public sealed class HomeViewModel : BaseViewModel
 {
     private readonly ITrendService _trendService;
     private readonly INavigationService _navigationService;
-    private readonly ICheckInService _checkInService;
+    private readonly ICheckInStore _checkInStore;
     private readonly ITipService _tipService;
     private readonly IResourceLinkService _resourceLinkService;
     private IReadOnlyList<Trend> _trends = Array.Empty<Trend>();
@@ -18,6 +17,14 @@ public sealed class HomeViewModel : BaseViewModel
     private IReadOnlyList<ResourceLink> _links = Array.Empty<ResourceLink>();
     private bool _hasTips;
     private bool _hasLinks;
+    private CheckIn? _todayCheckIn;
+    private bool _hasTodayCheckIn;
+    private bool _hasNoTodayCheckIn = true;
+    private string _primaryActionText = "Start today's check-in";
+    private string _todayEnergyValue = "—";
+    private string _todayStressValue = "—";
+    private string _todayFocusValue = "—";
+    private string _todaySleepValue = "—";
     private bool _hasTodayRhythm;
     private double _todayRhythmValue = 0.2;
     private string _todayRhythmNote = "No check-in yet today.";
@@ -28,22 +35,21 @@ public sealed class HomeViewModel : BaseViewModel
     public HomeViewModel(
         ITrendService trendService,
         INavigationService navigationService,
-        ICheckInService checkInService,
+        ICheckInStore checkInStore,
         ITipService tipService,
         IResourceLinkService resourceLinkService)
     {
         _trendService = trendService;
         _navigationService = navigationService;
-        _checkInService = checkInService;
+        _checkInStore = checkInStore;
         _tipService = tipService;
         _resourceLinkService = resourceLinkService;
 
-        StartCheckInCommand = new Command(async () => await _navigationService.GoToCheckInAsync());
+        PrimaryActionCommand = new Command(async () => await _navigationService.GoToCheckInAsync());
         OpenLinkCommand = new Command<ResourceLink>(async link => await OpenLinkAsync(link));
         SummaryText = "A calm snapshot of how your week has been going.";
 
-        _checkInService.CheckInsChanged += HandleCheckInsChanged;
-        _ = RefreshAsync();
+        _ = LoadAsync();
     }
 
     public string SummaryText { get; }
@@ -70,6 +76,54 @@ public sealed class HomeViewModel : BaseViewModel
     {
         get => _links;
         private set => SetProperty(ref _links, value);
+    }
+
+    public CheckIn? TodayCheckIn
+    {
+        get => _todayCheckIn;
+        private set => SetProperty(ref _todayCheckIn, value);
+    }
+
+    public bool HasTodayCheckIn
+    {
+        get => _hasTodayCheckIn;
+        private set => SetProperty(ref _hasTodayCheckIn, value);
+    }
+
+    public bool HasNoTodayCheckIn
+    {
+        get => _hasNoTodayCheckIn;
+        private set => SetProperty(ref _hasNoTodayCheckIn, value);
+    }
+
+    public string PrimaryActionText
+    {
+        get => _primaryActionText;
+        private set => SetProperty(ref _primaryActionText, value);
+    }
+
+    public string TodayEnergyValue
+    {
+        get => _todayEnergyValue;
+        private set => SetProperty(ref _todayEnergyValue, value);
+    }
+
+    public string TodayStressValue
+    {
+        get => _todayStressValue;
+        private set => SetProperty(ref _todayStressValue, value);
+    }
+
+    public string TodayFocusValue
+    {
+        get => _todayFocusValue;
+        private set => SetProperty(ref _todayFocusValue, value);
+    }
+
+    public string TodaySleepValue
+    {
+        get => _todaySleepValue;
+        private set => SetProperty(ref _todaySleepValue, value);
     }
 
     public double TodayRhythmValue
@@ -114,20 +168,21 @@ public sealed class HomeViewModel : BaseViewModel
         private set => SetProperty(ref _hasTodayRhythm, value);
     }
 
-    public ICommand StartCheckInCommand { get; }
+    public ICommand PrimaryActionCommand { get; }
     public ICommand OpenLinkCommand { get; }
-
-    private void HandleCheckInsChanged(object? sender, EventArgs e)
+    public async Task LoadAsync()
     {
-        MainThread.BeginInvokeOnMainThread(async () => await RefreshAsync());
-    }
+        // Pull today's entry first so the primary action and summary reflect local-day state.
+        TodayCheckIn = await _checkInStore.GetTodayAsync();
+        HasTodayCheckIn = TodayCheckIn is not null;
+        HasNoTodayCheckIn = !HasTodayCheckIn;
+        PrimaryActionText = HasTodayCheckIn ? "Update today's check-in" : "Start today's check-in";
+        UpdateTodayCheckInDisplay(TodayCheckIn);
 
-    private async Task RefreshAsync()
-    {
         Trends = await _trendService.GetWeeklyTrendsAsync();
         Tips = await _tipService.GetGentleTipsAsync();
         Links = await _resourceLinkService.GetLinksAsync();
-        await UpdateTodayRhythmAsync();
+        UpdateTodayRhythm(TodayCheckIn);
         UpdateVisibility();
     }
 
@@ -148,13 +203,9 @@ public sealed class HomeViewModel : BaseViewModel
         HasLinks = HasTips && Links.Count > 0;
     }
 
-    private async Task UpdateTodayRhythmAsync()
+    private void UpdateTodayRhythm(CheckIn? todayCheckIn)
     {
-        var recent = await _checkInService.GetRecentAsync(1);
-        var today = DateTime.UtcNow.Date;
-        var latestToday = recent.LastOrDefault(checkIn => checkIn.Date.Date == today);
-
-        if (latestToday is null)
+        if (todayCheckIn is null)
         {
             TodayRhythmValue = 0.2;
             TodayRhythmNote = "No check-in yet today.";
@@ -165,12 +216,29 @@ public sealed class HomeViewModel : BaseViewModel
             return;
         }
 
-        TodayRhythmValue = CalculateRhythmValue(latestToday);
+        TodayRhythmValue = CalculateRhythmValue(todayCheckIn);
         TodayRhythmNote = "Based on your latest check-in.";
         TodayRhythmDescriptor = DescribeRhythm(TodayRhythmValue);
         TodayRhythmPercent = $"{1 + (TodayRhythmValue * 4):0.0} / 5";
         TodayRhythmColor = MixColor("#D96C6C", "#5FBF7A", TodayRhythmValue);
         HasTodayRhythm = true;
+    }
+
+    private void UpdateTodayCheckInDisplay(CheckIn? todayCheckIn)
+    {
+        if (todayCheckIn is null)
+        {
+            TodayEnergyValue = "—";
+            TodayStressValue = "—";
+            TodayFocusValue = "—";
+            TodaySleepValue = "—";
+            return;
+        }
+
+        TodayEnergyValue = todayCheckIn.Energy.ToString();
+        TodayStressValue = todayCheckIn.Stress.ToString();
+        TodayFocusValue = todayCheckIn.Focus.ToString();
+        TodaySleepValue = todayCheckIn.SleepQuality.ToString();
     }
 
     private static double CalculateRhythmValue(CheckIn checkIn)

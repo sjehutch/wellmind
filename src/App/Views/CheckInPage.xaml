@@ -43,7 +43,7 @@
                 HeightRequest="100" />
 
             <HorizontalStackLayout Spacing="12">
-                <Button Text="Save check-in" Command="{Binding SubmitCommand}" />
+                <Button Text="Save check-in" Command="{Binding SaveCommand}" />
                 <Button Text="Not now" Command="{Binding CancelCommand}" Style="{DynamicResource SecondaryButton}" />
             </HorizontalStackLayout>
         </VerticalStackLayout>

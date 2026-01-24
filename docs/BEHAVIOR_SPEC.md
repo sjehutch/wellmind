@@ -123,8 +123,6 @@ This document describes the user-facing behavior of WellMind. It focuses on what
 - Force close: Unsaved input is discarded; saved check-ins persist.
 - Crash on launch: App restarts and uses the most recent local data.
 - Offline: All features continue except external links.
-- Expired auth window: Not applicable in MVP (no auth).
-- Missing SKU cache: Not applicable in MVP (no purchases).
 
 ## Questions / Assumptions
 - Is a dedicated Trends screen required, or is Home sufficient for MVP?
@@ -132,3 +130,52 @@ This document describes the user-facing behavior of WellMind. It focuses on what
 - Should check-ins be limited to one per day, or allow multiple?
 - Do we want a neutral empty state for Today’s balance when no check-in exists?
 - Should resource links be editable or fixed in MVP?
+
+## Data Model (MVP)
+
+### Profile
+- id: constant "local"
+- displayName: string? (nullable)
+- timeZoneId: string (IANA if available, else platform ID)
+- remindersEnabled: bool
+- reminderTimeLocal: "HH:mm" (string) or null
+
+### CheckIn
+- id: guid
+- dateLocal: "yyyy-MM-dd" (used for one-per-day rule)
+- createdAtUtc: ISO timestamp
+- energy: int (1-5)
+- stress: int (1-5)
+- focus: int (1-5)
+- sleep: int (1-5)
+- note: string? (max 280 chars)
+
+## Feature: Home – Today’s Check-In State
+
+### Goal
+Show the most recent check-in for today and allow the user to update it without creating duplicates.
+
+### Rules
+- Only one check-in may exist per local day (`dateLocal`).
+- If a check-in exists for today:
+  - It is displayed prominently on the Home screen.
+  - The primary action button text is “Update today’s check-in”.
+- If no check-in exists for today:
+  - No values are shown.
+  - The primary action button text is “Start today’s check-in”.
+
+### Button Behavior
+- “Start today’s check-in”
+  - Navigates to Check-In screen with empty sliders.
+- “Update today’s check-in”
+  - Navigates to Check-In screen with sliders pre-filled using today’s values.
+  - Saving replaces the existing check-in for today.
+
+### Data Rules
+- Today is determined using local date (`dateLocal`).
+- Saving a check-in for today replaces the existing record rather than adding a new one.
+
+### Failure Modes
+- If local data is corrupted or missing:
+  - Home shows the empty state.
+  - Button defaults to “Start today’s check-in”.
