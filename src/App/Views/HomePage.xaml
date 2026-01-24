@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="WellMind.Views.HomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Home">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="16">
+            <Label Text="WellMind" Style="{StaticResource Headline}" HorizontalOptions="Start" />
+            <Label Text="{Binding SummaryText}" FontSize="16" TextColor="{StaticResource Gray600}" />
+
+            <Border
+                BackgroundColor="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource Gray900}}"
+                StrokeShape="RoundRectangle 12"
+                Padding="16">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Daily check-in" FontAttributes="Bold" FontSize="16" />
+                    <Label Text="A 30-second pulse on how you feel today." FontSize="13" TextColor="{StaticResource Gray600}" />
+                    <Button Text="Start check-in" Command="{Binding StartCheckInCommand}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Label Text="This week" FontAttributes="Bold" FontSize="16" />
+            <CollectionView ItemsSource="{Binding Trends}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border
+                            BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray900}}"
+                            StrokeShape="RoundRectangle 12"
+                            Padding="12"
+                            Margin="0,0,0,12">
+                            <VerticalStackLayout Spacing="6">
+                                <Label Text="{Binding Label}" FontAttributes="Bold" FontSize="14" />
+                                <Label Text="Placeholder trend" FontSize="12" TextColor="{StaticResource Gray500}" />
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

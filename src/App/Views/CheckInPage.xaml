@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="WellMind.Views.CheckInPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Check-In">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="16">
+            <Label Text="{Binding Prompt}" Style="{StaticResource SubHeadline}" HorizontalOptions="Start" />
+            <Label Text="Answer at your own pace. Nothing is graded." FontSize="13" TextColor="{StaticResource Gray600}" />
+
+            <Label Text="Energy" FontAttributes="Bold" />
+            <Slider Minimum="1" Maximum="5" Value="{Binding Energy}" />
+
+            <Label Text="Stress" FontAttributes="Bold" />
+            <Slider Minimum="1" Maximum="5" Value="{Binding Stress}" />
+
+            <Label Text="Focus" FontAttributes="Bold" />
+            <Slider Minimum="1" Maximum="5" Value="{Binding Focus}" />
+
+            <Label Text="Sleep quality" FontAttributes="Bold" />
+            <Slider Minimum="1" Maximum="5" Value="{Binding SleepQuality}" />
+
+            <Label Text="Optional note" FontAttributes="Bold" />
+            <Editor
+                Text="{Binding Note}"
+                Placeholder="Anything you want to remember later"
+                AutoSize="TextChanges"
+                HeightRequest="100" />
+
+            <HorizontalStackLayout Spacing="12">
+                <Button Text="Save check-in" Command="{Binding SubmitCommand}" />
+                <Button
+                    Text="Not now"
+                    Command="{Binding CancelCommand}"
+                    BackgroundColor="{StaticResource Gray200}"
+                    TextColor="{StaticResource Gray900}" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
