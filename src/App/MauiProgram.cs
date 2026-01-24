@@ -36,6 +36,7 @@ public static class MauiProgram
 		builder.Services.AddSingleton<ITipService, InMemoryTipService>();
 		builder.Services.AddSingleton<IResourceLinkService, InMemoryResourceLinkService>();
 		builder.Services.AddSingleton<IExternalLinkService, ExternalLinkService>();
+		builder.Services.AddSingleton<ILoggerService, FileLoggerService>();
 
 #if DEBUG
 		builder.Logging.AddDebug();

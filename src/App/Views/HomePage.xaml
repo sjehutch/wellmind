@@ -3,14 +3,26 @@
     x:Class="WellMind.Views.HomePage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:WellMind.Views.Controls"
     x:Name="HomePageView"
     Title="Home">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="AccentGreen">#2F8F5A</Color>
+            <Color x:Key="AccentGreenDark">#7BD8A9</Color>
+            <Color x:Key="Gray200">#C8C8C8</Color>
+            <Color x:Key="Gray600">#404040</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ScrollView>
         <VerticalStackLayout Padding="24" Spacing="16">
+            <!-- Header -->
             <Label Text="WellMind" Style="{DynamicResource Headline}" HorizontalOptions="Start" />
+            <Label Text="{Binding TodayDisplay}" Style="{DynamicResource DateHeadline}" HorizontalOptions="Start" />
             <Label Text="{Binding SummaryText}" Style="{DynamicResource BodyText}" />
 
+            <!-- Daily check-in -->
             <Border
                 BackgroundColor="{AppThemeBinding Light={DynamicResource Secondary}, Dark={DynamicResource Gray900}}"
                 StrokeShape="RoundRectangle 12"
@@ -22,6 +34,7 @@
                 </VerticalStackLayout>
             </Border>
 
+            <!-- Weekly trends -->
             <Label Text="This week" Style="{DynamicResource SectionTitle}" />
             <CollectionView ItemsSource="{Binding Trends}">
                 <CollectionView.ItemsLayout>
@@ -36,10 +49,10 @@
                             Margin="0">
                             <VerticalStackLayout Spacing="6">
                                 <Label Text="{Binding Label}" FontAttributes="Bold" FontSize="14" />
-                                <Label Text="{Binding Summary}" FontSize="12" TextColor="{DynamicResource Gray500}" />
+                                <Label Text="{Binding Summary}" FontSize="12" TextColor="{AppThemeBinding Light={DynamicResource Gray500}, Dark={DynamicResource Gray200}}" />
                                 <Label
                                     FontSize="12"
-                                    TextColor="{DynamicResource Gray500}">
+                                    TextColor="{AppThemeBinding Light={DynamicResource Gray500}, Dark={DynamicResource Gray200}}">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="Last: " />
@@ -49,7 +62,7 @@
                                 </Label>
                                 <Label
                                     FontSize="12"
-                                    TextColor="{DynamicResource Gray500}">
+                                    TextColor="{AppThemeBinding Light={DynamicResource Gray500}, Dark={DynamicResource Gray200}}">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="Range: " />
@@ -65,6 +78,7 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
+            <!-- Gentle tips -->
             <VerticalStackLayout Spacing="8" IsVisible="{Binding HasTips}">
                 <Label Text="Gentle tips" Style="{DynamicResource SectionTitle}" />
                 <CollectionView ItemsSource="{Binding Tips}">
@@ -82,6 +96,41 @@
                 </CollectionView>
             </VerticalStackLayout>
 
+            <!-- Today's rhythm -->
+            <Border
+                BackgroundColor="{AppThemeBinding Light={DynamicResource Secondary}, Dark={DynamicResource Gray900}}"
+                StrokeShape="RoundRectangle 12"
+                Padding="16"
+                IsVisible="{Binding HasTodayRhythm}">
+                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="16" RowDefinitions="Auto" VerticalOptions="Center">
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="Today's balance" Style="{DynamicResource SectionTitle}" />
+                        <Label
+                            Text="{Binding TodayRhythmDescriptor}"
+                            TextColor="{Binding TodayRhythmColor}"
+                            FontAttributes="Bold"
+                            FontSize="14" />
+                        <Label Text="{Binding TodayRhythmNote}" Style="{DynamicResource CaptionText}" />
+                    </VerticalStackLayout>
+                    <Grid Grid.Column="1" WidthRequest="90" HeightRequest="90">
+                        <controls:TodayRhythmGauge
+                            WidthRequest="90"
+                            HeightRequest="90"
+                            Value="{Binding TodayRhythmValue}"
+                            AccentColor="{Binding TodayRhythmColor}"
+                            TrackColor="{AppThemeBinding Light={DynamicResource Gray200}, Dark={DynamicResource Gray600}}" />
+                        <Label
+                            Text="{Binding TodayRhythmPercent}"
+                            TextColor="{Binding TodayRhythmColor}"
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center" />
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <!-- Resource links -->
             <VerticalStackLayout Spacing="8" IsVisible="{Binding HasLinks}">
                 <Label Text="Learn more" Style="{DynamicResource SectionTitle}" />
                 <ScrollView Orientation="Horizontal">

@@ -8,6 +8,7 @@
     <ScrollView>
         <VerticalStackLayout Padding="24" Spacing="16">
             <Label Text="{Binding Prompt}" Style="{DynamicResource SubHeadline}" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+            <Label Text="{Binding TodayDisplay}" Style="{DynamicResource DateHeadline}" HorizontalOptions="Start" />
             <Label Text="Answer at your own pace. Nothing is graded." Style="{DynamicResource CaptionText}" />
 
             <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
