@@ -1,3 +1,4 @@
+using Microsoft.Maui.Graphics;
 using WellMind.Models;
 using WellMind.Services;
 
@@ -25,10 +26,16 @@ public sealed class PastCheckInsViewModel : BaseViewModel
 
         Items = checkIns
             .OrderByDescending(checkIn => checkIn.DateLocal)
-            .Select(checkIn => new PastCheckInItem(
-                checkIn.DateLocal,
-                ToScoreText(CalculateRhythmValue(checkIn)),
-                DescribeRhythm(CalculateRhythmValue(checkIn))))
+            .Select(checkIn =>
+            {
+                var rhythmValue = CalculateRhythmValue(checkIn);
+                return new PastCheckInItem(
+                    checkIn.DateLocal,
+                    ToScoreText(rhythmValue),
+                    DescribeRhythm(rhythmValue),
+                    ToScoreValue(rhythmValue),
+                    MixColor("#D96C6C", "#5FBF7A", rhythmValue));
+            })
             .ToList();
     }
 
@@ -66,6 +73,23 @@ public sealed class PastCheckInsViewModel : BaseViewModel
     {
         return $"{1 + (value * 4):0.0} / 5";
     }
+
+    private static double ToScoreValue(double value)
+    {
+        return Math.Clamp(1 + (value * 4), 1, 5);
+    }
+
+    private static Color MixColor(string startHex, string endHex, double t)
+    {
+        t = Math.Clamp(t, 0, 1);
+        var start = Color.FromArgb(startHex);
+        var end = Color.FromArgb(endHex);
+
+        return new Color(
+            (float)(start.Red + (end.Red - start.Red) * t),
+            (float)(start.Green + (end.Green - start.Green) * t),
+            (float)(start.Blue + (end.Blue - start.Blue) * t));
+    }
 }
 
-public sealed record PastCheckInItem(string DateLocal, string Score, string Descriptor);
+public sealed record PastCheckInItem(string DateLocal, string Score, string Descriptor, double ScoreValue, Color ScoreColor);

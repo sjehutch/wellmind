@@ -1,0 +1,3805 @@
+{
+  "version": 1,
+  "quotes": [
+    {
+      "id": "q0001",
+      "text": "This week is allowed to be uneven. You can be honest without being harsh.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0002",
+      "text": "For this part of the day is allowed to be uneven. You can keep going without rushing.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0003",
+      "text": "If the path feels steep, it can help to finish one tiny loop. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0004",
+      "text": "If the path feels steep, it can help to choose one gentle task.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0005",
+      "text": "If sleep was thin, try to ask for a little help.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0006",
+      "text": "When you are stretched thin, see if you can put one thing down. This counts, even if it is small.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0007",
+      "text": "If you are running low, you might pause and breathe.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0008",
+      "text": "If stress is sitting close, see if you can name what is heavy.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0009",
+      "text": "When you are stretched thin, it can help to let the day be imperfect. This counts, even if it is small.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0010",
+      "text": "If sleep was thin, see if you can choose one gentle task.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0011",
+      "text": "When the noise is loud, consider a moment to name what is heavy.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0012",
+      "text": "When you feel pulled in many directions, see if you can put one thing down. This counts, even if it is small.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0013",
+      "text": "Right now is allowed to be uneven. You do not have to fix it all.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0014",
+      "text": "When you are stretched thin, you might pause and breathe.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0015",
+      "text": "If stress is sitting close, you might put one thing down. Gentle effort is still effort.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0016",
+      "text": "When focus feels scattered, you might finish one tiny loop.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0017",
+      "text": "If the path feels steep, you might be kind to your energy.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0018",
+      "text": "When your energy dips, consider a moment to let the day be imperfect. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0019",
+      "text": "Right now is allowed to be uneven. It is okay to move slowly.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0020",
+      "text": "If sleep was thin, consider a moment to let the day be imperfect.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0021",
+      "text": "For this part of the day is allowed to be uneven. You do not have to fix it all. This counts, even if it is small.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0022",
+      "text": "If the path feels steep, it can help to put one thing down.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0023",
+      "text": "If sleep was thin, it can help to put one thing down.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0024",
+      "text": "When you are stretched thin, you might take a small step. This counts, even if it is small.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0025",
+      "text": "When you feel pulled in many directions, it can help to finish one tiny loop.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0026",
+      "text": "If the path feels steep, see if you can be kind to your energy.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0027",
+      "text": "For today only is allowed to be uneven. It is okay to feel mixed. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0028",
+      "text": "If sleep was thin, you might be kind to your energy.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0029",
+      "text": "If stress is sitting close, you might pause and breathe.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0030",
+      "text": "When the noise is loud, try to be kind to your energy. This counts, even if it is small.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0031",
+      "text": "If sleep was thin, see if you can let the day be imperfect.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0032",
+      "text": "If stress is sitting close, consider a moment to take a small step.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0033",
+      "text": "If sleep was thin, try to choose one gentle task. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0034",
+      "text": "When you feel pulled in many directions, try to ask for a little help.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0035",
+      "text": "If the day feels heavy, see if you can name what is heavy.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0036",
+      "text": "When your energy dips, it can help to take a small step. A steady pace is still a pace.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0037",
+      "text": "If sleep was thin, consider a moment to put one thing down.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0038",
+      "text": "When you are stretched thin, you might start smaller than you want.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0039",
+      "text": "If the path feels steep, consider a moment to choose one gentle task. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0040",
+      "text": "If the day feels heavy, it can help to take a small step.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0041",
+      "text": "If you are running low, you might finish one tiny loop.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0042",
+      "text": "If the path feels steep, you might put one thing down. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0043",
+      "text": "When the noise is loud, you might finish one tiny loop.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0044",
+      "text": "If the path feels steep, it can help to ask for a little help.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0045",
+      "text": "When you feel pulled in many directions, try to take a small step. Gentle effort is still effort.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0046",
+      "text": "If you are running low, consider a moment to put one thing down.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0047",
+      "text": "If you are running low, you might name what is heavy.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0048",
+      "text": "If sleep was thin, it can help to be kind to your energy. A steady pace is still a pace.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0049",
+      "text": "If sleep was thin, see if you can put one thing down.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0050",
+      "text": "If sleep was thin, try to start smaller than you want.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0051",
+      "text": "If the path feels steep, you might let the day be imperfect. Gentle effort is still effort.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0052",
+      "text": "If stress is sitting close, consider a moment to pause and breathe.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0053",
+      "text": "If the path feels steep, see if you can start smaller than you want.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0054",
+      "text": "When you feel pulled in many directions, consider a moment to start smaller than you want. This counts, even if it is small.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0055",
+      "text": "When focus feels scattered, you might name what is heavy.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0056",
+      "text": "If stress is sitting close, see if you can finish one tiny loop.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0057",
+      "text": "If the path feels steep, see if you can name what is heavy. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0058",
+      "text": "When you feel pulled in many directions, consider a moment to ask for a little help.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0059",
+      "text": "When the noise is loud, you might ask for a little help.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0060",
+      "text": "When your energy dips, you might ask for a little help. A steady pace is still a pace.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0061",
+      "text": "If sleep was thin, see if you can be kind to your energy.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0062",
+      "text": "In this moment is allowed to be uneven. Small wins still count.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0063",
+      "text": "If you are running low, see if you can finish one tiny loop. Gentle effort is still effort.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0064",
+      "text": "When your energy dips, consider a moment to choose one gentle task.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0065",
+      "text": "Today is allowed to be uneven. Small wins still count.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0066",
+      "text": "When focus feels scattered, you might let the day be imperfect. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0067",
+      "text": "When the noise is loud, it can help to put one thing down.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0068",
+      "text": "When your energy dips, it can help to finish one tiny loop.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0069",
+      "text": "If you are running low, see if you can let the day be imperfect. You do not need to be perfect to make progress.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0070",
+      "text": "This morning is allowed to be uneven. Small wins still count.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0071",
+      "text": "For the next five minutes is allowed to be uneven. You can keep going without rushing.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0072",
+      "text": "For the next hour is allowed to be uneven. Small wins still count. Gentle effort is still effort.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0073",
+      "text": "For the next hour is allowed to be uneven. Rest is still progress.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0074",
+      "text": "In this moment is allowed to be uneven. You are allowed to reset.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0075",
+      "text": "If sleep was thin, you might put one thing down. A steady pace is still a pace.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0076",
+      "text": "When you are stretched thin, see if you can name what is heavy.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0077",
+      "text": "If the path feels steep, you might ask for a little help.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0078",
+      "text": "If stress is sitting close, try to start smaller than you want. Gentle effort is still effort.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0079",
+      "text": "When you feel pulled in many directions, try to choose one gentle task.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0080",
+      "text": "If stress is sitting close, try to take a small step.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0081",
+      "text": "When focus feels scattered, it can help to be kind to your energy. Gentle effort is still effort.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0082",
+      "text": "If the day feels heavy, see if you can put one thing down.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0083",
+      "text": "If you are running low, try to let the day be imperfect.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0084",
+      "text": "Right now is allowed to be uneven. This can be hard and still be yours. Gentle effort is still effort.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0085",
+      "text": "In this moment is allowed to be uneven. You can be honest without being harsh.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0086",
+      "text": "When the noise is loud, consider a moment to let the day be imperfect.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0087",
+      "text": "If the day feels heavy, try to finish one tiny loop. This counts, even if it is small.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0088",
+      "text": "When you feel pulled in many directions, it can help to be kind to your energy.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0089",
+      "text": "When you are stretched thin, consider a moment to choose one gentle task.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0090",
+      "text": "When you are stretched thin, consider a moment to put one thing down. You do not need to be perfect to make progress.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0091",
+      "text": "When you feel pulled in many directions, consider a moment to choose one gentle task.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0092",
+      "text": "If sleep was thin, see if you can name what is heavy.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0093",
+      "text": "If the path feels steep, it can help to pause and breathe. A steady pace is still a pace.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0094",
+      "text": "When the noise is loud, see if you can let the day be imperfect.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0095",
+      "text": "When you are stretched thin, it can help to be kind to your energy.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0096",
+      "text": "When you are stretched thin, see if you can pause and breathe. A steady pace is still a pace.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0097",
+      "text": "When focus feels scattered, consider a moment to finish one tiny loop.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0098",
+      "text": "This week is allowed to be uneven. It is okay to feel mixed.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0099",
+      "text": "When focus feels scattered, it can help to take a small step. A steady pace is still a pace.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0100",
+      "text": "When you are stretched thin, consider a moment to name what is heavy.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0101",
+      "text": "This week is allowed to be uneven. You do not have to fix it all.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0102",
+      "text": "When you are stretched thin, try to name what is heavy. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0103",
+      "text": "If you are running low, see if you can be kind to your energy.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0104",
+      "text": "If the path feels steep, try to be kind to your energy.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0105",
+      "text": "When your energy dips, it can help to let the day be imperfect. A steady pace is still a pace.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0106",
+      "text": "When focus feels scattered, it can help to name what is heavy.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0107",
+      "text": "If you are running low, consider a moment to start smaller than you want.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0108",
+      "text": "If you are running low, try to pause and breathe. A steady pace is still a pace.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0109",
+      "text": "When focus feels scattered, see if you can finish one tiny loop.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0110",
+      "text": "For the next hour is allowed to be uneven. It is okay to move slowly.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0111",
+      "text": "If sleep was thin, consider a moment to pause and breathe. You do not need to be perfect to make progress.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0112",
+      "text": "For today only is allowed to be uneven. You can be honest without being harsh.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0113",
+      "text": "If stress is sitting close, try to pause and breathe.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0114",
+      "text": "When you are stretched thin, try to take a small step. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0115",
+      "text": "If you are running low, consider a moment to pause and breathe.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0116",
+      "text": "When the noise is loud, it can help to choose one gentle task.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0117",
+      "text": "If the day feels heavy, it can help to name what is heavy. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0118",
+      "text": "When focus feels scattered, consider a moment to name what is heavy.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0119",
+      "text": "If sleep was thin, it can help to choose one gentle task.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0120",
+      "text": "If the day feels heavy, see if you can choose one gentle task. Gentle effort is still effort.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0121",
+      "text": "If the path feels steep, see if you can let the day be imperfect.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0122",
+      "text": "When you feel pulled in many directions, try to finish one tiny loop.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0123",
+      "text": "If the day feels heavy, consider a moment to name what is heavy. This counts, even if it is small.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0124",
+      "text": "If you are running low, consider a moment to finish one tiny loop.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0125",
+      "text": "If you are running low, try to start smaller than you want.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0126",
+      "text": "When you feel pulled in many directions, see if you can name what is heavy. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0127",
+      "text": "When the noise is loud, you might let the day be imperfect.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0128",
+      "text": "When you feel pulled in many directions, see if you can be kind to your energy.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0129",
+      "text": "When focus feels scattered, it can help to finish one tiny loop. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0130",
+      "text": "If you are running low, you might take a small step.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0131",
+      "text": "For the next hour is allowed to be uneven. You are allowed to reset.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0132",
+      "text": "When you are stretched thin, see if you can ask for a little help. You do not need to be perfect to make progress.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0133",
+      "text": "If the path feels steep, consider a moment to ask for a little help.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0134",
+      "text": "When your energy dips, consider a moment to put one thing down.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0135",
+      "text": "When you are stretched thin, it can help to name what is heavy. A steady pace is still a pace.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0136",
+      "text": "If the path feels steep, consider a moment to let the day be imperfect.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0137",
+      "text": "If the path feels steep, it can help to let the day be imperfect.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0138",
+      "text": "In this moment is allowed to be uneven. You can keep going without rushing. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0139",
+      "text": "Today is allowed to be uneven. You are allowed to reset.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0140",
+      "text": "When you feel pulled in many directions, you might let the day be imperfect.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0141",
+      "text": "When you are stretched thin, try to put one thing down. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0142",
+      "text": "When the noise is loud, try to take a small step.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0143",
+      "text": "When you are stretched thin, consider a moment to pause and breathe.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0144",
+      "text": "If sleep was thin, see if you can start smaller than you want. This counts, even if it is small.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0145",
+      "text": "When focus feels scattered, it can help to start smaller than you want.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0146",
+      "text": "When your energy dips, try to put one thing down.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0147",
+      "text": "For today only is allowed to be uneven. Small wins still count. You do not need to be perfect to make progress.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0148",
+      "text": "If stress is sitting close, you might start smaller than you want.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0149",
+      "text": "When the noise is loud, see if you can finish one tiny loop.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0150",
+      "text": "When focus feels scattered, see if you can choose one gentle task. This counts, even if it is small.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0151",
+      "text": "If stress is sitting close, see if you can take a small step.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0152",
+      "text": "When focus feels scattered, consider a moment to ask for a little help.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0153",
+      "text": "When focus feels scattered, try to put one thing down. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0154",
+      "text": "For the next five minutes is allowed to be uneven. You do not have to fix it all.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0155",
+      "text": "If you are running low, try to put one thing down.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0156",
+      "text": "If the day feels heavy, consider a moment to put one thing down. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0157",
+      "text": "When focus feels scattered, you might be kind to your energy.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0158",
+      "text": "When the noise is loud, see if you can pause and breathe.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0159",
+      "text": "If the path feels steep, try to ask for a little help. You do not need to be perfect to make progress.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0160",
+      "text": "When focus feels scattered, try to finish one tiny loop.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0161",
+      "text": "When you feel pulled in many directions, see if you can let the day be imperfect.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0162",
+      "text": "When focus feels scattered, you might choose one gentle task. Gentle effort is still effort.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0163",
+      "text": "When the noise is loud, consider a moment to pause and breathe.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0164",
+      "text": "If stress is sitting close, it can help to take a small step.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0165",
+      "text": "When the noise is loud, see if you can ask for a little help. Gentle effort is still effort.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0166",
+      "text": "When your energy dips, consider a moment to take a small step.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0167",
+      "text": "If the path feels steep, consider a moment to be kind to your energy.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0168",
+      "text": "When you are stretched thin, you might finish one tiny loop. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0169",
+      "text": "If sleep was thin, it can help to let the day be imperfect.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0170",
+      "text": "If the path feels steep, you might finish one tiny loop.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0171",
+      "text": "When your energy dips, you might pause and breathe. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0172",
+      "text": "Today is allowed to be uneven. You do not have to fix it all.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0173",
+      "text": "If you are running low, see if you can pause and breathe.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0174",
+      "text": "When you feel pulled in many directions, you might put one thing down. This counts, even if it is small.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0175",
+      "text": "When focus feels scattered, you might start smaller than you want.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0176",
+      "text": "If you are running low, consider a moment to be kind to your energy.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0177",
+      "text": "When your energy dips, see if you can take a small step. This counts, even if it is small.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0178",
+      "text": "If the path feels steep, it can help to start smaller than you want.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0179",
+      "text": "When you feel pulled in many directions, try to put one thing down.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0180",
+      "text": "This morning is allowed to be uneven. This can be hard and still be yours. This counts, even if it is small.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0181",
+      "text": "When focus feels scattered, it can help to let the day be imperfect.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0182",
+      "text": "If the day feels heavy, see if you can be kind to your energy.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0183",
+      "text": "If the day feels heavy, it can help to finish one tiny loop. A steady pace is still a pace.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0184",
+      "text": "If stress is sitting close, it can help to start smaller than you want.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0185",
+      "text": "If you are running low, consider a moment to ask for a little help.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0186",
+      "text": "If sleep was thin, try to be kind to your energy. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0187",
+      "text": "For today only is allowed to be uneven. It is okay to move slowly.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0188",
+      "text": "If stress is sitting close, see if you can put one thing down.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0189",
+      "text": "If you are running low, see if you can ask for a little help. A steady pace is still a pace.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0190",
+      "text": "Today is allowed to be uneven. It is okay to feel mixed.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0191",
+      "text": "If the path feels steep, see if you can take a small step.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0192",
+      "text": "For today only is allowed to be uneven. You are allowed to reset. Gentle effort is still effort.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0193",
+      "text": "If the path feels steep, try to name what is heavy.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0194",
+      "text": "If sleep was thin, see if you can ask for a little help.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0195",
+      "text": "If the path feels steep, you might take a small step. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0196",
+      "text": "If the day feels heavy, see if you can take a small step.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0197",
+      "text": "When you are stretched thin, consider a moment to start smaller than you want.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0198",
+      "text": "If the path feels steep, try to pause and breathe. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0199",
+      "text": "If sleep was thin, try to finish one tiny loop.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0200",
+      "text": "If the day feels heavy, it can help to ask for a little help.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0201",
+      "text": "If the day feels heavy, see if you can ask for a little help. You do not need to be perfect to make progress.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0202",
+      "text": "This afternoon is allowed to be uneven. You are allowed to reset.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0203",
+      "text": "If you are running low, it can help to put one thing down.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0204",
+      "text": "When you are stretched thin, it can help to choose one gentle task. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0205",
+      "text": "Today is allowed to be uneven. Rest is still progress.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0206",
+      "text": "When focus feels scattered, see if you can name what is heavy.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0207",
+      "text": "This week is allowed to be uneven. Small wins still count. Gentle effort is still effort.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0208",
+      "text": "When the noise is loud, try to name what is heavy.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0209",
+      "text": "When the noise is loud, you might start smaller than you want.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0210",
+      "text": "When focus feels scattered, you might ask for a little help. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0211",
+      "text": "When the noise is loud, try to ask for a little help.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0212",
+      "text": "When focus feels scattered, try to choose one gentle task.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0213",
+      "text": "If stress is sitting close, consider a moment to put one thing down. A steady pace is still a pace.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0214",
+      "text": "When the noise is loud, see if you can be kind to your energy.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0215",
+      "text": "If the day feels heavy, you might be kind to your energy.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0216",
+      "text": "This week is allowed to be uneven. It is okay to move slowly. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0217",
+      "text": "When focus feels scattered, consider a moment to pause and breathe.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0218",
+      "text": "If sleep was thin, consider a moment to take a small step.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0219",
+      "text": "When you feel pulled in many directions, you might name what is heavy. A steady pace is still a pace.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0220",
+      "text": "If stress is sitting close, consider a moment to start smaller than you want.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0221",
+      "text": "When you feel pulled in many directions, consider a moment to take a small step.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0222",
+      "text": "If the day feels heavy, it can help to let the day be imperfect. This counts, even if it is small.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0223",
+      "text": "When your energy dips, see if you can let the day be imperfect.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0224",
+      "text": "When the noise is loud, it can help to let the day be imperfect.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0225",
+      "text": "If you are running low, consider a moment to take a small step. This counts, even if it is small.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0226",
+      "text": "If stress is sitting close, try to be kind to your energy.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0227",
+      "text": "When focus feels scattered, it can help to pause and breathe.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0228",
+      "text": "If the day feels heavy, try to name what is heavy. You do not need to be perfect to make progress.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0229",
+      "text": "When your energy dips, see if you can choose one gentle task.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0230",
+      "text": "This week is allowed to be uneven. You are allowed to reset.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0231",
+      "text": "Today is allowed to be uneven. Your pace is allowed to be different. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0232",
+      "text": "When focus feels scattered, try to let the day be imperfect.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0233",
+      "text": "When the noise is loud, it can help to start smaller than you want.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0234",
+      "text": "When focus feels scattered, you might pause and breathe. This counts, even if it is small.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0235",
+      "text": "If you are running low, you might be kind to your energy.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0236",
+      "text": "If stress is sitting close, see if you can ask for a little help.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0237",
+      "text": "When your energy dips, it can help to put one thing down. This counts, even if it is small.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0238",
+      "text": "If the path feels steep, see if you can finish one tiny loop.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0239",
+      "text": "When the noise is loud, it can help to name what is heavy.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0240",
+      "text": "For the next hour is allowed to be uneven. You can be honest without being harsh. You do not need to be perfect to make progress.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0241",
+      "text": "When the noise is loud, see if you can name what is heavy.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0242",
+      "text": "If the path feels steep, try to start smaller than you want.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0243",
+      "text": "If the day feels heavy, see if you can start smaller than you want. You do not need to be perfect to make progress.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0244",
+      "text": "For the next five minutes is allowed to be uneven. This can be hard and still be yours.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0245",
+      "text": "For this part of the day is allowed to be uneven. It is okay to feel mixed.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0246",
+      "text": "Right now is allowed to be uneven. You can be honest without being harsh. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0247",
+      "text": "If the day feels heavy, you might ask for a little help.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0248",
+      "text": "When you feel pulled in many directions, see if you can take a small step.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0249",
+      "text": "If you are running low, it can help to be kind to your energy. A steady pace is still a pace.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0250",
+      "text": "If the path feels steep, consider a moment to start smaller than you want.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0251",
+      "text": "If you are running low, you might start smaller than you want.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0252",
+      "text": "If the day feels heavy, see if you can finish one tiny loop. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0253",
+      "text": "Today is allowed to be uneven. This can be hard and still be yours.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0254",
+      "text": "If you are running low, consider a moment to choose one gentle task.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0255",
+      "text": "Right now is allowed to be uneven. You are allowed to reset. A steady pace is still a pace.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0256",
+      "text": "If the path feels steep, consider a moment to take a small step.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0257",
+      "text": "If the day feels heavy, try to choose one gentle task.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0258",
+      "text": "If the day feels heavy, you might start smaller than you want. You do not need to be perfect to make progress.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0259",
+      "text": "When you feel pulled in many directions, see if you can finish one tiny loop.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0260",
+      "text": "This afternoon is allowed to be uneven. You do not have to fix it all.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0261",
+      "text": "When focus feels scattered, try to ask for a little help. Gentle effort is still effort.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0262",
+      "text": "When your energy dips, try to start smaller than you want.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0263",
+      "text": "If stress is sitting close, try to name what is heavy.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0264",
+      "text": "If sleep was thin, try to name what is heavy. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0265",
+      "text": "If the path feels steep, it can help to name what is heavy.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0266",
+      "text": "When you feel pulled in many directions, you might be kind to your energy.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0267",
+      "text": "For the next hour is allowed to be uneven. Your pace is allowed to be different. Gentle effort is still effort.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0268",
+      "text": "If you are running low, you might ask for a little help.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0269",
+      "text": "When focus feels scattered, see if you can take a small step.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0270",
+      "text": "When you feel pulled in many directions, see if you can start smaller than you want. A steady pace is still a pace.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0271",
+      "text": "This week is allowed to be uneven. Your pace is allowed to be different.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0272",
+      "text": "When you feel pulled in many directions, you might pause and breathe.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0273",
+      "text": "If the day feels heavy, it can help to pause and breathe. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0274",
+      "text": "When you are stretched thin, see if you can let the day be imperfect.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0275",
+      "text": "When your energy dips, you might put one thing down.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0276",
+      "text": "If sleep was thin, you might let the day be imperfect. Gentle effort is still effort.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0277",
+      "text": "If you are running low, it can help to pause and breathe.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0278",
+      "text": "When you are stretched thin, see if you can finish one tiny loop.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0279",
+      "text": "If the path feels steep, see if you can choose one gentle task. Gentle effort is still effort.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0280",
+      "text": "For today only is allowed to be uneven. Your pace is allowed to be different.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0281",
+      "text": "If the day feels heavy, consider a moment to take a small step.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0282",
+      "text": "When you are stretched thin, consider a moment to let the day be imperfect. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0283",
+      "text": "When you feel pulled in many directions, you might finish one tiny loop.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0284",
+      "text": "When you are stretched thin, try to finish one tiny loop.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0285",
+      "text": "For the next five minutes is allowed to be uneven. Rest is still progress. Gentle effort is still effort.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0286",
+      "text": "When you feel pulled in many directions, try to start smaller than you want.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0287",
+      "text": "If stress is sitting close, consider a moment to choose one gentle task.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0288",
+      "text": "If sleep was thin, see if you can finish one tiny loop. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0289",
+      "text": "When your energy dips, try to let the day be imperfect.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0290",
+      "text": "When focus feels scattered, see if you can pause and breathe.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0291",
+      "text": "If sleep was thin, consider a moment to start smaller than you want. Gentle effort is still effort.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0292",
+      "text": "When you feel pulled in many directions, it can help to start smaller than you want.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0293",
+      "text": "If the path feels steep, it can help to take a small step.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0294",
+      "text": "If you are running low, see if you can take a small step. You do not need to be perfect to make progress.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0295",
+      "text": "When focus feels scattered, try to take a small step.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0296",
+      "text": "If sleep was thin, you might take a small step.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0297",
+      "text": "When the noise is loud, it can help to be kind to your energy. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0298",
+      "text": "If stress is sitting close, consider a moment to be kind to your energy.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0299",
+      "text": "Right now is allowed to be uneven. Rest is still progress.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0300",
+      "text": "If the path feels steep, consider a moment to name what is heavy. You do not need to be perfect to make progress.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0301",
+      "text": "This morning is allowed to be uneven. Rest is still progress.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0302",
+      "text": "When you are stretched thin, try to start smaller than you want.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0303",
+      "text": "If the path feels steep, try to choose one gentle task. This counts, even if it is small.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0304",
+      "text": "When focus feels scattered, consider a moment to be kind to your energy.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0305",
+      "text": "When you are stretched thin, try to let the day be imperfect.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0306",
+      "text": "When focus feels scattered, consider a moment to choose one gentle task. You do not need to be perfect to make progress.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0307",
+      "text": "When you are stretched thin, you might let the day be imperfect.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0308",
+      "text": "In this moment is allowed to be uneven. Rest is still progress.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0309",
+      "text": "If stress is sitting close, try to put one thing down. Gentle effort is still effort.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0310",
+      "text": "When your energy dips, try to be kind to your energy.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0311",
+      "text": "If stress is sitting close, consider a moment to let the day be imperfect.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0312",
+      "text": "When your energy dips, see if you can pause and breathe. A steady pace is still a pace.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0313",
+      "text": "When your energy dips, try to take a small step.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0314",
+      "text": "When the noise is loud, you might put one thing down.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0315",
+      "text": "This week is allowed to be uneven. This can be hard and still be yours. You do not need to be perfect to make progress.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0316",
+      "text": "If the day feels heavy, consider a moment to start smaller than you want.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0317",
+      "text": "If the day feels heavy, try to start smaller than you want.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0318",
+      "text": "When your energy dips, try to finish one tiny loop. You do not need to be perfect to make progress.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0319",
+      "text": "For this part of the day is allowed to be uneven. This can be hard and still be yours.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0320",
+      "text": "If sleep was thin, you might finish one tiny loop.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0321",
+      "text": "If the path feels steep, try to let the day be imperfect. You do not need to be perfect to make progress.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0322",
+      "text": "If stress is sitting close, it can help to let the day be imperfect.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0323",
+      "text": "If the day feels heavy, you might finish one tiny loop.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0324",
+      "text": "If sleep was thin, you might ask for a little help. A steady pace is still a pace.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0325",
+      "text": "If stress is sitting close, you might let the day be imperfect.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0326",
+      "text": "When your energy dips, it can help to name what is heavy.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0327",
+      "text": "When the noise is loud, consider a moment to ask for a little help. A steady pace is still a pace.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0328",
+      "text": "For the next hour is allowed to be uneven. This can be hard and still be yours.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0329",
+      "text": "In this moment is allowed to be uneven. It is okay to feel mixed.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0330",
+      "text": "If stress is sitting close, it can help to be kind to your energy. You do not need to be perfect to make progress.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0331",
+      "text": "When you are stretched thin, see if you can start smaller than you want.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0332",
+      "text": "When your energy dips, try to pause and breathe.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0333",
+      "text": "When the noise is loud, consider a moment to finish one tiny loop. This counts, even if it is small.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0334",
+      "text": "In this moment is allowed to be uneven. Your pace is allowed to be different.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0335",
+      "text": "When the noise is loud, try to put one thing down.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0336",
+      "text": "Today is allowed to be uneven. You can keep going without rushing. A steady pace is still a pace.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0337",
+      "text": "If stress is sitting close, try to let the day be imperfect.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0338",
+      "text": "If the day feels heavy, you might take a small step.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0339",
+      "text": "When the noise is loud, try to pause and breathe. A steady pace is still a pace.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0340",
+      "text": "If sleep was thin, you might pause and breathe.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0341",
+      "text": "If sleep was thin, you might choose one gentle task.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0342",
+      "text": "For today only is allowed to be uneven. Rest is still progress. A steady pace is still a pace.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0343",
+      "text": "When you are stretched thin, it can help to finish one tiny loop.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0344",
+      "text": "If stress is sitting close, see if you can pause and breathe.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0345",
+      "text": "If the path feels steep, try to take a small step. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0346",
+      "text": "When focus feels scattered, you might take a small step.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0347",
+      "text": "For the next hour is allowed to be uneven. You can keep going without rushing.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0348",
+      "text": "If the path feels steep, try to finish one tiny loop. You do not need to be perfect to make progress.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0349",
+      "text": "If the day feels heavy, consider a moment to be kind to your energy.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0350",
+      "text": "If the day feels heavy, consider a moment to finish one tiny loop.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0351",
+      "text": "When the noise is loud, consider a moment to start smaller than you want. This counts, even if it is small.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0352",
+      "text": "If stress is sitting close, try to finish one tiny loop.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0353",
+      "text": "When your energy dips, try to choose one gentle task.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0354",
+      "text": "If you are running low, it can help to choose one gentle task. A steady pace is still a pace.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0355",
+      "text": "If stress is sitting close, consider a moment to name what is heavy.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0356",
+      "text": "When you feel pulled in many directions, consider a moment to put one thing down.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0357",
+      "text": "When you feel pulled in many directions, consider a moment to name what is heavy. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0358",
+      "text": "This afternoon is allowed to be uneven. It is okay to move slowly.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0359",
+      "text": "When your energy dips, consider a moment to be kind to your energy.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0360",
+      "text": "If you are running low, try to be kind to your energy. Gentle effort is still effort.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0361",
+      "text": "If the path feels steep, see if you can put one thing down.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0362",
+      "text": "If sleep was thin, consider a moment to name what is heavy.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0363",
+      "text": "This morning is allowed to be uneven. You can be honest without being harsh. Gentle effort is still effort.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0364",
+      "text": "If you are running low, it can help to take a small step.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0365",
+      "text": "When you feel pulled in many directions, see if you can ask for a little help.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0366",
+      "text": "When your energy dips, consider a moment to start smaller than you want. A steady pace is still a pace.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0367",
+      "text": "When focus feels scattered, see if you can be kind to your energy.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0368",
+      "text": "If the day feels heavy, see if you can let the day be imperfect.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0369",
+      "text": "If the day feels heavy, you might choose one gentle task. This counts, even if it is small.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0370",
+      "text": "When your energy dips, it can help to start smaller than you want.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0371",
+      "text": "For today only is allowed to be uneven. This can be hard and still be yours.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0372",
+      "text": "This afternoon is allowed to be uneven. Rest is still progress. This counts, even if it is small.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0373",
+      "text": "When your energy dips, see if you can name what is heavy.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0374",
+      "text": "If the day feels heavy, you might let the day be imperfect.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0375",
+      "text": "If the day feels heavy, try to ask for a little help. You do not need to be perfect to make progress.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0376",
+      "text": "When you are stretched thin, consider a moment to finish one tiny loop.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0377",
+      "text": "This week is allowed to be uneven. You can keep going without rushing.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0378",
+      "text": "If you are running low, see if you can start smaller than you want. A steady pace is still a pace.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0379",
+      "text": "When you are stretched thin, it can help to put one thing down.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0380",
+      "text": "If sleep was thin, try to take a small step.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0381",
+      "text": "If the day feels heavy, see if you can pause and breathe. Gentle effort is still effort.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0382",
+      "text": "When focus feels scattered, it can help to ask for a little help.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0383",
+      "text": "When you are stretched thin, you might name what is heavy.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0384",
+      "text": "If you are running low, see if you can put one thing down. You do not need to be perfect to make progress.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0385",
+      "text": "This morning is allowed to be uneven. It is okay to move slowly.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0386",
+      "text": "When the noise is loud, see if you can take a small step.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0387",
+      "text": "If stress is sitting close, you might take a small step. This counts, even if it is small.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0388",
+      "text": "When you feel pulled in many directions, see if you can choose one gentle task.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0389",
+      "text": "This afternoon is allowed to be uneven. This can be hard and still be yours.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0390",
+      "text": "If the path feels steep, you might start smaller than you want. You do not need to be perfect to make progress.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0391",
+      "text": "This afternoon is allowed to be uneven. Your pace is allowed to be different.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0392",
+      "text": "If sleep was thin, consider a moment to ask for a little help.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0393",
+      "text": "Today is allowed to be uneven. It is okay to move slowly. Gentle effort is still effort.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0394",
+      "text": "For the next five minutes is allowed to be uneven. It is okay to move slowly.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0395",
+      "text": "When your energy dips, see if you can put one thing down.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0396",
+      "text": "If you are running low, try to name what is heavy. This counts, even if it is small.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0397",
+      "text": "When your energy dips, try to ask for a little help.",
+      "author": "WellMind",
+      "tags": [
+        "struggle"
+      ],
+      "tone": "soft"
+    },
+    {
+      "id": "q0398",
+      "text": "Right now is allowed to be uneven. It is okay to feel mixed.",
+      "author": "WellMind",
+      "tags": [
+        "grief",
+        "patience"
+      ],
+      "tone": "direct"
+    },
+    {
+      "id": "q0399",
+      "text": "When you are stretched thin, consider a moment to ask for a little help. One honest step is enough for now.",
+      "author": "WellMind",
+      "tags": [
+        "patience"
+      ],
+      "tone": "reflective"
+    },
+    {
+      "id": "q0400",
+      "text": "If the path feels steep, you might choose one gentle task.",
+      "author": "WellMind",
+      "tags": [
+        "courage",
+        "struggle"
+      ],
+      "tone": "soft"
+    }
+  ]
+}

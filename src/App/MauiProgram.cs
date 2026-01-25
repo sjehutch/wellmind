@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using WellMind.Features.Support.TalkToSomeone;
+using WellMind.Pages;
 using WellMind.Services;
 using WellMind.ViewModels;
 using WellMind.Views;
@@ -27,6 +29,8 @@ public static class MauiProgram
 		builder.Services.AddTransient<PastCheckInsPage>();
 		builder.Services.AddTransient<ScoreExplanationPage>();
 		builder.Services.AddTransient<PrivacyCommitmentPage>();
+		builder.Services.AddTransient<GroundedPage>();
+		builder.Services.AddTransient<TalkToSomeonePage>();
 
 		builder.Services.AddTransient<HomeViewModel>();
 		builder.Services.AddTransient<CheckInViewModel>();
@@ -35,6 +39,8 @@ public static class MauiProgram
 		builder.Services.AddTransient<PastCheckInsViewModel>();
 		builder.Services.AddTransient<ScoreExplanationViewModel>();
 		builder.Services.AddTransient<PrivacyCommitmentViewModel>();
+		builder.Services.AddTransient<GroundedViewModel>();
+		builder.Services.AddTransient<TalkToSomeoneViewModel>();
 
 		builder.Services.AddSingleton<INavigationService, ShellNavigationService>();
 		builder.Services.AddSingleton<ICheckInStore, JsonFileCheckInStore>();
@@ -42,6 +48,9 @@ public static class MauiProgram
 		builder.Services.AddSingleton<ITipService, InMemoryTipService>();
 		builder.Services.AddSingleton<IResourceLinkService, InMemoryResourceLinkService>();
 		builder.Services.AddSingleton<IExternalLinkService, ExternalLinkService>();
+		builder.Services.AddSingleton<IGrounded, GroundedService>();
+		builder.Services.AddSingleton<IEnergyWindowsService, EnergyWindowsService>();
+		builder.Services.AddSingleton<TalkToSomeoneConfigLoader>();
 		builder.Services.AddSingleton<ILoggerService, FileLoggerService>();
 
 #if DEBUG

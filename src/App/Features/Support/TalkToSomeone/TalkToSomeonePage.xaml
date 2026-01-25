@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="WellMind.Features.Support.TalkToSomeone.TalkToSomeonePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Name="RootPage"
+    Title="Talk to Someone">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="16">
+            <Label Text="Talk to Someone" Style="{DynamicResource Headline}" HorizontalOptions="Start" />
+
+            <VerticalStackLayout Spacing="12" IsVisible="{Binding ShowContent}">
+                <Border
+                    BackgroundColor="{AppThemeBinding Light={DynamicResource Secondary}, Dark={DynamicResource Gray900}}"
+                    StrokeShape="RoundRectangle 12"
+                    Padding="16">
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="{Binding IntroTitle}" Style="{DynamicResource SectionTitle}" />
+                        <Label Text="{Binding IntroBody}" Style="{DynamicResource BodyText}" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <CollectionView ItemsSource="{Binding Options}" SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border
+                                BackgroundColor="{AppThemeBinding Light={DynamicResource Gray100}, Dark={DynamicResource Gray900}}"
+                                StrokeShape="RoundRectangle 12"
+                                Padding="16"
+                                Margin="0,0,0,8">
+                                <VerticalStackLayout Spacing="8">
+                                    <Label Text="{Binding Title}" FontAttributes="Bold" />
+                                    <Label Text="{Binding Body}" Style="{DynamicResource CaptionText}" />
+                                    <Button
+                                        Text="Continue"
+                                        Command="{Binding BindingContext.ContinueCommand, Source={x:Reference Name=RootPage}}"
+                                        CommandParameter="{Binding .}" />
+                                </VerticalStackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+
+            <Border
+                BackgroundColor="{AppThemeBinding Light={DynamicResource Gray100}, Dark={DynamicResource Gray900}}"
+                StrokeShape="RoundRectangle 12"
+                Padding="16"
+                IsVisible="{Binding ShowState}">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="{Binding StateTitle}" Style="{DynamicResource SectionTitle}" />
+                    <Label Text="{Binding StateBody}" Style="{DynamicResource BodyText}" />
+                    <Label Text="{Binding StateFooter}" Style="{DynamicResource CaptionText}" />
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

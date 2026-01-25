@@ -1,0 +1,19 @@
+{
+  "enabled": true,
+  "introTitle": "Talk to Someone",
+  "introBody": "Optional, anonymous support. No identity required. No action is taken unless you choose.",
+  "options": [
+    {
+      "id": "counselor",
+      "title": "Wellness Counselor",
+      "body": "For stress, burnout, or when you just need to talk.",
+      "enabled": true
+    },
+    {
+      "id": "company_support",
+      "title": "Company Support",
+      "body": "For workplace guidance or questions.",
+      "enabled": true
+    }
+  ]
+}

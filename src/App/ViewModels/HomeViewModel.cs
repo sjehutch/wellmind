@@ -12,6 +12,7 @@ public sealed class HomeViewModel : BaseViewModel
     private readonly ICheckInStore _checkInStore;
     private readonly ITipService _tipService;
     private readonly IResourceLinkService _resourceLinkService;
+    private readonly IEnergyWindowsService _energyWindowsService;
     private IReadOnlyList<Trend> _trends = Array.Empty<Trend>();
     private IReadOnlyList<Tip> _tips = Array.Empty<Tip>();
     private IReadOnlyList<ResourceLink> _links = Array.Empty<ResourceLink>();
@@ -31,22 +32,27 @@ public sealed class HomeViewModel : BaseViewModel
     private string _todayRhythmDescriptor = "Low";
     private string _todayRhythmPercent = "1.0 / 5";
     private Color _todayRhythmColor = Color.FromArgb("#D96C6C");
+    private string _energyWindowsMessage = "No pattern yet. That's normal.";
+    private bool _showEnergyWindows;
 
     public HomeViewModel(
         ITrendService trendService,
         INavigationService navigationService,
         ICheckInStore checkInStore,
         ITipService tipService,
-        IResourceLinkService resourceLinkService)
+        IResourceLinkService resourceLinkService,
+        IEnergyWindowsService energyWindowsService)
     {
         _trendService = trendService;
         _navigationService = navigationService;
         _checkInStore = checkInStore;
         _tipService = tipService;
         _resourceLinkService = resourceLinkService;
+        _energyWindowsService = energyWindowsService;
 
         PrimaryActionCommand = new Command(async () => await _navigationService.GoToCheckInAsync());
         OpenLinkCommand = new Command<ResourceLink>(async link => await OpenLinkAsync(link));
+        ShowEnergyWindowsInfoCommand = new Command(async () => await ShowEnergyWindowsInfoAsync());
         SummaryText = "A calm snapshot of how your week has been going.";
 
         _ = LoadAsync();
@@ -156,6 +162,18 @@ public sealed class HomeViewModel : BaseViewModel
         private set => SetProperty(ref _todayRhythmColor, value);
     }
 
+    public string EnergyWindowsMessage
+    {
+        get => _energyWindowsMessage;
+        private set => SetProperty(ref _energyWindowsMessage, value);
+    }
+
+    public bool ShowEnergyWindows
+    {
+        get => _showEnergyWindows;
+        private set => SetProperty(ref _showEnergyWindows, value);
+    }
+
     public bool HasLinks
     {
         get => _hasLinks;
@@ -170,6 +188,7 @@ public sealed class HomeViewModel : BaseViewModel
 
     public ICommand PrimaryActionCommand { get; }
     public ICommand OpenLinkCommand { get; }
+    public ICommand ShowEnergyWindowsInfoCommand { get; }
     public async Task LoadAsync()
     {
         // Pull today's entry first so the primary action and summary reflect local-day state.
@@ -182,6 +201,17 @@ public sealed class HomeViewModel : BaseViewModel
         Trends = await _trendService.GetWeeklyTrendsAsync();
         Tips = await _tipService.GetGentleTipsAsync();
         Links = await _resourceLinkService.GetLinksAsync();
+        try
+        {
+            var recent = await _checkInStore.GetLastDaysAsync(7);
+            EnergyWindowsMessage = _energyWindowsService.BuildMessage(recent).Message;
+            ShowEnergyWindows = true;
+        }
+        catch
+        {
+            // If data is missing or unavailable, hide the card entirely.
+            ShowEnergyWindows = false;
+        }
         UpdateTodayRhythm(TodayCheckIn);
         UpdateVisibility();
     }
@@ -239,6 +269,14 @@ public sealed class HomeViewModel : BaseViewModel
         TodayStressValue = todayCheckIn.Stress.ToString();
         TodayFocusValue = todayCheckIn.Focus.ToString();
         TodaySleepValue = todayCheckIn.SleepQuality.ToString();
+    }
+
+    private static async Task ShowEnergyWindowsInfoAsync()
+    {
+        await Shell.Current.DisplayAlert(
+            "About Energy Windows",
+            "Energy Windows is a calm summary of your last 7 days of check-ins.\nIt looks for simple patterns, like steadiness or ups and downs.\nIt's not a diagnosis, and it's not instructions.\nNo action is required.",
+            "OK");
     }
 
     private static double CalculateRhythmValue(CheckIn checkIn)

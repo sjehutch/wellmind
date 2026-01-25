@@ -31,6 +31,26 @@ WellMind is a low-drama wellness app that helps busy people notice early burnout
 - Trends show recent patterns, not judgments.
 - If there is no recent data, show neutral empty states.
 
+## Energy Windows (formerly “Microshifting” concept)
+Energy Windows is a calm reflection layer that helps users notice short-term energy patterns without pressure, scoring, or advice — supporting flexible, human pacing rather than rigid schedules.
+
+WellMind includes an Energy Windows section on the Home screen that provides a calm, non-judgmental summary of recent check-ins.
+
+Energy Windows reflects simple patterns across the last 7 days (such as steadiness, variability, or mismatches between stress and rest) without offering advice, instructions, or diagnoses.
+
+Its purpose is to help users notice when their energy naturally rises or dips across short windows of time, supporting flexible, human pacing rather than rigid daily optimization.
+
+Energy Windows:
+- Is read-only and informational.
+- Uses normalizing language (“That happens,” “This can vary week to week”).
+- Requires no action and makes no recommendations.
+- Exists to reduce anxiety, not create it.
+- Must never:
+  - Tell the user what action to take.
+  - Suggest productivity changes.
+  - Compare the user to others.
+  - Use alerting or warning language.
+
 ## MVP screens
 - Home: daily check-in entry, weekly trends, gentle tips, today’s balance, resource links.
 - Check-In: sliders for energy/stress/focus/sleep, optional note, save or cancel.

@@ -89,7 +89,7 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Label
+                              <Label
                                     FontSize="12"
                                     TextColor="{AppThemeBinding Light={DynamicResource Gray500}, Dark={DynamicResource Gray200}}">
                                     <Label.FormattedText>
@@ -106,6 +106,25 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+
+            <!-- Energy Windows -->
+            <Border
+                BackgroundColor="{AppThemeBinding Light={DynamicResource Gray100}, Dark={DynamicResource Gray900}}"
+                StrokeShape="RoundRectangle 12"
+                Padding="12"
+                IsVisible="{Binding ShowEnergyWindows}">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Energy Windows" Style="{DynamicResource SectionTitle}" />
+                    <Label Text="{Binding EnergyWindowsMessage}" Style="{DynamicResource CaptionText}" />
+                    <Button
+                        Text="ⓘ Why am I seeing this?"
+                        BackgroundColor="Transparent"
+                        TextColor="{DynamicResource AccentGreen}"
+                        FontSize="12"
+                        Padding="0"
+                        Command="{Binding ShowEnergyWindowsInfoCommand}" />
+                </VerticalStackLayout>
+            </Border>
 
             <!-- Gentle tips -->
             <VerticalStackLayout Spacing="8" IsVisible="{Binding HasTips}">

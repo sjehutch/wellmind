@@ -5,8 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="{Binding Title}">
 
-    <VerticalStackLayout Spacing="8">
-        <Label Text="{Binding TodayDisplay}" Style="{DynamicResource DateHeadline}" Margin="24,16,24,0" />
-        <WebView Source="{Binding Url}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
-    </VerticalStackLayout>
+    <Grid RowDefinitions="Auto,*">
+        <Label Text="{Binding TodayDisplay}" Style="{DynamicResource DateHeadline}" Margin="24,16,24,8" />
+        <WebView Grid.Row="1" Source="{Binding Url}" />
+    </Grid>
 </ContentPage>

@@ -124,12 +124,64 @@ This document describes the user-facing behavior of WellMind. It focuses on what
 - Crash on launch: App restarts and uses the most recent local data.
 - Offline: All features continue except external links.
 
-## Questions / Assumptions
-- Is a dedicated Trends screen required, or is Home sufficient for MVP?
-- What is the desired reminder cadence (time of day, frequency, snooze)?
-- Should check-ins be limited to one per day, or allow multiple?
-- Do we want a neutral empty state for Today’s balance when no check-in exists?
-- Should resource links be editable or fixed in MVP?
+## Feature: Talk to Someone (MVP)
+- User goal: Explore anonymous, optional support without pressure or identity exposure.
+- Entry point: Hamburger menu -> Support -> Talk to Someone.
+- Preconditions: App installed. No account required.
+- Steps:
+  1. User opens Talk to Someone.
+  2. App loads local config.
+  3. User sees intro explaining anonymity.
+  4. User selects a support option.
+  5. App confirms intent before proceeding.
+  6. App shows “Coming soon” placeholder.
+- Rules:
+  - No identity is collected.
+  - No data is sent off-device.
+  - User can cancel at any time.
+  - Language must remain calm and non-judgmental.
+- Failure modes:
+  - Missing config -> safe empty state.
+  - Disabled feature -> informational empty state.
+  - Offline -> no impact (local-only).
+- Data touched: Local JSON config only.
+- Done when: User can safely view and explore support options without triggering any real communication.
+
+## Feature: Human Context Engine (Normalization Layer)
+- UI label: Energy Windows (all user-visible strings must use “Energy Windows”).
+- User goal: Receive a calm, non-judgmental read of recent check-ins that reduces anxiety.
+- Entry points: Home screen, between “This week” and “Gentle tips”.
+- Preconditions: App installed. Check-ins stored locally.
+- Steps:
+  1. App gathers the last 7 days of check-ins (or the most recent N).
+  2. App calculates averages and variability.
+  3. App selects a single, short message.
+  4. User can tap “Why am I seeing this?” for a brief explanation.
+- Rules:
+  - Never diagnose or mention medical conditions.
+  - Never blame the user; no “you should” language.
+  - Avoid fear language like “warning”, “risk”, “red flag”, “concerning”, “alarming”.
+  - Avoid hustle language like “optimize”, “crush”, “fix”, “maximize”.
+  - Prefer normalizing language (for example: “Many people have weeks like this.” “That happens.”).
+  - If there is insufficient data, show: “No pattern yet. That’s normal.”
+  - Output is 1–2 sentences, max.
+  - Title is “Energy Windows”.
+- Message selection rules (first match wins):
+  - A) If avgStress >= 4 AND avgSleep >= 3:
+    - “Stress has been running high, even with decent sleep. That happens.”
+  - B) If avgEnergy <= 2 AND avgFocus <= 2:
+    - “Energy and focus have been lower this week. Many people have stretches like this.”
+  - C) If any metric range >= 3:
+    - “Your week has had some ups and downs. That’s a normal pattern for busy seasons.”
+  - D) If avgEnergy >= 3 AND avgStress <= 3:
+    - “Things look fairly steady this week. If it feels manageable, that’s a good sign.”
+  - E) Fallback:
+    - “You’re getting a read on your week. No judgment - just a snapshot.”
+- Failure modes:
+  - Missing local data -> show the neutral message.
+  - Offline -> no impact (local-only).
+- Data touched: Local check-in history only.
+- Done when: A single calm message is shown and the explanation modal is available.
 
 ## Data Model (MVP)
 
@@ -179,3 +231,10 @@ Show the most recent check-in for today and allow the user to update it without 
 - If local data is corrupted or missing:
   - Home shows the empty state.
   - Button defaults to “Start today’s check-in”.
+
+## Questions / Assumptions
+- Is a dedicated Trends screen required, or is Home sufficient for MVP?
+- What is the desired reminder cadence (time of day, frequency, snooze)?
+- Should check-ins be limited to one per day, or allow multiple?
+- Do we want a neutral empty state for Today’s balance when no check-in exists?
+- Should resource links be editable or fixed in MVP?

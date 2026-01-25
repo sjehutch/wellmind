@@ -1,4 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
+using WellMind.Features.Support.TalkToSomeone;
+using WellMind.Pages;
 using WellMind.Services;
 using WellMind.Views;
 
@@ -33,6 +35,20 @@ public partial class AppShell : Shell
             Title = "Privacy, by design",
             Content = services.GetRequiredService<PrivacyCommitmentPage>()
         });
+
+        Items.Add(new ShellContent
+        {
+            Title = "Grounded",
+            Content = services.GetRequiredService<GroundedPage>()
+        });
+
+        var supportFlyout = new FlyoutItem { Title = "Support" };
+        supportFlyout.Items.Add(new ShellContent
+        {
+            Title = "Talk to Someone",
+            Content = services.GetRequiredService<TalkToSomeonePage>()
+        });
+        Items.Add(supportFlyout);
 
         // Route uses DI so pages can take ViewModels in their constructors.
         Routing.RegisterRoute(nameof(CheckInPage), new ServiceRouteFactory(services, typeof(CheckInPage)));

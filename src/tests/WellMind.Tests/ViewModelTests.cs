@@ -16,7 +16,8 @@ public sealed class ViewModelTests
             new FakeNavigationService(),
             store,
             new FakeTipService(),
-            new FakeResourceLinkService());
+            new FakeResourceLinkService(),
+            new FakeEnergyWindowsService());
 
         await viewModel.LoadAsync();
 
@@ -36,7 +37,8 @@ public sealed class ViewModelTests
             new FakeNavigationService(),
             store,
             new FakeTipService(),
-            new FakeResourceLinkService());
+            new FakeResourceLinkService(),
+            new FakeEnergyWindowsService());
 
         await viewModel.LoadAsync();
 
@@ -141,5 +143,13 @@ internal sealed class FakeNavigationService : INavigationService
     public Task GoBackAsync()
     {
         return Task.CompletedTask;
+    }
+}
+
+internal sealed class FakeEnergyWindowsService : IEnergyWindowsService
+{
+    public EnergyWindowsResult BuildMessage(IReadOnlyList<CheckIn> checkIns)
+    {
+        return new EnergyWindowsResult("No pattern yet. That's normal.", "insufficient");
     }
 }

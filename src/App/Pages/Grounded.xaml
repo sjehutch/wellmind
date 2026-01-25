@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="WellMind.Pages.GroundedPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Name="GroundedPageRoot"
+    Title="Grounded">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="16">
+            <Label Text="Grounded" Style="{DynamicResource Headline}" HorizontalOptions="Start" />
+            <Label Text="{Binding FilterLabel}" Style="{DynamicResource CaptionText}" />
+
+            <ScrollView Orientation="Horizontal">
+                <HorizontalStackLayout
+                    Spacing="8"
+                    BindableLayout.ItemsSource="{Binding Tags}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Button
+                                Text="{Binding .}"
+                                FontSize="12"
+                                Padding="10,4"
+                                BackgroundColor="{AppThemeBinding Light={DynamicResource Gray200}, Dark={DynamicResource Gray600}}"
+                                Command="{Binding BindingContext.TagSelectedCommand, Source={x:Reference GroundedPageRoot}}"
+                                CommandParameter="{Binding .}" />
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </HorizontalStackLayout>
+            </ScrollView>
+
+            <Label Text="{Binding QuoteText}" FontSize="26" />
+            <Label Text="{Binding QuoteAuthor}" Style="{DynamicResource CaptionText}" />
+
+            <HorizontalStackLayout Spacing="12">
+                <Button Text="Next quote" Command="{Binding NextQuoteCommand}" />
+                <Button Text="Share" Command="{Binding ShareCommand}" Style="{DynamicResource SecondaryButton}" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

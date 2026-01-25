@@ -3,6 +3,7 @@
     x:Class="WellMind.Views.PastCheckInsPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:WellMind.Views.Controls"
     Title="Past check-ins">
 
     <ScrollView>
@@ -18,10 +19,17 @@
                             StrokeShape="RoundRectangle 12"
                             Padding="12"
                             Margin="0,0,0,8">
-                            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto" ColumnSpacing="12">
+                            <Grid ColumnDefinitions="*,Auto,Auto" RowDefinitions="Auto,Auto" ColumnSpacing="12">
                                 <Label Text="{Binding DateLocal}" FontAttributes="Bold" FontSize="14" />
                                 <Label Text="{Binding Score}" Grid.Column="1" FontAttributes="Bold" />
-                                <Label Text="{Binding Descriptor}" Grid.Row="1" Style="{DynamicResource CaptionText}" />
+                                <Label Text="{Binding Descriptor}" Grid.Row="1" Grid.Column="1" Style="{DynamicResource CaptionText}" />
+                                <controls:ScoreDots
+                                    Grid.Row="0"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="2"
+                                    Value="{Binding ScoreValue}"
+                                    FillColor="{Binding ScoreColor}"
+                                    EmptyColor="{AppThemeBinding Light={DynamicResource Gray200}, Dark={DynamicResource Gray600}}" />
                             </Grid>
                         </Border>
                     </DataTemplate>
