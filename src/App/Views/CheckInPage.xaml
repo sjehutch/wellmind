@@ -4,6 +4,18 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="Check-In">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="RatingButton" TargetType="Button">
+                <Setter Property="WidthRequest" Value="44" />
+                <Setter Property="HeightRequest" Value="44" />
+                <Setter Property="CornerRadius" Value="22" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource Gray200}, Dark={DynamicResource Gray600}}" />
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Gray900}, Dark={DynamicResource White}}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ScrollView>
         <VerticalStackLayout Padding="24" Spacing="16">
@@ -15,25 +27,189 @@
                 <Label Text="Energy" Style="{DynamicResource SectionTitle}" />
                 <Label x:Name="EnergyEmojiLabel" Text="{Binding EnergyEmoji}" FontSize="20" Grid.Column="1" HorizontalOptions="End" />
             </Grid>
-            <Slider x:Name="EnergySlider" Minimum="1" Maximum="5" Value="{Binding Energy}" Margin="0,0,0,4" ValueChanged="OnSliderValueChanged" DragStarted="OnSliderDragStarted" DragCompleted="OnSliderDragCompleted" />
+            <HorizontalStackLayout Spacing="8">
+                <Button Text="1" Style="{DynamicResource RatingButton}" Command="{Binding SelectEnergyCommand}" CommandParameter="1">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding Energy}" Value="1">
+                            <Setter Property="BackgroundColor" Value="{DynamicResource Primary}" />
+                            <Setter Property="TextColor" Value="{DynamicResource White}" />
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+                <Button Text="2" Style="{DynamicResource RatingButton}" Command="{Binding SelectEnergyCommand}" CommandParameter="2">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding Energy}" Value="2">
+                            <Setter Property="BackgroundColor" Value="{DynamicResource Primary}" />
+                            <Setter Property="TextColor" Value="{DynamicResource White}" />
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+                <Button Text="3" Style="{DynamicResource RatingButton}" Command="{Binding SelectEnergyCommand}" CommandParameter="3">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding Energy}" Value="3">
+                            <Setter Property="BackgroundColor" Value="{DynamicResource Primary}" />
+                            <Setter Property="TextColor" Value="{DynamicResource White}" />
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+                <Button Text="4" Style="{DynamicResource RatingButton}" Command="{Binding SelectEnergyCommand}" CommandParameter="4">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding Energy}" Value="4">
+                            <Setter Property="BackgroundColor" Value="{DynamicResource Primary}" />
+                            <Setter Property="TextColor" Value="{DynamicResource White}" />
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+                <Button Text="5" Style="{DynamicResource RatingButton}" Command="{Binding SelectEnergyCommand}" CommandParameter="5">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding Energy}" Value="5">
+                            <Setter Property="BackgroundColor" Value="{DynamicResource Primary}" />
+                            <Setter Property="TextColor" Value="{DynamicResource White}" />
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+            </HorizontalStackLayout>
 
             <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
                 <Label Text="Stress" Style="{DynamicResource SectionTitle}" />
                 <Label x:Name="StressEmojiLabel" Text="{Binding StressEmoji}" FontSize="20" Grid.Column="1" HorizontalOptions="End" />
             </Grid>
-            <Slider x:Name="StressSlider" Minimum="1" Maximum="5" Value="{Binding Stress}" Margin="0,0,0,4" ValueChanged="OnSliderValueChanged" DragStarted="OnSliderDragStarted" DragCompleted="OnSliderDragCompleted" />
+            <HorizontalStackLayout Spacing="8">
+                <Button Text="1" Style="{DynamicResource RatingButton}" Command="{Binding SelectStressCommand}" CommandParameter="1">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding Stress}" Value="1">
+                            <Setter Property="BackgroundColor" Value="{DynamicResource Primary}" />
+                            <Setter Property="TextColor" Value="{DynamicResource White}" />
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+                <Button Text="2" Style="{DynamicResource RatingButton}" Command="{Binding SelectStressCommand}" CommandParameter="2">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding Stress}" Value="2">
+                            <Setter Property="BackgroundColor" Value="{DynamicResource Primary}" />
+                            <Setter Property="TextColor" Value="{DynamicResource White}" />
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+                <Button Text="3" Style="{DynamicResource RatingButton}" Command="{Binding SelectStressCommand}" CommandParameter="3">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding Stress}" Value="3">
+                            <Setter Property="BackgroundColor" Value="{DynamicResource Primary}" />
+                            <Setter Property="TextColor" Value="{DynamicResource White}" />
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+                <Button Text="4" Style="{DynamicResource RatingButton}" Command="{Binding SelectStressCommand}" CommandParameter="4">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding Stress}" Value="4">
+                            <Setter Property="BackgroundColor" Value="{DynamicResource Primary}" />
+                            <Setter Property="TextColor" Value="{DynamicResource White}" />
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+                <Button Text="5" Style="{DynamicResource RatingButton}" Command="{Binding SelectStressCommand}" CommandParameter="5">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding Stress}" Value="5">
+                            <Setter Property="BackgroundColor" Value="{DynamicResource Primary}" />
+                            <Setter Property="TextColor" Value="{DynamicResource White}" />
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+            </HorizontalStackLayout>
 
             <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
                 <Label Text="Focus" Style="{DynamicResource SectionTitle}" />
                 <Label x:Name="FocusEmojiLabel" Text="{Binding FocusEmoji}" FontSize="20" Grid.Column="1" HorizontalOptions="End" />
             </Grid>
-            <Slider x:Name="FocusSlider" Minimum="1" Maximum="5" Value="{Binding Focus}" Margin="0,0,0,4" ValueChanged="OnSliderValueChanged" DragStarted="OnSliderDragStarted" DragCompleted="OnSliderDragCompleted" />
+            <HorizontalStackLayout Spacing="8">
+                <Button Text="1" Style="{DynamicResource RatingButton}" Command="{Binding SelectFocusCommand}" CommandParameter="1">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding Focus}" Value="1">
+                            <Setter Property="BackgroundColor" Value="{DynamicResource Primary}" />
+                            <Setter Property="TextColor" Value="{DynamicResource White}" />
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+                <Button Text="2" Style="{DynamicResource RatingButton}" Command="{Binding SelectFocusCommand}" CommandParameter="2">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding Focus}" Value="2">
+                            <Setter Property="BackgroundColor" Value="{DynamicResource Primary}" />
+                            <Setter Property="TextColor" Value="{DynamicResource White}" />
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+                <Button Text="3" Style="{DynamicResource RatingButton}" Command="{Binding SelectFocusCommand}" CommandParameter="3">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding Focus}" Value="3">
+                            <Setter Property="BackgroundColor" Value="{DynamicResource Primary}" />
+                            <Setter Property="TextColor" Value="{DynamicResource White}" />
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+                <Button Text="4" Style="{DynamicResource RatingButton}" Command="{Binding SelectFocusCommand}" CommandParameter="4">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding Focus}" Value="4">
+                            <Setter Property="BackgroundColor" Value="{DynamicResource Primary}" />
+                            <Setter Property="TextColor" Value="{DynamicResource White}" />
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+                <Button Text="5" Style="{DynamicResource RatingButton}" Command="{Binding SelectFocusCommand}" CommandParameter="5">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding Focus}" Value="5">
+                            <Setter Property="BackgroundColor" Value="{DynamicResource Primary}" />
+                            <Setter Property="TextColor" Value="{DynamicResource White}" />
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+            </HorizontalStackLayout>
 
             <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
                 <Label Text="Sleep quality" Style="{DynamicResource SectionTitle}" />
                 <Label x:Name="SleepEmojiLabel" Text="{Binding SleepEmoji}" FontSize="20" Grid.Column="1" HorizontalOptions="End" />
             </Grid>
-            <Slider x:Name="SleepSlider" Minimum="1" Maximum="5" Value="{Binding SleepQuality}" Margin="0,0,0,4" ValueChanged="OnSliderValueChanged" DragStarted="OnSliderDragStarted" DragCompleted="OnSliderDragCompleted" />
+            <HorizontalStackLayout Spacing="8">
+                <Button Text="1" Style="{DynamicResource RatingButton}" Command="{Binding SelectSleepCommand}" CommandParameter="1">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding SleepQuality}" Value="1">
+                            <Setter Property="BackgroundColor" Value="{DynamicResource Primary}" />
+                            <Setter Property="TextColor" Value="{DynamicResource White}" />
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+                <Button Text="2" Style="{DynamicResource RatingButton}" Command="{Binding SelectSleepCommand}" CommandParameter="2">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding SleepQuality}" Value="2">
+                            <Setter Property="BackgroundColor" Value="{DynamicResource Primary}" />
+                            <Setter Property="TextColor" Value="{DynamicResource White}" />
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+                <Button Text="3" Style="{DynamicResource RatingButton}" Command="{Binding SelectSleepCommand}" CommandParameter="3">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding SleepQuality}" Value="3">
+                            <Setter Property="BackgroundColor" Value="{DynamicResource Primary}" />
+                            <Setter Property="TextColor" Value="{DynamicResource White}" />
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+                <Button Text="4" Style="{DynamicResource RatingButton}" Command="{Binding SelectSleepCommand}" CommandParameter="4">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding SleepQuality}" Value="4">
+                            <Setter Property="BackgroundColor" Value="{DynamicResource Primary}" />
+                            <Setter Property="TextColor" Value="{DynamicResource White}" />
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+                <Button Text="5" Style="{DynamicResource RatingButton}" Command="{Binding SelectSleepCommand}" CommandParameter="5">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding SleepQuality}" Value="5">
+                            <Setter Property="BackgroundColor" Value="{DynamicResource Primary}" />
+                            <Setter Property="TextColor" Value="{DynamicResource White}" />
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+            </HorizontalStackLayout>
 
             <Label Text="Optional note" Style="{DynamicResource SectionTitle}" />
             <Editor

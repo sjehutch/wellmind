@@ -1,40 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <defs>
-    <linearGradient id="leftLeaf" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#C8F24A"/>
-      <stop offset="100%" stop-color="#2DD36F"/>
-    </linearGradient>
-    <linearGradient id="rightLeaf" x1="1" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#3FE2B8"/>
-      <stop offset="100%" stop-color="#0B84E3"/>
-    </linearGradient>
-    <linearGradient id="centerLeaf" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#7BEA6A"/>
-      <stop offset="100%" stop-color="#1FBFB0"/>
-    </linearGradient>
-    <linearGradient id="sun" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#FFD85A"/>
-      <stop offset="100%" stop-color="#F5A623"/>
-    </linearGradient>
-  </defs>
-
-  <g transform="translate(256 256) scale(0.6) translate(-256 -256)">
+  <!--
+    Super simple splash:
+    - Lots of whitespace (feels premium)
+    - One calm color (no gradients = less noisy)
+    - Centered mark
+  -->
+  <g transform="translate(256 256) scale(0.75) translate(-256 -256)">
+    <!-- Left leaf -->
     <path
       d="M256 404 C190 362 130 300 120 228 C110 170 150 120 220 120 C206 164 218 226 256 266 Z"
-      fill="url(#leftLeaf)"/>
+      fill="#0B3D2E"/>
+
+    <!-- Right leaf -->
     <path
       d="M256 404 C322 362 382 300 392 228 C402 170 362 120 292 120 C306 164 294 226 256 266 Z"
-      fill="url(#rightLeaf)"/>
+      fill="#0B3D2E"/>
+
+    <!-- Center body -->
     <path
       d="M256 332 C228 304 210 262 206 220 C232 238 246 258 256 276 C266 258 280 238 306 220 C302 262 284 304 256 332 Z"
-      fill="url(#centerLeaf)"/>
-    <circle cx="256" cy="206" r="28" fill="url(#sun)"/>
-    <path d="M256 394 C222 352 204 308 198 258" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"/>
-    <path d="M256 394 C290 352 308 308 314 258" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"/>
-    <path d="M146 150 L156 134 L166 150 L156 166 Z" fill="#F7B733"/>
-    <path d="M190 128 L198 118 L206 128 L198 138 Z" fill="#8BE14F"/>
-    <circle cx="232" cy="120" r="6" fill="#7AD5FF"/>
-    <circle cx="214" cy="140" r="5" fill="#86D98C"/>
+      fill="#0B3D2E"/>
+
+    <!-- Head -->
+    <circle cx="256" cy="206" r="26" fill="#0B3D2E"/>
   </g>
 </svg>

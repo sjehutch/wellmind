@@ -17,7 +17,8 @@ public sealed class ViewModelTests
             store,
             new FakeTipService(),
             new FakeResourceLinkService(),
-            new FakeEnergyWindowsService());
+            new FakeEnergyWindowsService(),
+            new FakeReminderSettingsStore());
 
         await viewModel.LoadAsync();
 
@@ -38,7 +39,8 @@ public sealed class ViewModelTests
             store,
             new FakeTipService(),
             new FakeResourceLinkService(),
-            new FakeEnergyWindowsService());
+            new FakeEnergyWindowsService(),
+            new FakeReminderSettingsStore());
 
         await viewModel.LoadAsync();
 
@@ -70,6 +72,8 @@ internal sealed class FakeCheckInStore : ICheckInStore
 {
     public CheckIn? Today { get; set; }
     public List<CheckIn> Items { get; } = new();
+    public string? TodayHeavyNote { get; set; }
+    public DateTime? TodayHeavyNoteUpdatedAt { get; set; }
 
     public Task<CheckIn?> GetTodayAsync(CancellationToken ct = default)
     {
@@ -100,6 +104,23 @@ internal sealed class FakeCheckInStore : ICheckInStore
     {
         Items.Clear();
         Today = null;
+        return Task.CompletedTask;
+    }
+
+    public Task<string?> GetTodayHeavyNoteAsync(CancellationToken ct = default)
+    {
+        return Task.FromResult(TodayHeavyNote);
+    }
+
+    public Task<DateTime?> GetTodayHeavyNoteUpdatedAtAsync(CancellationToken ct = default)
+    {
+        return Task.FromResult(TodayHeavyNoteUpdatedAt);
+    }
+
+    public Task UpsertTodayHeavyNoteAsync(string? note, DateTime updatedAt, CancellationToken ct = default)
+    {
+        TodayHeavyNote = note;
+        TodayHeavyNoteUpdatedAt = string.IsNullOrWhiteSpace(note) ? null : updatedAt;
         return Task.CompletedTask;
     }
 }
@@ -140,6 +161,16 @@ internal sealed class FakeNavigationService : INavigationService
         return Task.CompletedTask;
     }
 
+    public Task OpenGentleReminderAsync()
+    {
+        return Task.CompletedTask;
+    }
+
+    public Task CloseModalAsync()
+    {
+        return Task.CompletedTask;
+    }
+
     public Task GoBackAsync()
     {
         return Task.CompletedTask;
@@ -151,5 +182,28 @@ internal sealed class FakeEnergyWindowsService : IEnergyWindowsService
     public EnergyWindowsResult BuildMessage(IReadOnlyList<CheckIn> checkIns)
     {
         return new EnergyWindowsResult("No pattern yet. That's normal.", "insufficient");
+    }
+}
+
+internal sealed class FakeReminderSettingsStore : IReminderSettingsStore
+{
+    public bool IsEnabled { get; set; }
+    public TimeSpan Time { get; set; } = new(9, 0, 0);
+
+    public Task<bool> GetIsEnabledAsync(CancellationToken ct = default)
+    {
+        return Task.FromResult(IsEnabled);
+    }
+
+    public Task<TimeSpan> GetTimeAsync(CancellationToken ct = default)
+    {
+        return Task.FromResult(Time);
+    }
+
+    public Task SaveAsync(bool isEnabled, TimeSpan time, CancellationToken ct = default)
+    {
+        IsEnabled = isEnabled;
+        Time = time;
+        return Task.CompletedTask;
     }
 }

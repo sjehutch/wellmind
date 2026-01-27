@@ -1,4 +1,5 @@
 using System.Windows.Input;
+using Microsoft.Maui.Devices;
 using WellMind.Models;
 using WellMind.Services;
 
@@ -26,6 +27,10 @@ public sealed class CheckInViewModel : BaseViewModel
         _navigationService = navigationService;
 
         SaveCommand = new Command(async () => await SaveAsync());
+        SelectEnergyCommand = new Command<string>(value => SetEnergy(value));
+        SelectStressCommand = new Command<string>(value => SetStress(value));
+        SelectFocusCommand = new Command<string>(value => SetFocus(value));
+        SelectSleepCommand = new Command<string>(value => SetSleep(value));
         CancelCommand = new Command(async () => await _navigationService.GoBackAsync());
 
         Prompt = "How are you feeling right now?";
@@ -106,6 +111,10 @@ public sealed class CheckInViewModel : BaseViewModel
     }
 
     public ICommand SaveCommand { get; }
+    public ICommand SelectEnergyCommand { get; }
+    public ICommand SelectStressCommand { get; }
+    public ICommand SelectFocusCommand { get; }
+    public ICommand SelectSleepCommand { get; }
     public ICommand CancelCommand { get; }
 
     public async Task LoadAsync()
@@ -147,6 +156,54 @@ public sealed class CheckInViewModel : BaseViewModel
         SleepQuality = today.SleepQuality;
         Note = today.Note ?? string.Empty;
         UpdateEmojis();
+    }
+
+    private void SetEnergy(string? value)
+    {
+        if (TryParse(value, out var parsed))
+        {
+            Energy = parsed;
+            HapticFeedback.Default.Perform(HapticFeedbackType.Click);
+        }
+    }
+
+    private void SetStress(string? value)
+    {
+        if (TryParse(value, out var parsed))
+        {
+            Stress = parsed;
+            HapticFeedback.Default.Perform(HapticFeedbackType.Click);
+        }
+    }
+
+    private void SetFocus(string? value)
+    {
+        if (TryParse(value, out var parsed))
+        {
+            Focus = parsed;
+            HapticFeedback.Default.Perform(HapticFeedbackType.Click);
+        }
+    }
+
+    private void SetSleep(string? value)
+    {
+        if (TryParse(value, out var parsed))
+        {
+            SleepQuality = parsed;
+            HapticFeedback.Default.Perform(HapticFeedbackType.Click);
+        }
+    }
+
+    private static bool TryParse(string? value, out int parsed)
+    {
+        if (int.TryParse(value, out parsed))
+        {
+            parsed = Math.Clamp(parsed, 1, 5);
+            return true;
+        }
+
+        parsed = 0;
+        return false;
     }
 
     public async Task SaveAsync()

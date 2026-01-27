@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="WellMind.Views.GentleReminderPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="A gentle reminder">
+    <Grid RowDefinitions="Auto,*" Padding="24" RowSpacing="16">
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto">
+            <Label Text="" />
+            <Button
+                Grid.Column="1"
+                Text="✕"
+                BackgroundColor="Transparent"
+                FontSize="18"
+                Command="{Binding CloseCommand}" />
+        </Grid>
+
+        <VerticalStackLayout Grid.Row="1" Spacing="16">
+            <Label
+                Text="A gentle reminder"
+                Style="{DynamicResource Headline}"
+                HorizontalOptions="Start"
+                HorizontalTextAlignment="Start" />
+            <VerticalStackLayout Spacing="6">
+                <Label Text="Just a tiny pause in a busy day." Style="{DynamicResource BodyText}" />
+                <Label Text="If you want: notice one small good thing." Style="{DynamicResource BodyText}" />
+                <Label Text="No tasks. No tracking. Just a moment." Style="{DynamicResource BodyText}" />
+            </VerticalStackLayout>
+
+            <Grid ColumnDefinitions="*,Auto" VerticalOptions="Center" ColumnSpacing="12">
+                <Label Text="Daily reminder" Style="{DynamicResource SectionTitle}" />
+                <Switch Grid.Column="1" IsToggled="{Binding IsEnabled}" />
+            </Grid>
+
+            <Grid ColumnDefinitions="Auto,*" VerticalOptions="Center" ColumnSpacing="12">
+                <Label Text="Time" Style="{DynamicResource SectionTitle}" />
+                <TimePicker
+                    Grid.Column="1"
+                    Time="{Binding ReminderTime}"
+                    IsEnabled="{Binding IsEnabled}" />
+            </Grid>
+
+            <Button
+                Text="All set"
+                Command="{Binding SaveAndCloseCommand}"
+                HorizontalOptions="Fill" />
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

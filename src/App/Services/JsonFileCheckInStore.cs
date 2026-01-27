@@ -111,6 +111,74 @@ public sealed class JsonFileCheckInStore : ICheckInStore
         }
     }
 
+    public async Task<string?> GetTodayHeavyNoteAsync(CancellationToken ct = default)
+    {
+        var todayKey = GetTodayKey();
+        var data = await LoadAsync(ct);
+        return data.HeavyNotes.LastOrDefault(entry => entry.DateLocal == todayKey)?.Text;
+    }
+
+    public async Task<DateTime?> GetTodayHeavyNoteUpdatedAtAsync(CancellationToken ct = default)
+    {
+        var todayKey = GetTodayKey();
+        var data = await LoadAsync(ct);
+        var raw = data.HeavyNotes.LastOrDefault(entry => entry.DateLocal == todayKey)?.UpdatedAt;
+
+        if (DateTime.TryParse(raw, out var parsed))
+        {
+            return parsed;
+        }
+
+        return null;
+    }
+
+    public async Task UpsertTodayHeavyNoteAsync(string? note, DateTime updatedAt, CancellationToken ct = default)
+    {
+        var todayKey = GetTodayKey();
+        var trimmed = string.IsNullOrWhiteSpace(note) ? null : note.Trim();
+
+        await _gate.WaitAsync(ct);
+        try
+        {
+            var data = await LoadUnlockedAsync(ct);
+            var index = data.HeavyNotes.FindIndex(entry => entry.DateLocal == todayKey);
+
+            if (string.IsNullOrWhiteSpace(trimmed))
+            {
+                // Empty note means we remove it entirely.
+                if (index >= 0)
+                {
+                    data.HeavyNotes.RemoveAt(index);
+                }
+
+                await SaveUnlockedAsync(data, ct);
+                return;
+            }
+
+            var entry = new HeavyNoteEntry
+            {
+                DateLocal = todayKey,
+                Text = trimmed,
+                UpdatedAt = updatedAt.ToString("O")
+            };
+
+            if (index >= 0)
+            {
+                data.HeavyNotes[index] = entry;
+            }
+            else
+            {
+                data.HeavyNotes.Add(entry);
+            }
+
+            await SaveUnlockedAsync(data, ct);
+        }
+        finally
+        {
+            _gate.Release();
+        }
+    }
+
     private async Task<CheckInData> LoadAsync(CancellationToken ct)
     {
         await _gate.WaitAsync(ct);
@@ -170,5 +238,13 @@ public sealed class JsonFileCheckInStore : ICheckInStore
     {
         public int Version { get; set; } = 1;
         public List<CheckIn> CheckIns { get; set; } = new();
+        public List<HeavyNoteEntry> HeavyNotes { get; set; } = new();
+    }
+
+    private sealed class HeavyNoteEntry
+    {
+        public string DateLocal { get; set; } = "";
+        public string Text { get; set; } = "";
+        public string UpdatedAt { get; set; } = "";
     }
 }

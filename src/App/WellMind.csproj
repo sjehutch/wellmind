@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <!-- ✅ Keep it simple: only what you're actually shipping right now -->
+    <!-- Keep it simple: only what you're shipping right now -->
     <TargetFrameworks>net9.0-android;net9.0-ios</TargetFrameworks>
 
     <OutputType>Exe</OutputType>
@@ -11,54 +11,69 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
-    <!-- ✅ App identity / display -->
+    <!-- What users see -->
     <ApplicationTitle>WellMind</ApplicationTitle>
 
-    <!-- 👇 Change this once you’re ready for real App Store / Play Store IDs -->
-    <ApplicationId>com.companyname.wellmind</ApplicationId>
+    <!-- MUST match Apple App ID bundle id + Android package name -->
+    <ApplicationId>info.mindwell.mindwellapp</ApplicationId>
 
-    <!-- ✅ Versioning -->
+    <!-- Versioning -->
+    <!-- App Store Connect shows 1.0; TestFlight requires build number to increment each upload -->
     <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
-    <ApplicationVersion>1</ApplicationVersion>
+    <ApplicationVersion>6</ApplicationVersion>
 
-    <!-- ✅ Platform minimums -->
+    <!-- Platform minimums -->
     <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
     <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
 
-    <!-- ✅ "Goodies": makes build output a little less noisy and more stable -->
-    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <!-- Goodies -->
+    <Deterministic>true</Deterministic>
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+
+    <!-- Keeps NuGet restore less flaky across machines -->
+    <RestoreLockedMode>false</RestoreLockedMode>
   </PropertyGroup>
 
+  <!-- =========================================================
+       iOS signing ONLY for Release builds (TestFlight/App Store)
+       Use Provisioning Profile UUID (most reliable)
+     ========================================================= -->
+ <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)'=='Release|net9.0-ios'">
+  <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
+
+  <!-- Force YOUR exact distribution cert -->
+  <CodesignKey>Apple Distribution: Scott hutchinson (5MB4DBCXK2)</CodesignKey>
+
+  <!-- Force the profile by NAME -->
+  <CodesignProvision>WellMind App Store Profile</CodesignProvision>
+</PropertyGroup>
+
   <ItemGroup>
-    <!-- ✅ App Icon -->
-    <!-- NOTE:
-         - appicon.svg should be the background (usually a solid rounded square)
-         - appiconfg.svg should be the "foreground glyph" (simple shapes is best)
-         - ForegroundScale helps prevent the icon from feeling cramped -->
-  <MauiIcon Include="Resources\AppIcon\appicon.svg"
-          ForegroundFile="Resources\AppIcon\appiconfg.svg"
-          ForegroundScale="0.90" />
+    <!-- App Icon -->
+   <MauiIcon
+  Include="Resources\AppIcon\appicon.svg"
+  ForegroundFile="Resources\AppIcon\appiconfg.svg"
+  ForegroundScale="0.90" />
 
-    <!-- ✅ Splash Screen -->
-    <MauiSplashScreen
-      Include="Resources\Splash\splash.svg"
-      Color="#FFFFFF"
-      BaseSize="128,128" />
+    <!-- Splash Screen -->
+ <MauiSplashScreen
+  Include="Resources\Splash\splash.svg"
+  Color="#0B0F0E"
+  BaseSize="256,256" />
 
-    <!-- ✅ Images -->
+    <!-- Images -->
     <MauiImage Include="Resources\Images\*" />
     <MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
 
-    <!-- ✅ Fonts -->
+    <!-- Fonts -->
     <MauiFont Include="Resources\Fonts\*" />
 
-    <!-- ✅ Raw assets -->
+    <!-- Raw assets -->
     <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
   </ItemGroup>
 
   <ItemGroup>
-    <!-- ✅ Keep references minimal -->
     <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.8" />
   </ItemGroup>

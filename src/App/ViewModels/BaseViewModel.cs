@@ -18,6 +18,11 @@ public abstract class BaseViewModel : INotifyPropertyChanged
         }
 
         backingField = value;
+        RaisePropertyChanged(propertyName);
+    }
+
+    protected void RaisePropertyChanged([CallerMemberName] string? propertyName = null)
+    {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }

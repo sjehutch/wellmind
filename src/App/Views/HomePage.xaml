@@ -19,7 +19,12 @@
         <VerticalStackLayout Padding="24" Spacing="16">
             <!-- Header -->
             <Label Text="WellMind" Style="{DynamicResource Headline}" HorizontalOptions="Start" />
-            <Label Text="{Binding TodayDisplay}" Style="{DynamicResource DateHeadline}" HorizontalOptions="Start" />
+            <Label
+                Text="{Binding GreetingText}"
+                Style="{DynamicResource DateHeadline}"
+                FontSize="15"
+                HorizontalOptions="Start" />
+            <Label Text="{Binding TodayDateText}" Style="{DynamicResource DateHeadline}" HorizontalOptions="Start" />
             <Label Text="{Binding SummaryText}" Style="{DynamicResource BodyText}" />
 
             <!-- Daily check-in -->
@@ -143,6 +148,85 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </VerticalStackLayout>
+
+            <!-- Gentle reminder -->
+            <Border
+                BackgroundColor="{AppThemeBinding Light={DynamicResource Gray100}, Dark={DynamicResource Gray900}}"
+                StrokeShape="RoundRectangle 12"
+                Padding="12">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="A gentle reminder" Style="{DynamicResource SectionTitle}" />
+                    <Label Text="A tiny nudge to notice one small good thing." Style="{DynamicResource CaptionText}" />
+                    <Button Text="{Binding GentleReminderButtonText}" Command="{Binding OpenGentleReminderCommand}" />
+                    <Label
+                        Text="{Binding GentleReminderStatusText}"
+                        Style="{DynamicResource CaptionText}"
+                        IsVisible="{Binding IsGentleReminderEnabled}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Heavy note -->
+            <Border
+                BackgroundColor="{AppThemeBinding Light={DynamicResource Gray100}, Dark={DynamicResource Gray900}}"
+                StrokeShape="RoundRectangle 12"
+                Padding="12">
+                <Grid>
+                    <VerticalStackLayout Spacing="8" IsVisible="True">
+                        <VerticalStackLayout.Triggers>
+                            <DataTrigger TargetType="VerticalStackLayout" Binding="{Binding IsHeavyNoteExpanded}" Value="True">
+                                <Setter Property="IsVisible" Value="False" />
+                            </DataTrigger>
+                        </VerticalStackLayout.Triggers>
+                        <VerticalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ToggleHeavyNoteExpandedCommand}" />
+                        </VerticalStackLayout.GestureRecognizers>
+                        <Label
+                            Text="Want to note anything that made today feel heavier?"
+                            Style="{DynamicResource SectionTitle}"
+                            FontSize="18" />
+                        <Label
+                            Text="{Binding HeavyNotePreview}"
+                            Style="{DynamicResource CaptionText}"
+                            IsVisible="{Binding HasHeavyNote}" />
+                        <Label
+                            Text="{Binding HeavyNoteSavedLabel}"
+                            IsVisible="{Binding HasHeavyNote}"
+                            FontSize="12"
+                            TextColor="{DynamicResource Gray500}" />
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="8" IsVisible="False">
+                        <VerticalStackLayout.Triggers>
+                            <DataTrigger TargetType="VerticalStackLayout" Binding="{Binding IsHeavyNoteExpanded}" Value="True">
+                                <Setter Property="IsVisible" Value="True" />
+                            </DataTrigger>
+                        </VerticalStackLayout.Triggers>
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                            <Label
+                                Text="Want to note anything that made today feel heavier?"
+                                Style="{DynamicResource SectionTitle}"
+                                FontSize="18" />
+                            <Button
+                                Grid.Column="1"
+                                Text="Done"
+                                BackgroundColor="Transparent"
+                                TextColor="{DynamicResource AccentGreen}"
+                                Command="{Binding DoneHeavyNoteCommand}" />
+                        </Grid>
+                        <Editor
+                            Text="{Binding HeavyNoteText}"
+                            AutoSize="TextChanges"
+                            Placeholder="Example: Work stuff felt heavy. Didn't sleep great."
+                            MaxLength="800"
+                            HeightRequest="120" />
+                        <Button
+                            Text="Clear"
+                            Style="{DynamicResource SecondaryButton}"
+                            Command="{Binding ClearHeavyNoteCommand}"
+                            HorizontalOptions="Start" />
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
 
             <!-- Today's rhythm -->
             <Border

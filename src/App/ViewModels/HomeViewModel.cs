@@ -1,4 +1,8 @@
+using System.ComponentModel;
+using System.Globalization;
 using System.Windows.Input;
+using Microsoft.Maui.Dispatching;
+using Microsoft.Maui.Devices;
 using Microsoft.Maui.Graphics;
 using WellMind.Models;
 using WellMind.Services;
@@ -13,6 +17,7 @@ public sealed class HomeViewModel : BaseViewModel
     private readonly ITipService _tipService;
     private readonly IResourceLinkService _resourceLinkService;
     private readonly IEnergyWindowsService _energyWindowsService;
+    private readonly IReminderSettingsStore _reminderSettingsStore;
     private IReadOnlyList<Trend> _trends = Array.Empty<Trend>();
     private IReadOnlyList<Tip> _tips = Array.Empty<Tip>();
     private IReadOnlyList<ResourceLink> _links = Array.Empty<ResourceLink>();
@@ -22,6 +27,8 @@ public sealed class HomeViewModel : BaseViewModel
     private bool _hasTodayCheckIn;
     private bool _hasNoTodayCheckIn = true;
     private string _primaryActionText = "Start today's check-in";
+    private string _greetingText = "Good morning";
+    private string _todayDateText = $"Today • {DateTime.Now.ToString("dddd, MMMM d", CultureInfo.CurrentCulture)}";
     private string _todayEnergyValue = "—";
     private string _todayStressValue = "—";
     private string _todayFocusValue = "—";
@@ -34,6 +41,16 @@ public sealed class HomeViewModel : BaseViewModel
     private Color _todayRhythmColor = Color.FromArgb("#D96C6C");
     private string _energyWindowsMessage = "No pattern yet. That's normal.";
     private bool _showEnergyWindows;
+    private bool _isGentleReminderEnabled;
+    private TimeSpan _gentleReminderTime = new(9, 0, 0);
+    private string _gentleReminderStatusText = "Off";
+    private string _gentleReminderButtonText = "Set reminder";
+    private bool _isHeavyNoteExpanded;
+    private string _heavyNoteText = "";
+    private DateTime? _heavyNoteUpdatedAt;
+    private CancellationTokenSource? _heavyNoteSaveCts;
+    private bool _isLoadingHeavyNote;
+    private IDispatcherTimer? _greetingTimer;
 
     public HomeViewModel(
         ITrendService trendService,
@@ -41,7 +58,8 @@ public sealed class HomeViewModel : BaseViewModel
         ICheckInStore checkInStore,
         ITipService tipService,
         IResourceLinkService resourceLinkService,
-        IEnergyWindowsService energyWindowsService)
+        IEnergyWindowsService energyWindowsService,
+        IReminderSettingsStore reminderSettingsStore)
     {
         _trendService = trendService;
         _navigationService = navigationService;
@@ -49,16 +67,34 @@ public sealed class HomeViewModel : BaseViewModel
         _tipService = tipService;
         _resourceLinkService = resourceLinkService;
         _energyWindowsService = energyWindowsService;
+        _reminderSettingsStore = reminderSettingsStore;
 
-        PrimaryActionCommand = new Command(async () => await _navigationService.GoToCheckInAsync());
+        PrimaryActionCommand = new Command(async () => await StartCheckInAsync());
         OpenLinkCommand = new Command<ResourceLink>(async link => await OpenLinkAsync(link));
         ShowEnergyWindowsInfoCommand = new Command(async () => await ShowEnergyWindowsInfoAsync());
+        OpenGentleReminderCommand = new Command(async () => await OpenGentleReminderAsync());
+        ToggleHeavyNoteExpandedCommand = new Command(() => IsHeavyNoteExpanded = true);
+        DoneHeavyNoteCommand = new Command(async () => await SaveHeavyNoteAndCollapseAsync());
+        ClearHeavyNoteCommand = new Command(async () => await ClearHeavyNoteAsync());
         SummaryText = "A calm snapshot of how your week has been going.";
 
+        EnsureGreetingTimerStarted();
         _ = LoadAsync();
     }
 
     public string SummaryText { get; }
+
+    public string GreetingText
+    {
+        get => _greetingText;
+        private set => SetProperty(ref _greetingText, value);
+    }
+
+    public string TodayDateText
+    {
+        get => _todayDateText;
+        private set => SetProperty(ref _todayDateText, value);
+    }
 
     public IReadOnlyList<Trend> Trends
     {
@@ -174,6 +210,92 @@ public sealed class HomeViewModel : BaseViewModel
         private set => SetProperty(ref _showEnergyWindows, value);
     }
 
+    public bool IsGentleReminderEnabled
+    {
+        get => _isGentleReminderEnabled;
+        private set => SetProperty(ref _isGentleReminderEnabled, value);
+    }
+
+    public TimeSpan GentleReminderTime
+    {
+        get => _gentleReminderTime;
+        private set => SetProperty(ref _gentleReminderTime, value);
+    }
+
+    public string GentleReminderStatusText
+    {
+        get => _gentleReminderStatusText;
+        private set => SetProperty(ref _gentleReminderStatusText, value);
+    }
+
+    public string GentleReminderButtonText
+    {
+        get => _gentleReminderButtonText;
+        private set => SetProperty(ref _gentleReminderButtonText, value);
+    }
+
+    public bool IsHeavyNoteExpanded
+    {
+        get => _isHeavyNoteExpanded;
+        set => SetProperty(ref _isHeavyNoteExpanded, value);
+    }
+
+    public string HeavyNoteText
+    {
+        get => _heavyNoteText;
+        set
+        {
+            if (string.Equals(_heavyNoteText, value, StringComparison.Ordinal))
+            {
+                return;
+            }
+
+            SetProperty(ref _heavyNoteText, value);
+
+            // Ignore edits while we are loading saved data.
+            if (_isLoadingHeavyNote)
+            {
+                return;
+            }
+
+            // Start a quiet, delayed save after typing pauses.
+            DebounceHeavyNoteSave();
+            NotifyHeavyNoteDerived();
+        }
+    }
+
+    public string HeavyNotePreview
+    {
+        get
+        {
+            if (string.IsNullOrWhiteSpace(_heavyNoteText))
+            {
+                return "Want to note anything that made today feel heavier?";
+            }
+
+            var trimmed = _heavyNoteText.Trim();
+            return trimmed.Length <= 80 ? trimmed : $"{trimmed[..80]}…";
+        }
+    }
+
+    public string HeavyNoteSavedLabel
+    {
+        get
+        {
+            if (_heavyNoteUpdatedAt is null || string.IsNullOrWhiteSpace(_heavyNoteText))
+            {
+                return string.Empty;
+            }
+
+            return $"Saved {_heavyNoteUpdatedAt.Value.ToString("h:mm tt")}";
+        }
+    }
+
+    public bool HasHeavyNote
+    {
+        get => !string.IsNullOrWhiteSpace(_heavyNoteText);
+    }
+
     public bool HasLinks
     {
         get => _hasLinks;
@@ -189,14 +311,24 @@ public sealed class HomeViewModel : BaseViewModel
     public ICommand PrimaryActionCommand { get; }
     public ICommand OpenLinkCommand { get; }
     public ICommand ShowEnergyWindowsInfoCommand { get; }
+    public ICommand OpenGentleReminderCommand { get; }
+    public ICommand ToggleHeavyNoteExpandedCommand { get; }
+    public ICommand DoneHeavyNoteCommand { get; }
+    public ICommand ClearHeavyNoteCommand { get; }
     public async Task LoadAsync()
     {
+        // Keep the greeting and date in sync with the user's current local time.
+        UpdateGreetingAndDate();
+
         // Pull today's entry first so the primary action and summary reflect local-day state.
         TodayCheckIn = await _checkInStore.GetTodayAsync();
         HasTodayCheckIn = TodayCheckIn is not null;
         HasNoTodayCheckIn = !HasTodayCheckIn;
         PrimaryActionText = HasTodayCheckIn ? "Update today's check-in" : "Start today's check-in";
         UpdateTodayCheckInDisplay(TodayCheckIn);
+
+        await LoadHeavyNoteAsync();
+        await LoadGentleReminderStatusAsync();
 
         Trends = await _trendService.GetWeeklyTrendsAsync();
         Tips = await _tipService.GetGentleTipsAsync();
@@ -216,6 +348,18 @@ public sealed class HomeViewModel : BaseViewModel
         UpdateVisibility();
     }
 
+    private async Task StartCheckInAsync()
+    {
+        HapticFeedback.Default.Perform(HapticFeedbackType.Click);
+        await _navigationService.GoToCheckInAsync();
+    }
+
+    private Task OpenGentleReminderAsync()
+    {
+        // Open the gentle reminder modal (no navigation stack changes).
+        return _navigationService.OpenGentleReminderAsync();
+    }
+
     private Task OpenLinkAsync(ResourceLink? link)
     {
         if (link is null || string.IsNullOrWhiteSpace(link.Url))
@@ -230,7 +374,7 @@ public sealed class HomeViewModel : BaseViewModel
     private void UpdateVisibility()
     {
         HasTips = Tips.Count > 0;
-        HasLinks = HasTips && Links.Count > 0;
+        HasLinks = Links.Count > 0;
     }
 
     private void UpdateTodayRhythm(CheckIn? todayCheckIn)
@@ -277,6 +421,126 @@ public sealed class HomeViewModel : BaseViewModel
             "About Energy Windows",
             "Energy Windows is a calm summary of your last 7 days of check-ins.\nIt looks for simple patterns, like steadiness or ups and downs.\nIt's not a diagnosis, and it's not instructions.\nNo action is required.",
             "OK");
+    }
+
+    private async Task LoadGentleReminderStatusAsync()
+    {
+        // Pull the saved reminder settings so the UI can show status later.
+        IsGentleReminderEnabled = await _reminderSettingsStore.GetIsEnabledAsync();
+        GentleReminderTime = await _reminderSettingsStore.GetTimeAsync();
+        GentleReminderStatusText = IsGentleReminderEnabled
+            ? $"Daily at {DateTime.Today.Add(GentleReminderTime).ToString("h:mm tt")}"
+            : "Off";
+        GentleReminderButtonText = IsGentleReminderEnabled ? "Adjust reminder" : "Set reminder";
+    }
+
+    private void UpdateGreetingAndDate()
+    {
+        // Simple time-based greeting: morning before 12, afternoon 12–5, evening after 5.
+        var hour = DateTime.Now.Hour;
+        if (hour < 12)
+        {
+            GreetingText = "Good morning";
+        }
+        else if (hour < 17)
+        {
+            GreetingText = "Good afternoon";
+        }
+        else
+        {
+            GreetingText = "Good evening";
+        }
+
+        TodayDateText = $"Today • {DateTime.Now.ToString("dddd, MMMM d", CultureInfo.CurrentCulture)}";
+    }
+
+    private void EnsureGreetingTimerStarted()
+    {
+        // Keep a single timer alive so the greeting can update as the day changes.
+        if (_greetingTimer is not null)
+        {
+            return;
+        }
+
+        var dispatcher = Application.Current?.Dispatcher;
+        if (dispatcher is null)
+        {
+            return;
+        }
+
+        _greetingTimer = dispatcher.CreateTimer();
+        _greetingTimer.Interval = TimeSpan.FromMinutes(1);
+        _greetingTimer.Tick += (_, _) => UpdateGreetingAndDate();
+        _greetingTimer.Start();
+    }
+
+    private async Task LoadHeavyNoteAsync()
+    {
+        // We set a guard so loading doesn't trigger a save.
+        _isLoadingHeavyNote = true;
+        try
+        {
+            var note = await _checkInStore.GetTodayHeavyNoteAsync();
+            var updatedAt = await _checkInStore.GetTodayHeavyNoteUpdatedAtAsync();
+
+            _heavyNoteText = note ?? string.Empty;
+            _heavyNoteUpdatedAt = updatedAt;
+            NotifyHeavyNoteDerived();
+        }
+        finally
+        {
+            _isLoadingHeavyNote = false;
+        }
+    }
+
+    private void DebounceHeavyNoteSave()
+    {
+        // Cancel any in-flight save, then start a new one after a short pause.
+        _heavyNoteSaveCts?.Cancel();
+        _heavyNoteSaveCts = new CancellationTokenSource();
+        var token = _heavyNoteSaveCts.Token;
+
+        _ = Task.Run(async () =>
+        {
+            try
+            {
+                await Task.Delay(600, token);
+                await SaveHeavyNoteAsync();
+            }
+            catch (TaskCanceledException)
+            {
+                // If the user keeps typing, we cancel and restart the timer.
+            }
+        }, token);
+    }
+
+    private async Task SaveHeavyNoteAndCollapseAsync()
+    {
+        await SaveHeavyNoteAsync();
+        IsHeavyNoteExpanded = false;
+    }
+
+    private async Task ClearHeavyNoteAsync()
+    {
+        HeavyNoteText = string.Empty;
+        await SaveHeavyNoteAsync();
+    }
+
+    private async Task SaveHeavyNoteAsync()
+    {
+        // Save quietly in the background so the app feels calm.
+        var now = DateTime.Now;
+        await _checkInStore.UpsertTodayHeavyNoteAsync(_heavyNoteText, now);
+        _heavyNoteUpdatedAt = string.IsNullOrWhiteSpace(_heavyNoteText) ? null : now;
+        NotifyHeavyNoteDerived();
+    }
+
+    private void NotifyHeavyNoteDerived()
+    {
+        // These values depend on HeavyNoteText, so we refresh them together.
+        RaisePropertyChanged(nameof(HeavyNotePreview));
+        RaisePropertyChanged(nameof(HeavyNoteSavedLabel));
+        RaisePropertyChanged(nameof(HasHeavyNote));
     }
 
     private static double CalculateRhythmValue(CheckIn checkIn)

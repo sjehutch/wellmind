@@ -1,18 +1,24 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Maui.Dispatching;
 using WellMind.Services;
+using WellMind.Views;
 
 namespace WellMind;
 
 public partial class App : Application
 {
     private readonly ILoggerService _logger;
+    private readonly IServiceProvider _services;
+    private readonly IFirstRunStore _firstRunStore;
 
-    public App(IServiceProvider services, ILoggerService logger)
+    public App(IServiceProvider services, ILoggerService logger, IFirstRunStore firstRunStore)
     {
         InitializeComponent();
         _logger = logger;
+        _services = services;
+        _firstRunStore = firstRunStore;
         RegisterExceptionHandlers();
         _logger.LogInfo("App started.");
         try
@@ -24,6 +30,22 @@ public partial class App : Application
             _logger.LogException(exception, "Failed to create AppShell");
             throw;
         }
+
+        ShowWelcomeIfNeeded();
+    }
+
+    private void ShowWelcomeIfNeeded()
+    {
+        if (_firstRunStore.HasSeenWelcome())
+        {
+            return;
+        }
+
+        MainThread.BeginInvokeOnMainThread(async () =>
+        {
+            var modal = _services.GetRequiredService<WelcomeModalPage>();
+            await MainPage.Navigation.PushModalAsync(modal);
+        });
     }
 
     private void RegisterExceptionHandlers()

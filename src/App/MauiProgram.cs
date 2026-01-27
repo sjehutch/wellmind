@@ -26,21 +26,25 @@ public static class MauiProgram
 		builder.Services.AddTransient<HomePage>();
 		builder.Services.AddTransient<CheckInPage>();
 		builder.Services.AddTransient<InAppBrowserPage>();
+		builder.Services.AddTransient<WelcomeModalPage>();
 		builder.Services.AddTransient<PastCheckInsPage>();
 		builder.Services.AddTransient<ScoreExplanationPage>();
 		builder.Services.AddTransient<PrivacyCommitmentPage>();
 		builder.Services.AddTransient<GroundedPage>();
 		builder.Services.AddTransient<TalkToSomeonePage>();
+		builder.Services.AddTransient<GentleReminderPage>();
 
 		builder.Services.AddTransient<HomeViewModel>();
 		builder.Services.AddTransient<CheckInViewModel>();
 		builder.Services.AddTransient<WeeklyTrendsViewModel>();
 		builder.Services.AddTransient<InAppBrowserViewModel>();
+		builder.Services.AddTransient<WelcomeModalViewModel>();
 		builder.Services.AddTransient<PastCheckInsViewModel>();
 		builder.Services.AddTransient<ScoreExplanationViewModel>();
 		builder.Services.AddTransient<PrivacyCommitmentViewModel>();
 		builder.Services.AddTransient<GroundedViewModel>();
 		builder.Services.AddTransient<TalkToSomeoneViewModel>();
+		builder.Services.AddTransient<GentleReminderViewModel>();
 
 		builder.Services.AddSingleton<INavigationService, ShellNavigationService>();
 		builder.Services.AddSingleton<ICheckInStore, JsonFileCheckInStore>();
@@ -50,8 +54,12 @@ public static class MauiProgram
 		builder.Services.AddSingleton<IExternalLinkService, ExternalLinkService>();
 		builder.Services.AddSingleton<IGrounded, GroundedService>();
 		builder.Services.AddSingleton<IEnergyWindowsService, EnergyWindowsService>();
+		builder.Services.AddSingleton<IFirstRunStore, FirstRunStore>();
 		builder.Services.AddSingleton<TalkToSomeoneConfigLoader>();
 		builder.Services.AddSingleton<ILoggerService, FileLoggerService>();
+		builder.Services.AddSingleton<IReminderSettingsStore, ReminderSettingsStore>();
+		builder.Services.AddSingleton<ILocalNotificationService, LocalNotificationService>();
+		builder.Services.AddSingleton<IGratitudeReminderService, GratitudeReminderService>();
 
 #if DEBUG
 		builder.Logging.AddDebug();

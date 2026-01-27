@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="WellMind.Views.WelcomeModalPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#0B0F0E}">
+
+    <Grid>
+        <!-- Full-screen tap to dismiss -->
+        <BoxView BackgroundColor="Transparent">
+            <BoxView.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding CloseCommand}" />
+            </BoxView.GestureRecognizers>
+        </BoxView>
+
+        <Grid
+            Padding="28"
+            RowDefinitions="Auto,*">
+
+        <!-- Close button (soft + unobtrusive) -->
+        <Grid Grid.Row="0" HorizontalOptions="End">
+            <Button
+                Text="✕"
+                FontSize="20"
+                Opacity="0.5"
+                WidthRequest="44"
+                HeightRequest="44"
+                BackgroundColor="Transparent"
+                TextColor="{AppThemeBinding Light=#111111, Dark=#FFFFFF}"
+                Command="{Binding CloseCommand}" />
+        </Grid>
+
+            <!-- Main content -->
+            <VerticalStackLayout
+                Grid.Row="1"
+                VerticalOptions="Start"
+                Margin="0,120,0,0"
+                Spacing="22">
+
+            <Label
+                Text="WellMind"
+                FontSize="44"
+                FontAttributes="Bold"
+                TextColor="{AppThemeBinding Light=#111111, Dark=#FFFFFF}" />
+
+            <Label
+                Text="A calm check-in for real days."
+                FontSize="20"
+                LineHeight="1.2"
+                TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}"
+                Opacity="0.92" />
+
+            <Label
+                Text="No pressure, no judgment. Just a small space to notice how you are."
+                FontSize="19"
+                LineHeight="1.35"
+                TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}"
+                Opacity="0.85" />
+
+            <Label
+                Text="Nothing leaves this space unless you choose."
+                FontSize="19"
+                LineHeight="1.35"
+                TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}"
+                Opacity="0.85" />
+            </VerticalStackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>
