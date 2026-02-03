@@ -19,4 +19,5 @@ public partial class HomePage : ContentPage
             await viewModel.LoadAsync();
         }
     }
+
 }

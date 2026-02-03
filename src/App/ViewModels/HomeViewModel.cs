@@ -1,6 +1,8 @@
 using System.ComponentModel;
 using System.Globalization;
 using System.Windows.Input;
+using Microsoft.Maui.ApplicationModel;
+using Microsoft.Maui.Controls;
 using Microsoft.Maui.Dispatching;
 using Microsoft.Maui.Devices;
 using Microsoft.Maui.Graphics;
@@ -18,6 +20,7 @@ public sealed class HomeViewModel : BaseViewModel
     private readonly IResourceLinkService _resourceLinkService;
     private readonly IEnergyWindowsService _energyWindowsService;
     private readonly IReminderSettingsStore _reminderSettingsStore;
+    private readonly IHomeBackgroundService _homeBackgroundService;
     private IReadOnlyList<Trend> _trends = Array.Empty<Trend>();
     private IReadOnlyList<Tip> _tips = Array.Empty<Tip>();
     private IReadOnlyList<ResourceLink> _links = Array.Empty<ResourceLink>();
@@ -51,6 +54,8 @@ public sealed class HomeViewModel : BaseViewModel
     private CancellationTokenSource? _heavyNoteSaveCts;
     private bool _isLoadingHeavyNote;
     private IDispatcherTimer? _greetingTimer;
+    private Color _backgroundColor = Colors.Transparent;
+    private bool _showBackgroundColor;
 
     public HomeViewModel(
         ITrendService trendService,
@@ -59,7 +64,8 @@ public sealed class HomeViewModel : BaseViewModel
         ITipService tipService,
         IResourceLinkService resourceLinkService,
         IEnergyWindowsService energyWindowsService,
-        IReminderSettingsStore reminderSettingsStore)
+        IReminderSettingsStore reminderSettingsStore,
+        IHomeBackgroundService homeBackgroundService)
     {
         _trendService = trendService;
         _navigationService = navigationService;
@@ -68,14 +74,17 @@ public sealed class HomeViewModel : BaseViewModel
         _resourceLinkService = resourceLinkService;
         _energyWindowsService = energyWindowsService;
         _reminderSettingsStore = reminderSettingsStore;
+        _homeBackgroundService = homeBackgroundService;
 
         PrimaryActionCommand = new Command(async () => await StartCheckInAsync());
         OpenLinkCommand = new Command<ResourceLink>(async link => await OpenLinkAsync(link));
         ShowEnergyWindowsInfoCommand = new Command(async () => await ShowEnergyWindowsInfoAsync());
         OpenGentleReminderCommand = new Command(async () => await OpenGentleReminderAsync());
+        OpenHistoryReminderCommand = new Command(async () => await OpenHistoryReminderAsync());
         ToggleHeavyNoteExpandedCommand = new Command(() => IsHeavyNoteExpanded = true);
         DoneHeavyNoteCommand = new Command(async () => await SaveHeavyNoteAndCollapseAsync());
         ClearHeavyNoteCommand = new Command(async () => await ClearHeavyNoteAsync());
+        OpenBackgroundMenuCommand = new Command(async () => await OpenBackgroundMenuAsync());
         SummaryText = "A calm snapshot of how your week has been going.";
 
         EnsureGreetingTimerStarted();
@@ -308,13 +317,27 @@ public sealed class HomeViewModel : BaseViewModel
         private set => SetProperty(ref _hasTodayRhythm, value);
     }
 
+    public Color BackgroundColor
+    {
+        get => _backgroundColor;
+        private set => SetProperty(ref _backgroundColor, value);
+    }
+
+    public bool ShowBackgroundColor
+    {
+        get => _showBackgroundColor;
+        private set => SetProperty(ref _showBackgroundColor, value);
+    }
+
     public ICommand PrimaryActionCommand { get; }
     public ICommand OpenLinkCommand { get; }
     public ICommand ShowEnergyWindowsInfoCommand { get; }
     public ICommand OpenGentleReminderCommand { get; }
+    public ICommand OpenHistoryReminderCommand { get; }
     public ICommand ToggleHeavyNoteExpandedCommand { get; }
     public ICommand DoneHeavyNoteCommand { get; }
     public ICommand ClearHeavyNoteCommand { get; }
+    public ICommand OpenBackgroundMenuCommand { get; }
     public async Task LoadAsync()
     {
         // Keep the greeting and date in sync with the user's current local time.
@@ -329,6 +352,7 @@ public sealed class HomeViewModel : BaseViewModel
 
         await LoadHeavyNoteAsync();
         await LoadGentleReminderStatusAsync();
+        await RefreshBackgroundAsync();
 
         Trends = await _trendService.GetWeeklyTrendsAsync();
         Tips = await _tipService.GetGentleTipsAsync();
@@ -358,6 +382,11 @@ public sealed class HomeViewModel : BaseViewModel
     {
         // Open the gentle reminder modal (no navigation stack changes).
         return _navigationService.OpenGentleReminderAsync();
+    }
+
+    private Task OpenHistoryReminderAsync()
+    {
+        return _navigationService.OpenHistoryReminderAsync();
     }
 
     private Task OpenLinkAsync(ResourceLink? link)
@@ -421,6 +450,85 @@ public sealed class HomeViewModel : BaseViewModel
             "About Energy Windows",
             "Energy Windows is a calm summary of your last 7 days of check-ins.\nIt looks for simple patterns, like steadiness or ups and downs.\nIt's not a diagnosis, and it's not instructions.\nNo action is required.",
             "OK");
+    }
+
+    private async Task OpenBackgroundMenuAsync()
+    {
+        try
+        {
+            HapticFeedback.Default.Perform(HapticFeedbackType.Click);
+        }
+        catch (Exception)
+        {
+            // Some devices do not support haptics.
+        }
+
+        var page = Application.Current?.MainPage;
+        if (page is null)
+        {
+            return;
+        }
+
+        var action = await page.DisplayActionSheet(
+            "Make this space yours",
+            "Not now",
+            null,
+            "Soft Sage",
+            "Warm Sand",
+            "Sky Mist",
+            "Lavender Haze",
+            "Blush Rose",
+            "Ocean Calm",
+            "Stone Gray",
+            "Midnight Teal",
+            "Back to default");
+
+        var colorHex = action switch
+        {
+            "Soft Sage" => "#DDE7E1",
+            "Warm Sand" => "#EFE3D3",
+            "Sky Mist" => "#DCE7F2",
+            "Lavender Haze" => "#E7DDF0",
+            "Blush Rose" => "#F2D6DE",
+            "Ocean Calm" => "#D6E9E7",
+            "Stone Gray" => "#E5E5E5",
+            "Midnight Teal" => "#0F3D3E",
+            _ => null
+        };
+
+        if (!string.IsNullOrWhiteSpace(colorHex))
+        {
+            await _homeBackgroundService.SetBackgroundColorAsync(colorHex);
+            await RefreshBackgroundAsync();
+            return;
+        }
+
+        if (action == "Back to default")
+        {
+            await _homeBackgroundService.ResetAsync();
+            await RefreshBackgroundAsync();
+        }
+    }
+
+    private async Task RefreshBackgroundAsync()
+    {
+        var colorHex = await _homeBackgroundService.GetBackgroundColorAsync();
+        if (string.IsNullOrWhiteSpace(colorHex))
+        {
+            BackgroundColor = Colors.Transparent;
+            ShowBackgroundColor = false;
+            return;
+        }
+
+        if (!Color.TryParse(colorHex, out var parsed))
+        {
+            BackgroundColor = Colors.Transparent;
+            ShowBackgroundColor = false;
+            return;
+        }
+
+        BackgroundColor = parsed;
+        ShowBackgroundColor = true;
     }
 
     private async Task LoadGentleReminderStatusAsync()

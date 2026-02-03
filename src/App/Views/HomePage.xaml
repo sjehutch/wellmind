@@ -15,17 +15,42 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <ScrollView>
-        <VerticalStackLayout Padding="24" Spacing="16">
+    <Grid>
+        <BoxView
+            Color="{Binding BackgroundColor}"
+            IsVisible="{Binding ShowBackgroundColor}" />
+
+        <ScrollView>
+            <VerticalStackLayout Padding="24" Spacing="16">
             <!-- Header -->
-            <Label Text="WellMind" Style="{DynamicResource Headline}" HorizontalOptions="Start" />
             <Label
-                Text="{Binding GreetingText}"
-                Style="{DynamicResource DateHeadline}"
-                FontSize="15"
-                HorizontalOptions="Start" />
+                Text="WellMind"
+                Style="{DynamicResource Headline}"
+                HorizontalOptions="Start"
+                TextColor="{AppThemeBinding Light=#2F8F5A, Dark=#00E676}" />
+            <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
+                <Label
+                    Text="{Binding GreetingText}"
+                    Style="{DynamicResource DateHeadline}"
+                    FontSize="15"
+                    VerticalOptions="Center" />
+                <Label
+                    Text="✨ Personalize"
+                    TextColor="{AppThemeBinding Light={DynamicResource Gray500}, Dark={DynamicResource Gray200}}"
+                    FontSize="12"
+                    VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenBackgroundMenuCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </HorizontalStackLayout>
             <Label Text="{Binding TodayDateText}" Style="{DynamicResource DateHeadline}" HorizontalOptions="Start" />
             <Label Text="{Binding SummaryText}" Style="{DynamicResource BodyText}" />
+            <Button
+                Text="A reminder from history"
+                Style="{DynamicResource SecondaryButton}"
+                HorizontalOptions="Start"
+                Command="{Binding OpenHistoryReminderCommand}" />
 
             <!-- Daily check-in -->
             <Border
@@ -170,62 +195,28 @@
                 BackgroundColor="{AppThemeBinding Light={DynamicResource Gray100}, Dark={DynamicResource Gray900}}"
                 StrokeShape="RoundRectangle 12"
                 Padding="12">
-                <Grid>
-                    <VerticalStackLayout Spacing="8" IsVisible="True">
-                        <VerticalStackLayout.Triggers>
-                            <DataTrigger TargetType="VerticalStackLayout" Binding="{Binding IsHeavyNoteExpanded}" Value="True">
-                                <Setter Property="IsVisible" Value="False" />
-                            </DataTrigger>
-                        </VerticalStackLayout.Triggers>
-                        <VerticalStackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ToggleHeavyNoteExpandedCommand}" />
-                        </VerticalStackLayout.GestureRecognizers>
-                        <Label
-                            Text="Want to note anything that made today feel heavier?"
-                            Style="{DynamicResource SectionTitle}"
-                            FontSize="18" />
-                        <Label
-                            Text="{Binding HeavyNotePreview}"
-                            Style="{DynamicResource CaptionText}"
-                            IsVisible="{Binding HasHeavyNote}" />
-                        <Label
-                            Text="{Binding HeavyNoteSavedLabel}"
-                            IsVisible="{Binding HasHeavyNote}"
-                            FontSize="12"
-                            TextColor="{DynamicResource Gray500}" />
-                    </VerticalStackLayout>
-
-                    <VerticalStackLayout Spacing="8" IsVisible="False">
-                        <VerticalStackLayout.Triggers>
-                            <DataTrigger TargetType="VerticalStackLayout" Binding="{Binding IsHeavyNoteExpanded}" Value="True">
-                                <Setter Property="IsVisible" Value="True" />
-                            </DataTrigger>
-                        </VerticalStackLayout.Triggers>
-                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
-                            <Label
-                                Text="Want to note anything that made today feel heavier?"
-                                Style="{DynamicResource SectionTitle}"
-                                FontSize="18" />
-                            <Button
-                                Grid.Column="1"
-                                Text="Done"
-                                BackgroundColor="Transparent"
-                                TextColor="{DynamicResource AccentGreen}"
-                                Command="{Binding DoneHeavyNoteCommand}" />
-                        </Grid>
-                        <Editor
-                            Text="{Binding HeavyNoteText}"
-                            AutoSize="TextChanges"
-                            Placeholder="Example: Work stuff felt heavy. Didn't sleep great."
-                            MaxLength="800"
-                            HeightRequest="120" />
-                        <Button
-                            Text="Clear"
-                            Style="{DynamicResource SecondaryButton}"
-                            Command="{Binding ClearHeavyNoteCommand}"
-                            HorizontalOptions="Start" />
-                    </VerticalStackLayout>
-                </Grid>
+                <VerticalStackLayout Spacing="8">
+                    <Label
+                        Text="Want to note anything that made today feel heavier?"
+                        Style="{DynamicResource SectionTitle}"
+                        FontSize="18" />
+                    <Editor
+                        Text="{Binding HeavyNoteText}"
+                        AutoSize="TextChanges"
+                        Placeholder="Example: Work stuff felt heavy. Didn't sleep great."
+                        MaxLength="800"
+                        HeightRequest="120" />
+                    <Label
+                        Text="{Binding HeavyNoteSavedLabel}"
+                        IsVisible="{Binding HasHeavyNote}"
+                        FontSize="12"
+                        TextColor="{DynamicResource Gray500}" />
+                    <Button
+                        Text="Clear"
+                        Style="{DynamicResource SecondaryButton}"
+                        Command="{Binding ClearHeavyNoteCommand}"
+                        HorizontalOptions="Start" />
+                </VerticalStackLayout>
             </Border>
 
             <!-- Today's rhythm -->
@@ -282,6 +273,7 @@
                     </HorizontalStackLayout>
                 </ScrollView>
             </VerticalStackLayout>
-        </VerticalStackLayout>
-    </ScrollView>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
 </ContentPage>

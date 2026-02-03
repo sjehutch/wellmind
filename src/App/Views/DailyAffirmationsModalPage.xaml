@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="WellMind.Views.DailyAffirmationsModalPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="{AppThemeBinding Light=#F2D6DE, Dark=#1D1216}">
+
+    <Grid>
+        <!-- Full-screen tap to dismiss -->
+        <BoxView BackgroundColor="Transparent">
+            <BoxView.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding CloseCommand}" />
+            </BoxView.GestureRecognizers>
+        </BoxView>
+
+        <Grid
+            Padding="28"
+            RowDefinitions="Auto,*">
+
+            <!-- Close button -->
+            <Grid Grid.Row="0" HorizontalOptions="End">
+                <Button
+                    Text="✕"
+                    FontSize="20"
+                    Opacity="0.6"
+                    WidthRequest="44"
+                    HeightRequest="44"
+                    BackgroundColor="Transparent"
+                    TextColor="{AppThemeBinding Light=#2B1A20, Dark=#FFFFFF}"
+                    Command="{Binding CloseCommand}" />
+            </Grid>
+
+            <!-- Main content -->
+            <VerticalStackLayout
+                Grid.Row="1"
+                VerticalOptions="Start"
+                Margin="0,80,0,0"
+                Spacing="18">
+
+                <Label
+                    Text="Say these 5 things every day"
+                    FontSize="30"
+                    FontAttributes="Bold"
+                    TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}" />
+
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Text="“I am the best.”"
+                        FontSize="22"
+                        TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}" />
+                    <Label
+                        Text="“I can do it alone.”"
+                        FontSize="22"
+                        TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}" />
+                    <Label
+                        Text="“God is always with me.”"
+                        FontSize="22"
+                        TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}" />
+                    <Label
+                        Text="“I am a winner.”"
+                        FontSize="22"
+                        TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}" />
+                    <Label
+                        Text="“Today is my day.”"
+                        FontSize="22"
+                        TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}" />
+                </VerticalStackLayout>
+
+                <Button
+                    Text="Share"
+                    Command="{Binding ShareCommand}"
+                    Style="{DynamicResource SecondaryButton}"
+                    HorizontalOptions="Start" />
+            </VerticalStackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

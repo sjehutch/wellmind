@@ -23,28 +23,75 @@ public partial class App : Application
         _logger.LogInfo("App started.");
         try
         {
-            MainPage = services.GetRequiredService<AppShell>();
+            MainPage = services.GetRequiredService<LaunchPage>();
         }
         catch (Exception exception)
         {
-            _logger.LogException(exception, "Failed to create AppShell");
+            _logger.LogException(exception, "Failed to create LaunchPage");
             throw;
         }
 
-        ShowWelcomeIfNeeded();
     }
 
-    private void ShowWelcomeIfNeeded()
+    protected override Window CreateWindow(IActivationState? activationState)
     {
-        if (_firstRunStore.HasSeenWelcome())
-        {
-            return;
-        }
+        var window = base.CreateWindow(activationState);
+        MainThread.BeginInvokeOnMainThread(ShowLaunchModals);
+        return window;
+    }
 
+    private void ShowLaunchModals()
+    {
         MainThread.BeginInvokeOnMainThread(async () =>
         {
-            var modal = _services.GetRequiredService<WelcomeModalPage>();
-            await MainPage.Navigation.PushModalAsync(modal);
+            var window = Current?.Windows.FirstOrDefault();
+            var rootPage = window?.Page;
+            if (rootPage is null)
+            {
+                return;
+            }
+
+            if (!_firstRunStore.HasSeenWelcome())
+            {
+                var welcome = _services.GetRequiredService<WelcomeModalPage>();
+                var closedTcs = new TaskCompletionSource<bool>();
+                void HandleDisappearing(object? sender, EventArgs args)
+                {
+                    welcome.Disappearing -= HandleDisappearing;
+                    closedTcs.TrySetResult(true);
+                }
+
+                welcome.Disappearing += HandleDisappearing;
+                await rootPage.Navigation.PushModalAsync(welcome);
+                await closedTcs.Task;
+            }
+
+            try
+            {
+                var history = _services.GetRequiredService<HistoryReminderModalPage>();
+                await rootPage.Navigation.PushModalAsync(history);
+            }
+            catch (Exception exception)
+            {
+                _logger.LogException(exception, "Failed to show HistoryReminderModalPage");
+            }
+
+        });
+    }
+
+    public void ShowHomeShellFromLaunch()
+    {
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            try
+            {
+                MainPage = _services.GetRequiredService<AppShell>();
+            }
+            catch (Exception exception)
+            {
+                _logger.LogException(exception, "Failed to create AppShell");
+                throw;
+            }
         });
     }
 

@@ -12,6 +12,9 @@ WellMind is a low-drama wellness app that helps busy people notice early burnout
 - Simple trends based on recent check-ins.
 - Gentle, optional suggestions based on answers.
 - Optional gentle reminder (local daily notification at a chosen time).
+- Daily affirmations screen shown on launch with multiple rotating sets.
+- Shareable affirmations (screenshot share).
+- Home personalization via a calm preset background color palette.
 - Offline-first local storage; no account needed.
 
 ## What it does not do (MVP)
@@ -52,10 +55,11 @@ Energy Windows:
   - Use alerting or warning language.
 
 ## MVP screens
-- Home: daily check-in entry, weekly trends, gentle tips, today’s balance, resource links.
+- Home: daily check-in entry, weekly trends, gentle tips, today’s balance, resource links, personalize link.
 - Check-In: sliders for energy/stress/focus/sleep, optional note, save or cancel.
 - In-app browser: opens learn-more links.
 - Gentle Reminder (modal): simple toggle + time for a daily nudge.
+- Daily Affirmations (launch screen): rotating sets, share, favorites-first ordering.
 - Settings (planned): reminder toggle, export/delete data.
 
 ## To do (near-term)

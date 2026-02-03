@@ -6,5 +6,6 @@ public interface INavigationService
     Task GoBackAsync();
     Task GoToResourceAsync(string title, string url);
     Task OpenGentleReminderAsync();
+    Task OpenHistoryReminderAsync();
     Task CloseModalAsync();
 }

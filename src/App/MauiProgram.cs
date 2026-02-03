@@ -27,6 +27,9 @@ public static class MauiProgram
 		builder.Services.AddTransient<CheckInPage>();
 		builder.Services.AddTransient<InAppBrowserPage>();
 		builder.Services.AddTransient<WelcomeModalPage>();
+		builder.Services.AddTransient<LaunchPage>();
+		builder.Services.AddTransient<DailyAffirmationsModalPage>();
+		builder.Services.AddTransient<HistoryReminderModalPage>();
 		builder.Services.AddTransient<PastCheckInsPage>();
 		builder.Services.AddTransient<ScoreExplanationPage>();
 		builder.Services.AddTransient<PrivacyCommitmentPage>();
@@ -39,6 +42,8 @@ public static class MauiProgram
 		builder.Services.AddTransient<WeeklyTrendsViewModel>();
 		builder.Services.AddTransient<InAppBrowserViewModel>();
 		builder.Services.AddTransient<WelcomeModalViewModel>();
+		builder.Services.AddTransient<DailyAffirmationsModalViewModel>();
+		builder.Services.AddTransient<HistoryReminderModalViewModel>();
 		builder.Services.AddTransient<PastCheckInsViewModel>();
 		builder.Services.AddTransient<ScoreExplanationViewModel>();
 		builder.Services.AddTransient<PrivacyCommitmentViewModel>();
@@ -55,11 +60,13 @@ public static class MauiProgram
 		builder.Services.AddSingleton<IGrounded, GroundedService>();
 		builder.Services.AddSingleton<IEnergyWindowsService, EnergyWindowsService>();
 		builder.Services.AddSingleton<IFirstRunStore, FirstRunStore>();
+		builder.Services.AddSingleton<IHomeBackgroundService, HomeBackgroundService>();
 		builder.Services.AddSingleton<TalkToSomeoneConfigLoader>();
 		builder.Services.AddSingleton<ILoggerService, FileLoggerService>();
 		builder.Services.AddSingleton<IReminderSettingsStore, ReminderSettingsStore>();
 		builder.Services.AddSingleton<ILocalNotificationService, LocalNotificationService>();
 		builder.Services.AddSingleton<IGratitudeReminderService, GratitudeReminderService>();
+		builder.Services.AddSingleton<HistoryReminderService>();
 
 #if DEBUG
 		builder.Logging.AddDebug();

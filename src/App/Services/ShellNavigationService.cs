@@ -35,6 +35,12 @@ public sealed class ShellNavigationService : INavigationService
         await Shell.Current.Navigation.PushModalAsync(page);
     }
 
+    public async Task OpenHistoryReminderAsync()
+    {
+        var page = _services.GetRequiredService<HistoryReminderModalPage>();
+        await Shell.Current.Navigation.PushModalAsync(page);
+    }
+
     public Task CloseModalAsync()
     {
         return Shell.Current.Navigation.PopModalAsync();

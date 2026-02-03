@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="WellMind.Views.LaunchPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="{AppThemeBinding Light=#F2D6DE, Dark=#0B0F0E}">
+    <Grid RowDefinitions="Auto,*" Padding="20">
+        <Grid Grid.Row="0" HorizontalOptions="End">
+            <Button
+                Text="✕"
+                FontSize="20"
+                Opacity="0.7"
+                WidthRequest="44"
+                HeightRequest="44"
+                BackgroundColor="Transparent"
+                TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}"
+                Clicked="OnCloseClicked" />
+        </Grid>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout
+                Padding="8,20,8,24"
+                Spacing="14"
+                VerticalOptions="Start">
+                <Label
+                    Text="Daily affirmations"
+                    TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}"
+                    FontSize="28"
+                    FontAttributes="Bold" />
+                <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto" ColumnSpacing="10" RowSpacing="10">
+                    <Label Grid.Row="0" Grid.Column="0" Text="1." TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}" FontSize="20" />
+                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding Line1}" TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}" FontSize="20" />
+
+                    <Label Grid.Row="1" Grid.Column="0" Text="2." TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}" FontSize="20" />
+                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding Line2}" TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}" FontSize="20" />
+
+                    <Label Grid.Row="2" Grid.Column="0" Text="3." TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}" FontSize="20" />
+                    <Label Grid.Row="2" Grid.Column="1" Text="{Binding Line3}" TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}" FontSize="20" />
+
+                    <Label Grid.Row="3" Grid.Column="0" Text="4." TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}" FontSize="20" />
+                    <Label Grid.Row="3" Grid.Column="1" Text="{Binding Line4}" TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}" FontSize="20" />
+
+                    <Label Grid.Row="4" Grid.Column="0" Text="5." TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}" FontSize="20" />
+                    <Label Grid.Row="4" Grid.Column="1" Text="{Binding Line5}" TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}" FontSize="20" />
+                </Grid>
+
+                <Button
+                    Text="{Binding FavoriteButtonText}"
+                    Style="{DynamicResource SecondaryButton}"
+                    HorizontalOptions="Start"
+                    Clicked="OnFavoriteClicked" />
+
+                <Button
+                    Text="More affirmations"
+                    Style="{DynamicResource SecondaryButton}"
+                    HorizontalOptions="Start"
+                    Clicked="OnMoreAffirmationsClicked" />
+
+                <Button
+                    Text="Share"
+                    Style="{DynamicResource SecondaryButton}"
+                    HorizontalOptions="Start"
+                    Clicked="OnShareClicked" />
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
