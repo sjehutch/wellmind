@@ -12,6 +12,8 @@ public partial class App : Application
     private readonly ILoggerService _logger;
     private readonly IServiceProvider _services;
     private readonly IFirstRunStore _firstRunStore;
+    private readonly SemaphoreSlim _launchModalGate = new(1, 1);
+    private bool _hasRunLaunchModalSequence;
 
     public App(IServiceProvider services, ILoggerService logger, IFirstRunStore firstRunStore)
     {
@@ -36,18 +38,24 @@ public partial class App : Application
     protected override Window CreateWindow(IActivationState? activationState)
     {
         var window = base.CreateWindow(activationState);
-        MainThread.BeginInvokeOnMainThread(ShowLaunchModals);
+        MainThread.BeginInvokeOnMainThread(() => _ = RunLaunchModalSequenceAsync());
         return window;
     }
 
-    private void ShowLaunchModals()
+    private async Task RunLaunchModalSequenceAsync()
     {
-        MainThread.BeginInvokeOnMainThread(async () =>
+        await _launchModalGate.WaitAsync();
+        try
         {
-            var window = Current?.Windows.FirstOrDefault();
-            var rootPage = window?.Page;
+            if (_hasRunLaunchModalSequence)
+            {
+                return;
+            }
+
+            var rootPage = await WaitForRootPageAsync();
             if (rootPage is null)
             {
+                _logger.LogInfo("Skipped launch history reminder because root page was unavailable.");
                 return;
             }
 
@@ -70,13 +78,33 @@ public partial class App : Application
             {
                 var history = _services.GetRequiredService<HistoryReminderModalPage>();
                 await rootPage.Navigation.PushModalAsync(history);
+                _hasRunLaunchModalSequence = true;
             }
             catch (Exception exception)
             {
                 _logger.LogException(exception, "Failed to show HistoryReminderModalPage");
             }
+        }
+        finally
+        {
+            _launchModalGate.Release();
+        }
+    }
 
-        });
+    private static async Task<Page?> WaitForRootPageAsync()
+    {
+        for (var i = 0; i < 20; i++)
+        {
+            var page = Current?.Windows.FirstOrDefault()?.Page;
+            if (page is not null)
+            {
+                return page;
+            }
+
+            await Task.Delay(100);
+        }
+
+        return null;
     }
 
     public void ShowHomeShellFromLaunch()

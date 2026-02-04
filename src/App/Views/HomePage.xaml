@@ -46,11 +46,67 @@
             </HorizontalStackLayout>
             <Label Text="{Binding TodayDateText}" Style="{DynamicResource DateHeadline}" HorizontalOptions="Start" />
             <Label Text="{Binding SummaryText}" Style="{DynamicResource BodyText}" />
-            <Button
-                Text="A reminder from history"
-                Style="{DynamicResource SecondaryButton}"
-                HorizontalOptions="Start"
-                Command="{Binding OpenHistoryReminderCommand}" />
+            <!-- Tone pack -->
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Tone for today" Style="{DynamicResource SectionTitle}" />
+                <Label Text="{Binding TonePackStatusText}" Style="{DynamicResource CaptionText}" />
+                <ScrollView Orientation="Horizontal">
+                    <HorizontalStackLayout Spacing="8">
+                        <Button
+                            Text="Grounding"
+                            Style="{DynamicResource TonePackOptionButton}"
+                            Command="{Binding SetTonePackCommand}"
+                            CommandParameter="grounding">
+                            <Button.Triggers>
+                                <DataTrigger TargetType="Button" Binding="{Binding IsGroundingToneSelected}" Value="True">
+                                    <Setter Property="BackgroundColor" Value="{DynamicResource Primary}" />
+                                    <Setter Property="TextColor" Value="{DynamicResource White}" />
+                                    <Setter Property="FontAttributes" Value="Bold" />
+                                </DataTrigger>
+                            </Button.Triggers>
+                        </Button>
+                        <Button
+                            Text="Focus"
+                            Style="{DynamicResource TonePackOptionButton}"
+                            Command="{Binding SetTonePackCommand}"
+                            CommandParameter="focus">
+                            <Button.Triggers>
+                                <DataTrigger TargetType="Button" Binding="{Binding IsFocusToneSelected}" Value="True">
+                                    <Setter Property="BackgroundColor" Value="{DynamicResource Primary}" />
+                                    <Setter Property="TextColor" Value="{DynamicResource White}" />
+                                    <Setter Property="FontAttributes" Value="Bold" />
+                                </DataTrigger>
+                            </Button.Triggers>
+                        </Button>
+                        <Button
+                            Text="Recovery"
+                            Style="{DynamicResource TonePackOptionButton}"
+                            Command="{Binding SetTonePackCommand}"
+                            CommandParameter="recovery">
+                            <Button.Triggers>
+                                <DataTrigger TargetType="Button" Binding="{Binding IsRecoveryToneSelected}" Value="True">
+                                    <Setter Property="BackgroundColor" Value="{DynamicResource Primary}" />
+                                    <Setter Property="TextColor" Value="{DynamicResource White}" />
+                                    <Setter Property="FontAttributes" Value="Bold" />
+                                </DataTrigger>
+                            </Button.Triggers>
+                        </Button>
+                        <Button
+                            Text="Confidence"
+                            Style="{DynamicResource TonePackOptionButton}"
+                            Command="{Binding SetTonePackCommand}"
+                            CommandParameter="confidence">
+                            <Button.Triggers>
+                                <DataTrigger TargetType="Button" Binding="{Binding IsConfidenceToneSelected}" Value="True">
+                                    <Setter Property="BackgroundColor" Value="{DynamicResource Primary}" />
+                                    <Setter Property="TextColor" Value="{DynamicResource White}" />
+                                    <Setter Property="FontAttributes" Value="Bold" />
+                                </DataTrigger>
+                            </Button.Triggers>
+                        </Button>
+                    </HorizontalStackLayout>
+                </ScrollView>
+            </VerticalStackLayout>
 
             <!-- Daily check-in -->
             <Border
@@ -159,6 +215,10 @@
             <!-- Gentle tips -->
             <VerticalStackLayout Spacing="8" IsVisible="{Binding HasTips}">
                 <Label Text="Gentle tips" Style="{DynamicResource SectionTitle}" />
+                <Label
+                    Text="{Binding TipFeedbackStatusText}"
+                    Style="{DynamicResource CaptionText}"
+                    IsVisible="{Binding HasTipFeedbackStatus}" />
                 <CollectionView ItemsSource="{Binding Tips}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
@@ -167,7 +227,15 @@
                                 StrokeShape="RoundRectangle 10"
                                 Padding="12"
                                 Margin="0,0,0,8">
-                                <Label Text="{Binding Message}" Style="{DynamicResource CaptionText}" />
+                                <VerticalStackLayout Spacing="6">
+                                    <Label Text="{Binding Message}" Style="{DynamicResource CaptionText}" />
+                                    <Button
+                                        Text="Helpful"
+                                        Style="{DynamicResource TipFeedbackButton}"
+                                        HorizontalOptions="Start"
+                                        Command="{Binding Path=BindingContext.MarkTipHelpfulCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                                        CommandParameter="{Binding .}" />
+                                </VerticalStackLayout>
                             </Border>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>

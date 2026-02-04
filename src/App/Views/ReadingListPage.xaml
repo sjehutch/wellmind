@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="WellMind.Views.ReadingListPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="{AppThemeBinding Light=#EEF4F1, Dark=#121A17}"
+    Title="Reading">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="14">
+            <Label
+                Text="Reading at your own pace"
+                FontSize="30"
+                FontAttributes="Bold"
+                TextColor="{AppThemeBinding Light={DynamicResource Gray900}, Dark={DynamicResource White}}" />
+
+            <Label
+                Text="Short, grounded explanations you can come back to anytime."
+                Style="{DynamicResource BodyText}" />
+
+            <CollectionView
+                x:Name="ArticlesCollection"
+                SelectionMode="Single"
+                SelectionChanged="OnSelectionChanged"
+                Margin="0,6,0,0">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border
+                            BackgroundColor="{AppThemeBinding Light={DynamicResource White}, Dark={DynamicResource Gray900}}"
+                            StrokeShape="RoundRectangle 12"
+                            Padding="16"
+                            Margin="0,0,0,10">
+                            <Label
+                                Text="{Binding Title}"
+                                FontSize="24"
+                                LineBreakMode="WordWrap"
+                                TextColor="{AppThemeBinding Light={DynamicResource Gray900}, Dark={DynamicResource White}}" />
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

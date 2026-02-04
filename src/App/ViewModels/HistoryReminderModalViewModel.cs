@@ -9,6 +9,7 @@ namespace WellMind.ViewModels;
 public sealed class HistoryReminderModalViewModel : BaseViewModel
 {
     private readonly HistoryReminderService _historyReminderService;
+    private bool _isClosing;
     private bool _isInitialized;
     private string _eventText = "On a day like today, someone chose to slow down and notice what was already working.";
     private string _reflectionText = "Gentle progress counts. A small, steady step is still a step.";
@@ -61,7 +62,30 @@ public sealed class HistoryReminderModalViewModel : BaseViewModel
 
     private async Task CloseAsync()
     {
-        await Shell.Current.Navigation.PopModalAsync();
+        if (_isClosing)
+        {
+            return;
+        }
+
+        _isClosing = true;
+
+        var navigation = Shell.Current?.Navigation
+            ?? Application.Current?.Windows.FirstOrDefault()?.Page?.Navigation;
+
+        if (navigation is null || navigation.ModalStack.Count == 0)
+        {
+            _isClosing = false;
+            return;
+        }
+
+        try
+        {
+            await navigation.PopModalAsync();
+        }
+        finally
+        {
+            _isClosing = false;
+        }
     }
 
     private async Task ShareAsync()

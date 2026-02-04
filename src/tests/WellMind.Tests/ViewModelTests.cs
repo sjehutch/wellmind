@@ -18,7 +18,10 @@ public sealed class ViewModelTests
             new FakeTipService(),
             new FakeResourceLinkService(),
             new FakeEnergyWindowsService(),
-            new FakeReminderSettingsStore());
+            new FakeReminderSettingsStore(),
+            new FakeHomeBackgroundService(),
+            new FakeTonePackStore(),
+            new FakeTipFeedbackStore());
 
         await viewModel.LoadAsync();
 
@@ -40,7 +43,10 @@ public sealed class ViewModelTests
             new FakeTipService(),
             new FakeResourceLinkService(),
             new FakeEnergyWindowsService(),
-            new FakeReminderSettingsStore());
+            new FakeReminderSettingsStore(),
+            new FakeHomeBackgroundService(),
+            new FakeTonePackStore(),
+            new FakeTipFeedbackStore());
 
         await viewModel.LoadAsync();
 
@@ -166,12 +172,68 @@ internal sealed class FakeNavigationService : INavigationService
         return Task.CompletedTask;
     }
 
+    public Task OpenHistoryReminderAsync()
+    {
+        return Task.CompletedTask;
+    }
+
     public Task CloseModalAsync()
     {
         return Task.CompletedTask;
     }
 
     public Task GoBackAsync()
+    {
+        return Task.CompletedTask;
+    }
+}
+
+internal sealed class FakeHomeBackgroundService : IHomeBackgroundService
+{
+    private string? _colorHex;
+
+    public Task<string?> GetBackgroundColorAsync(CancellationToken ct = default)
+    {
+        return Task.FromResult(_colorHex);
+    }
+
+    public Task SetBackgroundColorAsync(string colorHex, CancellationToken ct = default)
+    {
+        _colorHex = colorHex;
+        return Task.CompletedTask;
+    }
+
+    public Task ResetAsync(CancellationToken ct = default)
+    {
+        _colorHex = null;
+        return Task.CompletedTask;
+    }
+}
+
+internal sealed class FakeTonePackStore : ITonePackStore
+{
+    public TonePack TonePack { get; set; } = TonePack.Grounding;
+
+    public Task<TonePack> GetAsync(CancellationToken ct = default)
+    {
+        return Task.FromResult(TonePack);
+    }
+
+    public Task SaveAsync(TonePack tonePack, CancellationToken ct = default)
+    {
+        TonePack = tonePack;
+        return Task.CompletedTask;
+    }
+}
+
+internal sealed class FakeTipFeedbackStore : ITipFeedbackStore
+{
+    public Task<int> GetHelpfulCountAsync(string tipId, CancellationToken ct = default)
+    {
+        return Task.FromResult(0);
+    }
+
+    public Task MarkHelpfulAsync(string tipId, CancellationToken ct = default)
     {
         return Task.CompletedTask;
     }

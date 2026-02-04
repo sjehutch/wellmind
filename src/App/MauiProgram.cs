@@ -34,6 +34,7 @@ public static class MauiProgram
 		builder.Services.AddTransient<ScoreExplanationPage>();
 		builder.Services.AddTransient<PrivacyCommitmentPage>();
 		builder.Services.AddTransient<GroundedPage>();
+		builder.Services.AddTransient<ReadingListPage>();
 		builder.Services.AddTransient<TalkToSomeonePage>();
 		builder.Services.AddTransient<GentleReminderPage>();
 
@@ -67,6 +68,8 @@ public static class MauiProgram
 		builder.Services.AddSingleton<ILocalNotificationService, LocalNotificationService>();
 		builder.Services.AddSingleton<IGratitudeReminderService, GratitudeReminderService>();
 		builder.Services.AddSingleton<HistoryReminderService>();
+		builder.Services.AddSingleton<ITonePackStore, TonePackStore>();
+		builder.Services.AddSingleton<ITipFeedbackStore, TipFeedbackStore>();
 
 #if DEBUG
 		builder.Logging.AddDebug();

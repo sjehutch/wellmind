@@ -7,6 +7,8 @@ namespace WellMind.ViewModels;
 
 public sealed class DailyAffirmationsModalViewModel : BaseViewModel
 {
+    private bool _isClosing;
+
     public DailyAffirmationsModalViewModel()
     {
         CloseCommand = new Command(async () => await CloseAsync());
@@ -18,7 +20,30 @@ public sealed class DailyAffirmationsModalViewModel : BaseViewModel
 
     private async Task CloseAsync()
     {
-        await Shell.Current.Navigation.PopModalAsync();
+        if (_isClosing)
+        {
+            return;
+        }
+
+        _isClosing = true;
+
+        var navigation = Shell.Current?.Navigation
+            ?? Application.Current?.Windows.FirstOrDefault()?.Page?.Navigation;
+
+        if (navigation is null || navigation.ModalStack.Count == 0)
+        {
+            _isClosing = false;
+            return;
+        }
+
+        try
+        {
+            await navigation.PopModalAsync();
+        }
+        finally
+        {
+            _isClosing = false;
+        }
     }
 
     private async Task ShareAsync()

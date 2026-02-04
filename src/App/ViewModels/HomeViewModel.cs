@@ -21,6 +21,8 @@ public sealed class HomeViewModel : BaseViewModel
     private readonly IEnergyWindowsService _energyWindowsService;
     private readonly IReminderSettingsStore _reminderSettingsStore;
     private readonly IHomeBackgroundService _homeBackgroundService;
+    private readonly ITonePackStore _tonePackStore;
+    private readonly ITipFeedbackStore _tipFeedbackStore;
     private IReadOnlyList<Trend> _trends = Array.Empty<Trend>();
     private IReadOnlyList<Tip> _tips = Array.Empty<Tip>();
     private IReadOnlyList<ResourceLink> _links = Array.Empty<ResourceLink>();
@@ -56,6 +58,9 @@ public sealed class HomeViewModel : BaseViewModel
     private IDispatcherTimer? _greetingTimer;
     private Color _backgroundColor = Colors.Transparent;
     private bool _showBackgroundColor;
+    private TonePack _selectedTonePack = TonePack.Grounding;
+    private string _tonePackStatusText = "Current tone: Grounding";
+    private string _tipFeedbackStatusText = string.Empty;
 
     public HomeViewModel(
         ITrendService trendService,
@@ -65,7 +70,9 @@ public sealed class HomeViewModel : BaseViewModel
         IResourceLinkService resourceLinkService,
         IEnergyWindowsService energyWindowsService,
         IReminderSettingsStore reminderSettingsStore,
-        IHomeBackgroundService homeBackgroundService)
+        IHomeBackgroundService homeBackgroundService,
+        ITonePackStore tonePackStore,
+        ITipFeedbackStore tipFeedbackStore)
     {
         _trendService = trendService;
         _navigationService = navigationService;
@@ -75,12 +82,16 @@ public sealed class HomeViewModel : BaseViewModel
         _energyWindowsService = energyWindowsService;
         _reminderSettingsStore = reminderSettingsStore;
         _homeBackgroundService = homeBackgroundService;
+        _tonePackStore = tonePackStore;
+        _tipFeedbackStore = tipFeedbackStore;
 
         PrimaryActionCommand = new Command(async () => await StartCheckInAsync());
         OpenLinkCommand = new Command<ResourceLink>(async link => await OpenLinkAsync(link));
         ShowEnergyWindowsInfoCommand = new Command(async () => await ShowEnergyWindowsInfoAsync());
         OpenGentleReminderCommand = new Command(async () => await OpenGentleReminderAsync());
         OpenHistoryReminderCommand = new Command(async () => await OpenHistoryReminderAsync());
+        SetTonePackCommand = new Command<string>(async tone => await SetTonePackAsync(tone));
+        MarkTipHelpfulCommand = new Command<Tip>(async tip => await MarkTipHelpfulAsync(tip));
         ToggleHeavyNoteExpandedCommand = new Command(() => IsHeavyNoteExpanded = true);
         DoneHeavyNoteCommand = new Command(async () => await SaveHeavyNoteAndCollapseAsync());
         ClearHeavyNoteCommand = new Command(async () => await ClearHeavyNoteAsync());
@@ -329,11 +340,42 @@ public sealed class HomeViewModel : BaseViewModel
         private set => SetProperty(ref _showBackgroundColor, value);
     }
 
+    public TonePack SelectedTonePack
+    {
+        get => _selectedTonePack;
+        private set => SetProperty(ref _selectedTonePack, value);
+    }
+
+    public string TonePackStatusText
+    {
+        get => _tonePackStatusText;
+        private set => SetProperty(ref _tonePackStatusText, value);
+    }
+
+    public string TipFeedbackStatusText
+    {
+        get => _tipFeedbackStatusText;
+        private set
+        {
+            SetProperty(ref _tipFeedbackStatusText, value);
+            RaisePropertyChanged(nameof(HasTipFeedbackStatus));
+        }
+    }
+
+    public bool HasTipFeedbackStatus => !string.IsNullOrWhiteSpace(TipFeedbackStatusText);
+
+    public bool IsGroundingToneSelected => SelectedTonePack == TonePack.Grounding;
+    public bool IsFocusToneSelected => SelectedTonePack == TonePack.Focus;
+    public bool IsRecoveryToneSelected => SelectedTonePack == TonePack.Recovery;
+    public bool IsConfidenceToneSelected => SelectedTonePack == TonePack.Confidence;
+
     public ICommand PrimaryActionCommand { get; }
     public ICommand OpenLinkCommand { get; }
     public ICommand ShowEnergyWindowsInfoCommand { get; }
     public ICommand OpenGentleReminderCommand { get; }
     public ICommand OpenHistoryReminderCommand { get; }
+    public ICommand SetTonePackCommand { get; }
+    public ICommand MarkTipHelpfulCommand { get; }
     public ICommand ToggleHeavyNoteExpandedCommand { get; }
     public ICommand DoneHeavyNoteCommand { get; }
     public ICommand ClearHeavyNoteCommand { get; }
@@ -352,6 +394,7 @@ public sealed class HomeViewModel : BaseViewModel
 
         await LoadHeavyNoteAsync();
         await LoadGentleReminderStatusAsync();
+        await LoadTonePackAsync();
         await RefreshBackgroundAsync();
 
         Trends = await _trendService.GetWeeklyTrendsAsync();
@@ -387,6 +430,48 @@ public sealed class HomeViewModel : BaseViewModel
     private Task OpenHistoryReminderAsync()
     {
         return _navigationService.OpenHistoryReminderAsync();
+    }
+
+    private async Task SetTonePackAsync(string? tone)
+    {
+        if (!TonePackExtensions.TryParse(tone, out var parsedTonePack))
+        {
+            return;
+        }
+
+        if (SelectedTonePack == parsedTonePack)
+        {
+            return;
+        }
+
+        SelectedTonePack = parsedTonePack;
+        TonePackStatusText = $"Current tone: {SelectedTonePack.ToDisplayName()}";
+        RaiseToneSelectionChanged();
+        await _tonePackStore.SaveAsync(parsedTonePack);
+        Tips = await _tipService.GetGentleTipsAsync();
+        UpdateVisibility();
+    }
+
+    private async Task MarkTipHelpfulAsync(Tip? tip)
+    {
+        if (tip is null || string.IsNullOrWhiteSpace(tip.Id))
+        {
+            return;
+        }
+
+        try
+        {
+            HapticFeedback.Default.Perform(HapticFeedbackType.Click);
+        }
+        catch (Exception)
+        {
+            // Some devices do not support haptics.
+        }
+
+        await _tipFeedbackStore.MarkHelpfulAsync(tip.Id);
+        TipFeedbackStatusText = "Thanks. We'll prioritize tips like this.";
+        Tips = await _tipService.GetGentleTipsAsync();
+        UpdateVisibility();
     }
 
     private Task OpenLinkAsync(ResourceLink? link)
@@ -540,6 +625,21 @@ public sealed class HomeViewModel : BaseViewModel
             ? $"Daily at {DateTime.Today.Add(GentleReminderTime).ToString("h:mm tt")}"
             : "Off";
         GentleReminderButtonText = IsGentleReminderEnabled ? "Adjust reminder" : "Set reminder";
+    }
+
+    private async Task LoadTonePackAsync()
+    {
+        SelectedTonePack = await _tonePackStore.GetAsync();
+        TonePackStatusText = $"Current tone: {SelectedTonePack.ToDisplayName()}";
+        RaiseToneSelectionChanged();
+    }
+
+    private void RaiseToneSelectionChanged()
+    {
+        RaisePropertyChanged(nameof(IsGroundingToneSelected));
+        RaisePropertyChanged(nameof(IsFocusToneSelected));
+        RaisePropertyChanged(nameof(IsRecoveryToneSelected));
+        RaisePropertyChanged(nameof(IsConfidenceToneSelected));
     }
 
     private void UpdateGreetingAndDate()

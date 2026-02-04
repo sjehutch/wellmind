@@ -42,6 +42,12 @@ public partial class AppShell : Shell
             Content = services.GetRequiredService<GroundedPage>()
         });
 
+        Items.Add(new ShellContent
+        {
+            Title = "Reading",
+            Content = services.GetRequiredService<ReadingListPage>()
+        });
+
         var supportFlyout = new FlyoutItem { Title = "Support" };
         supportFlyout.Items.Add(new ShellContent
         {

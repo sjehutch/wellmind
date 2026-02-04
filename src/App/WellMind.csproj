@@ -20,7 +20,7 @@
     <!-- Versioning -->
     <!-- App Store Connect shows 1.0; TestFlight requires build number to increment each upload -->
     <ApplicationDisplayVersion>1.1</ApplicationDisplayVersion>
-    <ApplicationVersion>1</ApplicationVersion>
+    <ApplicationVersion>2</ApplicationVersion>
 
     <!-- Platform minimums -->
     <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
