@@ -1,0 +1,45 @@
+{
+  "outputSize": "iphone-67",
+  "slides": [
+    {
+      "inputFile": "reading-list.png",
+      "headline": "Reading at your own pace",
+      "subheadline": "Short, grounded reading you can revisit anytime.",
+      "theme": "mist",
+      "outputName": "01-reading-list.png",
+      "cropMode": "contain"
+    },
+    {
+      "inputFile": "reading-detail.png",
+      "headline": "Simple explanations that calm the mind",
+      "subheadline": "Clear words for anxious moments.",
+      "theme": "breeze",
+      "outputName": "02-reading-detail.png",
+      "cropMode": "contain"
+    },
+    {
+      "inputFile": "home.png",
+      "headline": "A gentle daily check-in",
+      "subheadline": "Notice patterns without pressure.",
+      "theme": "dawn",
+      "outputName": "03-home.png",
+      "cropMode": "contain"
+    },
+    {
+      "inputFile": "daily-affirmations.png",
+      "headline": "Daily affirmations, quietly delivered",
+      "subheadline": "Small phrases that steady the day.",
+      "theme": "seafoam",
+      "outputName": "04-daily-affirmations.png",
+      "cropMode": "contain"
+    },
+    {
+      "inputFile": "history-reminder.png",
+      "headline": "A reminder from history",
+      "subheadline": "Perspective when things feel heavy.",
+      "theme": "slate",
+      "outputName": "05-history-reminder.png",
+      "cropMode": "contain"
+    }
+  ]
+}

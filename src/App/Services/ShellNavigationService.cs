@@ -1,4 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Maui.ApplicationModel;
 using WellMind.Views;
 
 namespace WellMind.Services;
@@ -43,6 +44,17 @@ public sealed class ShellNavigationService : INavigationService
 
     public Task CloseModalAsync()
     {
-        return Shell.Current.Navigation.PopModalAsync();
+        var shell = Shell.Current;
+        if (shell?.Navigation is null)
+        {
+            return Task.CompletedTask;
+        }
+
+        if (shell.Navigation.ModalStack.Count == 0)
+        {
+            return Task.CompletedTask;
+        }
+
+        return MainThread.InvokeOnMainThreadAsync(() => shell.Navigation.PopModalAsync());
     }
 }
