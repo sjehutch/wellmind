@@ -16,10 +16,6 @@
     </ContentPage.Resources>
 
     <Grid>
-        <BoxView
-            Color="{Binding BackgroundColor}"
-            IsVisible="{Binding ShowBackgroundColor}" />
-
         <ScrollView>
             <VerticalStackLayout Padding="24" Spacing="16">
             <!-- Header -->
@@ -28,23 +24,35 @@
                 Style="{DynamicResource Headline}"
                 HorizontalOptions="Start"
                 TextColor="{AppThemeBinding Light=#2F8F5A, Dark=#00E676}" />
-            <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
+
+            <!-- Greeting row + subtle Reading link -->
+            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12" RowDefinitions="Auto">
                 <Label
+                    Grid.Column="0"
                     Text="{Binding GreetingText}"
                     Style="{DynamicResource DateHeadline}"
                     FontSize="15"
                     VerticalOptions="Center" />
+
                 <Label
-                    Text="✨ Personalize"
-                    TextColor="{AppThemeBinding Light={DynamicResource Gray500}, Dark={DynamicResource Gray200}}"
+                    Grid.Column="1"
+                    x:Name="ReadingHintLabel"
+                    Text="Reading"
                     FontSize="12"
+                    TextColor="{AppThemeBinding Light=#2F8F5A, Dark=#7BD8A9}"
+                    TextDecorations="Underline"
                     VerticalOptions="Center">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding OpenBackgroundMenuCommand}" />
+                        <TapGestureRecognizer Command="{Binding OpenReadingCommand}" />
                     </Label.GestureRecognizers>
                 </Label>
-            </HorizontalStackLayout>
-            <Label Text="{Binding TodayDateText}" Style="{DynamicResource DateHeadline}" HorizontalOptions="Start" />
+            </Grid>
+
+            <Label
+                Text="{Binding TodayDateText}"
+                Style="{DynamicResource DateHeadline}"
+                HorizontalOptions="Start" />
+
             <Label Text="{Binding SummaryText}" Style="{DynamicResource BodyText}" />
             <!-- Tone pack -->
             <VerticalStackLayout Spacing="8">
@@ -147,6 +155,40 @@
                 Padding="12"
                 IsVisible="{Binding HasNoTodayCheckIn}">
                 <Label Text="No check-in yet today." Style="{DynamicResource CaptionText}" />
+            </Border>
+
+            <!-- Today's rhythm -->
+            <Border
+                BackgroundColor="{AppThemeBinding Light={DynamicResource Secondary}, Dark={DynamicResource Gray900}}"
+                StrokeShape="RoundRectangle 12"
+                Padding="16"
+                IsVisible="{Binding HasTodayRhythm}">
+                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="16" RowDefinitions="Auto" VerticalOptions="Center">
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="Today's balance" Style="{DynamicResource SectionTitle}" />
+                        <Label
+                            Text="{Binding TodayRhythmDescriptor}"
+                            TextColor="{Binding TodayRhythmColor}"
+                            FontAttributes="Bold"
+                            FontSize="14" />
+                        <Label Text="{Binding TodayRhythmNote}" Style="{DynamicResource CaptionText}" />
+                    </VerticalStackLayout>
+                    <Grid Grid.Column="1" WidthRequest="90" HeightRequest="90">
+                        <controls:TodayRhythmGauge
+                            WidthRequest="90"
+                            HeightRequest="90"
+                            Value="{Binding TodayRhythmValue}"
+                            AccentColor="{Binding TodayRhythmColor}"
+                            TrackColor="{AppThemeBinding Light={DynamicResource Gray200}, Dark={DynamicResource Gray600}}" />
+                        <Label
+                            Text="{Binding TodayRhythmPercent}"
+                            TextColor="{Binding TodayRhythmColor}"
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center" />
+                    </Grid>
+                </Grid>
             </Border>
 
             <!-- Weekly trends -->
@@ -285,40 +327,6 @@
                         Command="{Binding ClearHeavyNoteCommand}"
                         HorizontalOptions="Start" />
                 </VerticalStackLayout>
-            </Border>
-
-            <!-- Today's rhythm -->
-            <Border
-                BackgroundColor="{AppThemeBinding Light={DynamicResource Secondary}, Dark={DynamicResource Gray900}}"
-                StrokeShape="RoundRectangle 12"
-                Padding="16"
-                IsVisible="{Binding HasTodayRhythm}">
-                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="16" RowDefinitions="Auto" VerticalOptions="Center">
-                    <VerticalStackLayout Spacing="6">
-                        <Label Text="Today's balance" Style="{DynamicResource SectionTitle}" />
-                        <Label
-                            Text="{Binding TodayRhythmDescriptor}"
-                            TextColor="{Binding TodayRhythmColor}"
-                            FontAttributes="Bold"
-                            FontSize="14" />
-                        <Label Text="{Binding TodayRhythmNote}" Style="{DynamicResource CaptionText}" />
-                    </VerticalStackLayout>
-                    <Grid Grid.Column="1" WidthRequest="90" HeightRequest="90">
-                        <controls:TodayRhythmGauge
-                            WidthRequest="90"
-                            HeightRequest="90"
-                            Value="{Binding TodayRhythmValue}"
-                            AccentColor="{Binding TodayRhythmColor}"
-                            TrackColor="{AppThemeBinding Light={DynamicResource Gray200}, Dark={DynamicResource Gray600}}" />
-                        <Label
-                            Text="{Binding TodayRhythmPercent}"
-                            TextColor="{Binding TodayRhythmColor}"
-                            FontAttributes="Bold"
-                            FontSize="16"
-                            HorizontalTextAlignment="Center"
-                            VerticalTextAlignment="Center" />
-                    </Grid>
-                </Grid>
             </Border>
 
             <!-- Resource links -->

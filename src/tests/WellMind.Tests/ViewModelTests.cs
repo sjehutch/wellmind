@@ -19,7 +19,6 @@ public sealed class ViewModelTests
             new FakeResourceLinkService(),
             new FakeEnergyWindowsService(),
             new FakeReminderSettingsStore(),
-            new FakeHomeBackgroundService(),
             new FakeTonePackStore(),
             new FakeTipFeedbackStore());
 
@@ -44,7 +43,6 @@ public sealed class ViewModelTests
             new FakeResourceLinkService(),
             new FakeEnergyWindowsService(),
             new FakeReminderSettingsStore(),
-            new FakeHomeBackgroundService(),
             new FakeTonePackStore(),
             new FakeTipFeedbackStore());
 
@@ -184,28 +182,6 @@ internal sealed class FakeNavigationService : INavigationService
 
     public Task GoBackAsync()
     {
-        return Task.CompletedTask;
-    }
-}
-
-internal sealed class FakeHomeBackgroundService : IHomeBackgroundService
-{
-    private string? _colorHex;
-
-    public Task<string?> GetBackgroundColorAsync(CancellationToken ct = default)
-    {
-        return Task.FromResult(_colorHex);
-    }
-
-    public Task SetBackgroundColorAsync(string colorHex, CancellationToken ct = default)
-    {
-        _colorHex = colorHex;
-        return Task.CompletedTask;
-    }
-
-    public Task ResetAsync(CancellationToken ct = default)
-    {
-        _colorHex = null;
         return Task.CompletedTask;
     }
 }

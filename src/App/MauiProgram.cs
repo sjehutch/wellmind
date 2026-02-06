@@ -18,6 +18,7 @@ public static class MauiProgram
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+				fonts.AddFont("MaterialIcons-Regular.ttf", "MaterialIcons");
 			});
 
 		// Register UI and services for simple constructor injection.
@@ -34,6 +35,7 @@ public static class MauiProgram
 		builder.Services.AddTransient<ScoreExplanationPage>();
 		builder.Services.AddTransient<PrivacyCommitmentPage>();
 		builder.Services.AddTransient<GroundedPage>();
+		builder.Services.AddTransient<MorePage>();
 		builder.Services.AddTransient<ReadingListPage>();
 		builder.Services.AddTransient<TalkToSomeonePage>();
 		builder.Services.AddTransient<GentleReminderPage>();
@@ -61,7 +63,6 @@ public static class MauiProgram
 		builder.Services.AddSingleton<IGrounded, GroundedService>();
 		builder.Services.AddSingleton<IEnergyWindowsService, EnergyWindowsService>();
 		builder.Services.AddSingleton<IFirstRunStore, FirstRunStore>();
-		builder.Services.AddSingleton<IHomeBackgroundService, HomeBackgroundService>();
 		builder.Services.AddSingleton<TalkToSomeoneConfigLoader>();
 		builder.Services.AddSingleton<ILoggerService, FileLoggerService>();
 		builder.Services.AddSingleton<IReminderSettingsStore, ReminderSettingsStore>();
